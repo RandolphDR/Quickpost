@@ -3,5 +3,17 @@
         "terminal.background": "#00000000",
         "minimap.background": "#00000000",
         "scrollbar.shadow": "#00000000"
+    },
+    "tailwindCSS.includeLanguages": {
+        "html": "html",
+        "javascript": "javascript",
+        "javascriptreact": "javascript",
+        "typescriptreact": "typescript",
+        "vue": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.validate": true,
+    "editor.quickSuggestions": {
+        "strings": true
     }
 }

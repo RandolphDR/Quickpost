@@ -30,23 +30,13 @@
     {{-- End of Theme Checker --}}
 </head>
 
-<body class="font-sans antialiased bg-white dark:bg-gray-900 ">
+<body class="font-sans antialiased bg-white dark:bg-slate-900">
     {{-- Notification --}}
     <livewire:components.ui.notification />
     {{-- End of Notification --}}
 
-    {{-- Header --}}
-    <header class="w-full flex flex-col justify-center items-center bg-white dark:bg-gray-900 ">
-        <div>
-            <a href="/" wire:navigate>
-                <x-application-logo class="w-56"/>
-            </a>
-        </div>
-    </header>
-    {{-- End of Header --}}
-
     {{-- Main Content --}}
-    <main class="w-full min-h-[89vh] flex flex-col justify-center items-center">
+    <main class="w-full min-h-screen flex flex-row justify-center items-center">
         {{ $slot }}
     </main>
     {{-- End of Main Content --}}
