@@ -6,6 +6,8 @@ use App\Livewire\Pages\View\Home;
 use App\Livewire\Pages\View\Blog;
 
 Route::get('/', Home::class)->name('homepage');
+Route::view('about', 'pages.about')->name('about');
+Route::view('contact', 'pages.contact')->name('contact');
 
 Route::middleware('auth')->group(function () {
     Route::view('blog', 'blog')->name('blog');

@@ -30,7 +30,7 @@
     {{-- End of Theme Checker --}}
 </head>
 
-<body class="font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
+<body class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
     {{-- Notification --}}
     <livewire:components.ui.notification />
     {{-- End of Notification --}}
@@ -50,10 +50,13 @@
     {{-- End of Main Content --}}
 
     {{-- Footer --}}
-    @if (!isset($footer))
+    @hasSection('footer')
+        @yield('footer')
+    @else
         <livewire:components.layouts.footer />
     @endif
     {{-- End of Footer --}}
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/layouts/app.js') }}"></script>

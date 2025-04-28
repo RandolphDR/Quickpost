@@ -1,4 +1,4 @@
-<form wire:submit="login" class="w-[75%] gap-2 flex flex-col justify-center items-stretch">
+<form wire:submit="login" class="w-[80%] gap-2 flex flex-col justify-center items-stretch">
     <div>
         <x-input-label for="username" :value="__('Username*')" />
         <x-text-input wire:model="username" id="username" class="block mt-1 w-full" type="text" name="username" required

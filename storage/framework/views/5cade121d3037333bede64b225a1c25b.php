@@ -30,7 +30,7 @@
     
 </head>
 
-<body class="font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
+<body class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
     
     <?php
 $__split = function ($name, $params = []) {
@@ -81,7 +81,9 @@ if (isset($__slots)) unset($__slots);
     
 
     
-    <?php if(!isset($footer)): ?>
+    <?php if (! empty(trim($__env->yieldContent('footer')))): ?>
+        <?php echo $__env->yieldContent('footer'); ?>
+    <?php else: ?>
         <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -100,6 +102,7 @@ if (isset($__slots)) unset($__slots);
 ?>
     <?php endif; ?>
     
+
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/layouts/app.js')); ?>"></script>

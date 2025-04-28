@@ -1,4 +1,4 @@
-<form wire:submit="login" class="w-[75%] gap-2 flex flex-col justify-center items-stretch">
+<form wire:submit="login" class="w-[80%] gap-2 flex flex-col justify-center items-stretch">
     <div>
         <?php if (isset($component)) { $__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginale3da9d84bb64e4bc2eeebaafabfb2581 = $attributes; } ?>

@@ -59,14 +59,17 @@
                         {{ __('Home') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                         {{ __('About Us') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
                         {{ __('Contact') }}
                     </x-nav-link>
                 @endguest
+                <x-nav-link>
+                    {{ __('Explore') }}
+                </x-nav-link>
                 @auth
                 @endauth
             </div>
@@ -74,7 +77,7 @@
             <div class="w-[33%] flex items-center justify-end gap-4">
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" type="button"
-                    class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                    class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                     <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
@@ -101,7 +104,8 @@
                     <div class="hidden sm:flex sm:items-center">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                                     <div class="w-10 h-10 rounded-full overflow-hidden bg-neutral-400 dark:bg-neutral-200">
                                         <img src="{{ asset(auth()->user()->avatar) }}" alt="error"
                                             class="w-full h-full object-cover rounded-full">
@@ -116,8 +120,11 @@
                             </x-slot>
 
                             <x-slot name="content">
+                                <x-dropdown-link>
+                                    {{ __('Profile') }}
+                                </x-dropdown-link>
                                 <x-dropdown-link :href="route('profile')" wire:navigate>
-                                    {{ __('My Account') }}
+                                    {{ __('Settings') }}
                                 </x-dropdown-link>
                                 <button wire:click="logout" class="w-full text-start">
                                     <x-dropdown-link>
