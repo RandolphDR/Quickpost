@@ -19,7 +19,8 @@ return new class extends Migration {
             $table->string('middlename')->nullable();
             $table->integer('age')->nullable();
             $table->date('birthdate')->nullable();
-            $table->string('birthplace')->nullable();
+            $table->json('birthplace')->nullable();
+            $table->json('address')->nullable();
             $table->text('bio')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

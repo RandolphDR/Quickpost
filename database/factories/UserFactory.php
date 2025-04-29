@@ -34,7 +34,17 @@ class UserFactory extends Factory
             'middlename' => fake()->optional()->lastName(),
             'age' => fake()->numberBetween(18, 65),
             'birthdate' => fake()->date(),
-            'birthplace' => fake()->city(),
+            'birthplace' => [
+                'city' => fake()->city(),
+                'country' => fake()->country(),
+            ],
+            'address' => [
+                'street' => fake()->streetAddress(),
+                'city' => fake()->city(),
+                'state' => fake()->state(),
+                'country' => fake()->country(),
+                'zip' => fake()->postcode(),
+            ],
             'bio' => fake()->text(200),
             'username' => fake()->unique()->userName(),
             'phone' => fake()->unique()->phoneNumber(),

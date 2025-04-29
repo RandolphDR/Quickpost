@@ -10,7 +10,7 @@ Route::view('about', 'pages.about')->name('about');
 Route::view('contact', 'pages.contact')->name('contact');
 
 Route::middleware('auth')->group(function () {
-    Route::view('blog', 'blog')->name('blog');
+    Route::view('home', 'blog')->name('blog');
     Route::view('profile', 'profile')->name('profile');
 });
 

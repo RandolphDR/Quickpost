@@ -20,12 +20,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'avatar',
-        'first_name',
-        'last_name',
-        'middle_name',
+        'firstname',
+        'lastname',
+        'middlename',
         'age',
         'birthdate',
         'birthplace',
+        'address',
         'bio',
         'username',
         'email',
@@ -57,6 +58,8 @@ class User extends Authenticatable
         return [
             'age' => 'integer',
             'birthdate' => 'date',
+            'birthplace' => 'array',
+            'address' => 'array',
             'email_verified_at' => 'datetime',
             'phone_verified_at' => 'datetime',
             'password' => 'hashed',

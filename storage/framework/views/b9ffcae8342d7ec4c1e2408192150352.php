@@ -8,14 +8,13 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <div class="h-72 border">
+    <section class="w-full h-screen flex flex-col justify-center items-center">
         <h1 class="block font-normal text-gray-800 text-2xl md:text-3xl lg:text-4xl dark:text-neutral-200">
-            Create Post Livewire Component Here
+            Welcome to your Homepage User:
+            <?php echo e(Auth::user()->firstname . ' ' . Auth::user()->middlename . ' ' . Auth::user()->lastname); ?>
+
         </h1>
-    </div>
-    <h1 class="block font-normal text-gray-800 text-2xl md:text-3xl lg:text-4xl dark:text-neutral-200">
-        Latest Posts Livewire Component Here
-    </h1>
+    </section>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

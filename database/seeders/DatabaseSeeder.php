@@ -23,7 +23,17 @@ class DatabaseSeeder extends Seeder
             'middlename' => 'Soriano',
             'age' => 20,
             'birthdate' => '2004-07-22',
-            'birthplace' => 'Quezon',
+            'birthplace' => [
+                'city' => 'Quezon',
+                'country' => 'Philippines',
+            ],
+            'address' => [
+                'street' => '103A P. Rosales Street',
+                'city' => 'Pateros',
+                'state' => 'Metro Manila',
+                'country' => 'Philippines',
+                'zip' => '1621',
+            ],
             'bio' => 'The Developer of Quickpost System',
             'username' => 'RandolphDR',
             'email' => 'randolph@quickpost.ph',

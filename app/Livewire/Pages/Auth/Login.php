@@ -7,8 +7,8 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 class Login extends Component {
-    public string $username = '';
-    public string $password = '';
+
+    public string $username = '', $password = '';
     public bool $remember = false;
 
     private array $rules = [

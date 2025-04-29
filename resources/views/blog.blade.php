@@ -1,10 +1,8 @@
 <x-app-layout>
-    <div class="h-72 border">
+    <section class="w-full h-screen flex flex-col justify-center items-center">
         <h1 class="block font-normal text-gray-800 text-2xl md:text-3xl lg:text-4xl dark:text-neutral-200">
-            Create Post Livewire Component Here
+            Welcome to your Homepage User:
+            {{ Auth::user()->firstname . ' ' . Auth::user()->middlename . ' ' . Auth::user()->lastname }}
         </h1>
-    </div>
-    <h1 class="block font-normal text-gray-800 text-2xl md:text-3xl lg:text-4xl dark:text-neutral-200">
-        Latest Posts Livewire Component Here
-    </h1>
+    </section>
 </x-app-layout>

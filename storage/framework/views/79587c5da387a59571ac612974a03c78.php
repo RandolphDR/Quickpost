@@ -9,8 +9,8 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     <section class="w-full h-screen p-16 flex flex-col justify-center items-center">
-        <main class="px-16 py-4 flex flex-col justify-center items-center bg-neutral-100 dark:bg-gray-800 rounded-2xl">
-            <nav>
+        <main class="px-16 py-4 gap-4 flex flex-col justify-center items-center bg-neutral-100 dark:bg-gray-800 rounded-2xl">
+            <nav class="self-start">
                 <a href="<?php echo e(route('homepage')); ?>" wire:navigate>
                     <?php if (isset($component)) { $__componentOriginal8892e718f3d0d7a916180885c6f012e7 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8892e718f3d0d7a916180885c6f012e7 = $attributes; } ?>
@@ -34,7 +34,9 @@
 <?php endif; ?>
                 </a>
             </nav>
-            <header>
+            <header class="pb-4 text-center">
+                <h3 class="text-black dark:text-neutral-200 text-4xl font-bold">Create your Account</h3>
+                <p class="text-gray-500 dark:text-neutral-400">This is where your posting journey begins.</p>
             </header>
             <?php
 $__split = function ($name, $params = []) {
@@ -52,6 +54,15 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
+            <footer class="">
+                <p class="text-center text-sm text-gray-600 dark:text-neutral-400">
+                    Already have an account?
+                    <a href="<?php echo e(route('login')); ?>" class="font-semibold hover:underline dark:text-neutral-200"
+                        wire:navigate>
+                        Log In
+                    </a>
+                </p>
+            </footer>
         </main>
     </section>
  <?php echo $__env->renderComponent(); ?>

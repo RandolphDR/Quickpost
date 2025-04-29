@@ -54,11 +54,16 @@
             </div>
 
             <div class="w-[33%] gap-8 flex justify-center items-center">
+                <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage', 'blog')" wire:navigate>
+                    <svg class="mr-1 w-[25px] h-[25px] text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                    </svg>
+                    {{ __('Home') }}
+                </x-nav-link>
                 @guest
-                    <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')" wire:navigate>
-                        {{ __('Home') }}
-                    </x-nav-link>
-
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                         {{ __('About Us') }}
                     </x-nav-link>
