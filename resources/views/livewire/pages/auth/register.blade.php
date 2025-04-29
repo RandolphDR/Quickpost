@@ -1,21 +1,21 @@
 <form wire:submit="register" class="gap-6 flex flex-col">
     <div class="flex flex-col gap-4">
         <div class="flex flex-col md:flex-row gap-4">
-            <div class="full">
+            <div class="w-full">
                 <x-input-label for="firstname" :value="__('First Name*')" />
                 <x-text-input wire:model="firstname" id="firstname" type="text" name="firstname"
                     placeholder="Enter your Firstname" class="block w-full mt-1" required autofocus
                     autocomplete="firstname" />
                 <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
             </div>
-            <div class="full">
+            <div class="w-full">
                 <x-input-label for="lastname" :value="__('Last Name*')" />
                 <x-text-input wire:model="lastname" id="lastname" type="text" name="lastname"
                     placeholder="Enter your Lastname" class="block w-full mt-1" required autofocus
                     autocomplete="lastname" />
                 <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
             </div>
-            <div class="full">
+            <div class="w-full">
                 <x-input-label for="middlename" :value="__('Middle Name (Optional)')" />
                 <x-text-input wire:model="middlename" id="middlename" type="text" name="middlename"
                     placeholder="Enter your Middlename" class="block w-full mt-1" autofocus
@@ -63,7 +63,7 @@
     </div>
     <div class="w-auto gap-4 flex flex-col justify-center items-start">
         <p class="text-sm text-gray-600 dark:text-neutral-400">By clicking Create Account, you agree to our Terms,
-            Privacy Policy and Cookies Policy. <br> You may receieve SMS Notifications from us and can opt out any time.
+            Privacy Policy and Cookies Policy. <br> You may receive SMS Notifications from us and can opt out any time.
         </p>
         <x-primary-button class="w-full">
             {{ __('Create Account') }}

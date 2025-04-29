@@ -29,9 +29,9 @@ class UserFactory extends Factory
     {
         return [
             'avatar' => null,
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'middle_name' => fake()->optional()->lastName(),
+            'firstname' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
+            'middlename' => fake()->optional()->lastName(),
             'age' => fake()->numberBetween(18, 65),
             'birthdate' => fake()->date(),
             'birthplace' => fake()->city(),

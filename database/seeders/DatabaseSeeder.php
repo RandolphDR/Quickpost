@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
     public function run() {
 
         User::factory()->create([
-            'first_name' => 'Randolph',
-            'last_name' => 'Saludo',
-            'middle_name' => 'Soriano',
+            'avatar' => 'storage/avatar/1744116544_myprofile.png',
+            'firstname' => 'Randolph',
+            'lastname' => 'Saludo',
+            'middlename' => 'Soriano',
             'age' => 20,
             'birthdate' => '2004-07-22',
             'birthplace' => 'Quezon',
