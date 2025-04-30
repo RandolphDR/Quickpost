@@ -5,21 +5,20 @@
                 <x-input-label for="firstname" :value="__('First Name*')" />
                 <x-text-input wire:model="firstname" id="firstname" type="text" name="firstname"
                     placeholder="Enter your Firstname" class="block w-full mt-1" required autofocus
-                    autocomplete="firstname" />
+                    autocomplete="given-name" />
                 <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
             </div>
             <div class="w-full">
                 <x-input-label for="lastname" :value="__('Last Name*')" />
                 <x-text-input wire:model="lastname" id="lastname" type="text" name="lastname"
                     placeholder="Enter your Lastname" class="block w-full mt-1" required autofocus
-                    autocomplete="lastname" />
+                    autocomplete="family-name" />
                 <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
             </div>
             <div class="w-full">
                 <x-input-label for="middlename" :value="__('Middle Name (Optional)')" />
                 <x-text-input wire:model="middlename" id="middlename" type="text" name="middlename"
-                    placeholder="Enter your Middlename" class="block w-full mt-1" autofocus
-                    autocomplete="middlename" />
+                    placeholder="Enter your Middlename" class="block w-full mt-1" autofocus autocomplete="additional-name" />
                 <x-input-error :messages="$errors->get('middlename')" class="mt-2" />
             </div>
         </div>
@@ -47,18 +46,29 @@
             </div>
         </div>
 
-        <div>
-            <x-input-label for="password" :value="__('Password*')" />
-            <x-password-input wire:model="password" id="password" name="password"
-                placeholder="Create a Strong Password" class="block w-full mt-1" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="w-full">
+            <x-input-label for="username" :value="__('Username*')" />
+            <x-text-input wire:model="username" id="username" type="text" name="username"
+                placeholder="Create your Username" class="block w-full mt-1" autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
-        <div>
-            <x-input-label for="password_confirmation" :value="__('Confirm Password*')" />
-            <x-password-input wire:model="password_confirmation" id="password_confirmation" name="password_confirmation"
-                placeholder="Confirm your Password" class="block w-full mt-1" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="w-full">
+                <x-input-label for="password" :value="__('Password*')" />
+                <x-password-input wire:model="password" id="password" name="password"
+                    placeholder="Create a Strong Password" class="block w-full mt-1" required
+                    autocomplete="new-password" />
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
+
+            <div class="w-full">
+                <x-input-label for="password_confirmation" :value="__('Confirm Password*')" />
+                <x-password-input wire:model="password_confirmation" id="password_confirmation"
+                    name="password_confirmation" placeholder="Confirm your Password" class="block w-full mt-1" required
+                    autocomplete="new-password" />
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            </div>
         </div>
     </div>
     <div class="w-auto gap-4 flex flex-col justify-center items-start">
@@ -69,5 +79,4 @@
             {{ __('Create Account') }}
         </x-primary-button>
     </div>
-
 </form>

@@ -18,7 +18,7 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('profile.update-profile-information-form', []);
+[$__name, $__params] = $__split('pages.user.settings.update-profile-information-form', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-3989366885-0', $__slots ?? [], get_defined_vars());
 
@@ -39,7 +39,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('profile.update-password-form', []);
+[$__name, $__params] = $__split('pages.user.settings.update-password-form', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-3989366885-1', $__slots ?? [], get_defined_vars());
 
@@ -60,7 +60,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('profile.delete-user-form', []);
+[$__name, $__params] = $__split('pages.user.settings.delete-user-form', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-3989366885-2', $__slots ?? [], get_defined_vars());
 

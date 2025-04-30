@@ -7,7 +7,15 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     
-    <title><?php echo $__env->yieldContent('title', config('app.name')); ?></title>
+    <title>
+        <?php if (! empty(trim($__env->yieldContent('title')))): ?>
+            <?php echo $__env->yieldContent('title'); ?> | <?php echo e(config('app.name')); ?>
+
+        <?php else: ?>
+            <?php echo e(config('app.name')); ?>
+
+        <?php endif; ?>
+    </title>
     <link rel="icon" href="<?php echo e(asset('website-logo.svg')); ?>" type="image/x-icon">
     
 
@@ -30,7 +38,8 @@
     
 </head>
 
-<body class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
+<body
+    class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
     
     <?php
 $__split = function ($name, $params = []) {

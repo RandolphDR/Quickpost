@@ -7,7 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Tab Settings --}}
-    <title>@yield('title', config('app.name'))</title>
+    <title>
+        @hasSection('title')
+            @yield('title') | {{ config('app.name') }}
+        @else
+            {{ config('app.name') }}
+        @endif
+    </title>
     <link rel="icon" href="{{ asset('website-logo.svg') }}" type="image/x-icon">
     {{-- End of Tab Settings --}}
 
@@ -30,7 +36,8 @@
     {{-- End of Theme Checker --}}
 </head>
 
-<body class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
+<body
+    class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full min-h-screen flex flex-col justify-start items-start">
     {{-- Notification --}}
     <livewire:components.ui.notification />
     {{-- End of Notification --}}

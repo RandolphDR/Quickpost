@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Session;
 
 class Register extends Component {
 
-    public string $firstname = '', $lastname = '', $middlename = '', $email = '', $phone = '', $birthday = '', $password = '', $password_confirmation = '';
+    public string $username = '', $firstname = '', $lastname = '', $middlename = '', $email = '', $phone = '', $birthday = '', $password = '', $password_confirmation = '';
 
     private array $rules = [
+        'username' => ['required', 'string', 'max:100', 'unique:users,username'],
         'firstname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
         'lastname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
         'middlename' => ['nullable', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
@@ -26,6 +27,9 @@ class Register extends Component {
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ];
     private array $messages = [
+        'username.required' => 'Please enter your Username.',
+        'username.string' => 'Username must be a string.',
+        'username.unique' => 'This Username has already been taken',
         'firstname.required' => 'Please enter your firstname.',
         'firstname.string' => 'First name must be a string.',
         'firstname.regex' => 'First name must only contain letters and spaces.',

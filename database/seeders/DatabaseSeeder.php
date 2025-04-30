@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'bio' => 'The Developer of Quickpost System',
             'username' => 'RandolphDR',
             'email' => 'randolph@quickpost.ph',
-            'phone' => '0922097492',
+            'phone' => '09272097492',
             'role' => 'developer',
         ]);
 
