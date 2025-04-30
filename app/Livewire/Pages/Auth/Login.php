@@ -53,7 +53,7 @@ class Login extends Component {
 
         Session::regenerate();
 
-        $this->redirectIntended(route('homepage', absolute: false), navigate: true);
+        $this->redirectIntended('/' , navigate: true);
     }
 
     public function mount()

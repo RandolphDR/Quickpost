@@ -39,7 +39,7 @@
     {{-- End of Header --}}
 
     {{-- Main Content --}}
-    <main class="w-full h-[80%] flex flex-col justify-center items-center gap-8">
+    <main class="w-full h-[80%] max-w-7xl justify-self-center flex flex-col justify-center items-center gap-8">
         <figure class="w-[450px] h-[290px] overflow-hidden flex flex-col justify-center items-center">
             <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
             <dotlottie-player src="{{ asset(View::yieldContent('banner-path')) }}" background="transparent"

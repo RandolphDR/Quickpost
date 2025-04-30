@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Tab Settings --}}
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title', config('app.name'))</title>
     <link rel="icon" href="{{ asset('website-logo.svg') }}" type="image/x-icon">
     {{-- End of Tab Settings --}}
 

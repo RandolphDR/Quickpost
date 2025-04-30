@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     
-    <title><?php echo e(config('app.name')); ?></title>
+    <title><?php echo $__env->yieldContent('title', config('app.name')); ?></title>
     <link rel="icon" href="<?php echo e(asset('website-logo.svg')); ?>" type="image/x-icon">
     
 

@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="w-auto gap-4 flex flex-col justify-center items-start">
-        <p class="text-sm text-gray-600 dark:text-neutral-400">By clicking Create Account, you agree to our Terms,
+        <p class="text-xs text-gray-600 dark:text-neutral-400">By clicking Create Account, you agree to our Terms,
             Privacy Policy and Cookies Policy. <br> You may receive SMS Notifications from us and can opt out any time.
         </p>
         <x-primary-button class="w-full">

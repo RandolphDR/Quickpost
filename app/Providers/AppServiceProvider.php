@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,12 +13,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
+    public function register(): void {
 
-        Gate::define('developer-access', fn(User $user) => $user->role === 'developer');
-        Gate::define('administrator-access', fn(User $user) => in_array($user->role, ['administrator', 'developer']));
-        Gate::define('user-access', fn(User $user) => $user->role === 'user');
+        Gate::define('developer-access', fn(User $user) => Auth::check() && $user->role === 'developer');
+        Gate::define('administrator-access', fn(User $user) => Auth::check() && in_array($user->role, ['administrator', 'developer']));
+        Gate::define('user-access', fn(User $user) => Auth::check() && $user->role === 'user');
 
     }
 
