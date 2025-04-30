@@ -23,21 +23,6 @@
                 <a href="{{ route('homepage') }}" class="shrink-0 flex items-center" wire:navigate>
                     <x-application-logo />
                 </a>
-                {{-- @auth
-                        <form class="w-52 flex items-center">
-                            <label for="search" class="absolute ml-2">
-                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                    viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </label>
-                            <input type="text" id="search"
-                                class="h-11 w-full pl-9 rounded-lg border border-gray-200 bg-white/50 dark:bg-dark-900  py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-                                placeholder="Search Quickpost" />
-                        </form>
-                    @endauth --}}
                 <form class="w-52 flex items-center">
                     <label for="search" class="absolute ml-2">
                         <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
@@ -53,33 +38,47 @@
                 </form>
             </div>
 
-            <div class="w-[33%] gap-8 flex justify-center items-center">
-                <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage', 'blog')" wire:navigate>
-                    <svg class="mr-1 w-[25px] h-[25px] text-gray-800 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
-                    </svg>
-                    {{ __('Home') }}
-                </x-nav-link>
+            <div class="w-[40%] gap-8 flex justify-center items-center">
                 @guest
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
-                        {{ __('About Us') }}
-                    </x-nav-link>
-
-                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
-                        {{ __('Contact') }}
+                    <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage', 'blog')" wire:navigate>
+                        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                        </svg>
+                        {{ __('Home') }}
                     </x-nav-link>
                 @endguest
-                <x-nav-link>
+                <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" wire:navigate>
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                            d="M4.37 7.657c2.063.528 2.396 2.806 3.202 3.87 1.07 1.413 2.075 1.228 3.192 2.644 1.805 2.289 1.312 5.705 1.312 6.705M20 15h-1a4 4 0 0 0-4 4v1M8.587 3.992c0 .822.112 1.886 1.515 2.58 1.402.693 2.918.351 2.918 2.334 0 .276 0 2.008 1.972 2.008 2.026.031 2.026-1.678 2.026-2.008 0-.65.527-.9 1.177-.9H20M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
                     {{ __('Explore') }}
+                </x-nav-link>
+                <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
+                    </svg>
+                    {{ __('About Us') }}
+                </x-nav-link>
+
+                <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                            d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                    </svg>
+                    {{ __('Contact') }}
                 </x-nav-link>
                 @auth
                 @endauth
             </div>
 
-            <div class="w-[33%] flex items-center justify-end gap-4">
+            <div class="w-[27%] flex items-center justify-end gap-4">
                 <!-- Theme Toggle -->
                 <button id="theme-toggle" type="button"
                     class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -128,7 +127,7 @@
                                 <x-dropdown-link>
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('profile')" wire:navigate>
+                                <x-dropdown-link :href="route('user.settings')" wire:navigate>
                                     {{ __('Settings') }}
                                 </x-dropdown-link>
                                 <button wire:click="logout" class="w-full text-start">
@@ -158,7 +157,7 @@
         </div>
     </div>
 
-    <!-- Responsive Nav for Authenticated Users -->
+    {{-- <!-- Responsive Nav for Authenticated Users -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')" wire:navigate>
@@ -200,5 +199,5 @@
                 </div>
             @endauth
         </div>
-    </div>
+    </div> --}}
 </nav>
