@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <section class="w-full h-full overflow-hidden relative">
+    <section class="w-full overflow-hidden">
         <!-- Gradients -->
         <div aria-hidden="true" class="w-full flex absolute -top-96 start-1/2 transform -translate-x-1/2 z-0">
             <div
@@ -60,6 +60,42 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="p-4 w-full max-w-7xl border border-white flex flex-col justify-start items-start">
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('pages.blog.featured', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-3074374080-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+    </section>
+    <section class="p-4 w-full max-w-7xl border border-white flex flex-col justify-start items-start">
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('pages.blog.latest', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-3074374080-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
     </section>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
