@@ -58,6 +58,7 @@
                         </svg>
                         {{ __('Explore') }}
                     </x-nav-link>
+                    
                 @endcan
                 <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"

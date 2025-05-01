@@ -5,21 +5,19 @@
         </h1>
     </header>
     <main class="w-full overflow-x-auto py-2 flex flex-row justify-start items-center gap-4 scrollbar-custom">
-        <article class="w-[300px] h-[400px] border flex-shrink-0">
-
+        <article class="w-[350px] h-[450px] border flex-shrink-0">
+            <figure class="w-full h-[50%] bg-slate-600">
+                <img src="" alt="error" class="w-full h-full">
+            </figure>
         </article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0">
-            <header>
-                <h1 class="font-semibold text-xl text-gray-800 dark:text-neutral-200"></h1>
-            </header>
-        </article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
-        <article class="w-[300px] h-[400px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
+        <article class="w-[350px] h-[450px] border flex-shrink-0"></article>
     </main>
 </div>
 <?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/livewire/pages/blog/featured.blade.php ENDPATH**/ ?>

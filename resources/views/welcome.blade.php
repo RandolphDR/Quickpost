@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="w-full overflow-hidden">
+    <section class="w-full h-[88vh] overflow-hidden">
         <!-- Gradients -->
         <div aria-hidden="true" class="w-full flex absolute -top-96 start-1/2 transform -translate-x-1/2 z-0">
             <div
@@ -52,8 +52,8 @@
             </div>
         </div>
     </section>
-    <section class="p-4 w-full max-w-7xl border border-white flex flex-col justify-start items-start">
-        <livewire:pages.blog.featured />
+    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
+        <livewire:pages.blog.popular />
     </section>
     <section class="p-4 w-full max-w-7xl border border-white flex flex-col justify-start items-start">
         <livewire:pages.blog.latest />

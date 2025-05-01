@@ -6,7 +6,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 /* Custom Scrollbar Styling for Light Mode */
 .scrollbar-custom::-webkit-scrollbar {
     width: 8px;

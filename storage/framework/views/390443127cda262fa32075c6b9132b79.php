@@ -61,7 +61,7 @@
         <main class="w-full p-8 gap-8 flex flex-col justify-between items-center bg-neutral-100 dark:bg-gray-800 rounded-2xl">
             <nav class="w-full">
                 <a href="<?php echo e(route('homepage')); ?>"
-                    class="py-1 px-2 inline-flex justify-center items-center rounded-2xl border border-transparent bg-blue-600 text-xs font-medium text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-widest transition ease-in-out duration-150"
+                    class="py-1 px-2 inline-flex justify-center items-center rounded-2xl border border-transparent bg-blue-600 text-xs font-medium text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-wider transition ease-in-out duration-150"
                     wire:navigate>
                     <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" fill="none" viewBox="0 0 24 24">
