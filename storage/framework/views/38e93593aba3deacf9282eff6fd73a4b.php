@@ -13,7 +13,7 @@
                 <div class="w-full h-[50%] gap-2 flex flex-col justify-start items-start">
                     <header class="w-full gap-2 flex justify-start items-center">
                         <span class="flex justify-center items-center gap-2">
-                            <img src="<?php echo e(asset('storage/avatar/1744116544_myprofile.png')); ?>" alt="error"
+                            <img src="<?php echo e(asset($post->user->avatar)); ?>" alt="error"
                                 class="rounded-full w-7 h-7 bg-gray-400">
                             <p class="text-gray-600 dark:text-gray-400 text-sm"><?php echo e($post->user->firstname); ?> <?php echo e($post->user->lastname); ?></p>
                         </span>

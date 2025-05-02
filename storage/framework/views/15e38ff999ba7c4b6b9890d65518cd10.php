@@ -793,14 +793,14 @@
                 <div class="w-full">
                     <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal18c21970322f9e5c938bc954620c12bb = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['wire:model' => 'address.state','id' => 'address.state','name' => 'address.state','type' => 'text','class' => 'mt-1 block w-full','required' => true,'autofocus' => true,'autocomplete' => 'address.state','placeholder' => 'Enter your State']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['wire:model' => 'address.state','id' => 'address.state','name' => 'address.state','type' => 'text','class' => 'mt-1 block w-full','required' => true,'autofocus' => true,'autocomplete' => 'address.state','placeholder' => 'Enter your Province']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('text-input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['wire:model' => 'address.state','id' => 'address.state','name' => 'address.state','type' => 'text','class' => 'mt-1 block w-full','required' => true,'autofocus' => true,'autocomplete' => 'address.state','placeholder' => 'Enter your State']); ?>
+<?php $component->withAttributes(['wire:model' => 'address.state','id' => 'address.state','name' => 'address.state','type' => 'text','class' => 'mt-1 block w-full','required' => true,'autofocus' => true,'autocomplete' => 'address.state','placeholder' => 'Enter your Province']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal18c21970322f9e5c938bc954620c12bb)): ?>

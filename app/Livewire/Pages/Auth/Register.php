@@ -23,7 +23,7 @@ class Register extends Component {
         'middlename' => ['nullable', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
         'phone' => ['nullable', 'string', 'max:20', 'unique:users,phone'],
-        'birthday' => ['nullable', 'date', 'before:today'],
+        'birthday' => ['nullable', 'date', 'before_or_equal:' . Carbon::today()->subYears(12)->format('Y-m-d')],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ];
     private array $messages = [
@@ -44,7 +44,7 @@ class Register extends Component {
         'phone.required' => 'Phone number is required.',
         'phone.unique' => 'This phone number has already been taken.',
         'birthday.date' => 'Birthday must be a valid date.',
-        'birthday.before' => "You can't register if you're under 18.",
+        'birthday.before_or_equal' => "You must be at least 12 years old.",
         'password.required' => 'Password is required.',
         'password.string' => 'Password must be a string.',
         'password.min' => "Password must be at least 8 characters.",
@@ -54,6 +54,9 @@ class Register extends Component {
 
         $this->rules['password'][] = Rules\Password::defaults();
         $validated = $this->validate($this->rules, $this->messages);
+        // Default Avatar Modify this in the future when you have a upload photo system
+        $validated['avatar'] = 'storage/avatar/Avatar-Default.png';
+        // End
         $validated['birthdate'] = $this->birthday;
         $validated['age'] = Carbon::parse($this->birthday)->age;
         $validated['password'] = Hash::make($validated['password']);

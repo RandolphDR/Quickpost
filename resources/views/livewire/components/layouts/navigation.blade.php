@@ -116,7 +116,7 @@
                                             class="w-full h-full object-cover rounded-full">
                                     </div>
                                     <div>
-                                        <p class="text-gray-600 dark:text-gray-400 dark:hover:text-neutral-200 text-sm font-medium transition-all duration-200 ease-in-out hover:text-indigo-600">
+                                        <p>
                                             {{ $name }}
                                         </p>
                                     </div>

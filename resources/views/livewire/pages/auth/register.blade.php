@@ -32,9 +32,9 @@
             </div>
 
             <div class="w-full">
-                <x-input-label for="phone" :value="__('Phone (Optional)')" />
-                <x-text-input wire:model="phone" id="phone" type="text" name="phone"
-                    placeholder="ex. 0912 345 6789" class="block w-full mt-1" autocomplete="tel" />
+                <x-input-label for="phone" :value="__('Phone*')" />
+                <x-text-input wire:model="phone" id="phone" type="tel" name="phone"
+                    placeholder="ex. 0912 345 6789" class="block w-full mt-1" required autocomplete="phone" />
                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
             </div>
 

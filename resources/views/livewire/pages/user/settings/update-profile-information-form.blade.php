@@ -138,7 +138,7 @@
                 <div class="w-full">
                     <x-text-input wire:model="address.state" id="address.state" name="address.state" type="text"
                         class="mt-1 block w-full" required autofocus autocomplete="address.state"
-                        placeholder="Enter your State" />
+                        placeholder="Enter your Province" />
                     <x-input-error class="mt-2" :messages="$errors->get('address.state')" />
                 </div>
             </div>

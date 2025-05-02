@@ -28,7 +28,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'avatar' => null,
+            'avatar' => 'storage/avatar/Avatar-Default.png',
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'middlename' => fake()->optional()->lastName(),
