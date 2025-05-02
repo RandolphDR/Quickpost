@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Product;
-use App\Models\Category;
+use App\Models\Post;
+use App\Models\Comment;
+use App\Models\Like;
 
 
 class DatabaseSeeder extends Seeder
@@ -44,5 +44,7 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->createWithRole(5, 'user')
             ->create();
+
+        $this->call([PostSeeder::class]);
     }
 }
