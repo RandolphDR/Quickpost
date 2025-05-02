@@ -3,24 +3,33 @@
 namespace App\Livewire\Components\Layouts;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use App\Livewire\Actions\Logout;
 
+class Navigation extends Component {
 
-class Navigation extends Component
-{
-    public function logout(Logout $logout)
-    {
+    public string $name = '';
+
+    #[On('profile-updated')]
+    public function profileUpdated() {
+        $this->name = auth()->user()->fresh()->fullname;
+    }
+
+    public function logout(Logout $logout) {
         $logout();
-        Session::flash('notify', [
-            'message' => 'You have been logged out successfully!',
-            'type' => 'success',
-        ]);
         return $this->redirect(route('homepage', absolute: false), navigate: true);
     }
-    
-    public function render()
-    {
+
+    public function mount() {
+
+        if(Auth::check()) {
+            $this->name = auth()->user()->fullname;
+        }
+
+    }
+
+    public function render() {
         return view('livewire.components.layouts.navigation');
     }
 }

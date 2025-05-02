@@ -69,6 +69,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function getFullnameAttribute() {
+        $getMiddleInitial = $this->middlename ? strtoupper(substr($this->middlename, 0, 1)) . '.' : '';
+        return trim("{$this->firstname} {$getMiddleInitial} {$this->lastname}");
+    }
+
     public function suspensions() {
         return $this->hasMany(Suspension::class);
     }

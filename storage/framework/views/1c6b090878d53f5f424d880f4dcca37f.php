@@ -115,7 +115,6 @@
 <?php $component = $__componentOriginalc295f12dca9d42f28a259237a5724830; ?>
 <?php unset($__componentOriginalc295f12dca9d42f28a259237a5724830); ?>
 <?php endif; ?>
-                    
                 <?php endif; ?>
                 <?php if (isset($component)) { $__componentOriginalc295f12dca9d42f28a259237a5724830 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc295f12dca9d42f28a259237a5724830 = $attributes; } ?>
@@ -253,13 +252,18 @@
 <?php endif; ?>
 <?php $component->withAttributes(['align' => 'right','width' => '48']); ?>
                              <?php $__env->slot('trigger', null, []); ?> 
-                                <button
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <button class="gap-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                                     <div class="w-10 h-10 rounded-full overflow-hidden bg-neutral-400 dark:bg-neutral-200">
                                         <img src="<?php echo e(asset(auth()->user()->avatar)); ?>" alt="error"
                                             class="w-full h-full object-cover rounded-full">
                                     </div>
-                                    <svg class="ms-1 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                    <div>
+                                        <p class="text-gray-600 dark:text-gray-400 dark:hover:text-neutral-200 text-sm font-medium transition-all duration-200 ease-in-out hover:text-indigo-600">
+                                            <?php echo e($name); ?>
+
+                                        </p>
+                                    </div>
+                                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
