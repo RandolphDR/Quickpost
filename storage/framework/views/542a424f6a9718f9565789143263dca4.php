@@ -27,6 +27,24 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
+            <div class="">
+                <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('pages.blog.latest', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+            </div>
         </section>
 
         <!-- Sidebar (Popular Blogs) -->
@@ -37,7 +55,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('pages.blog.popular', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-1', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-2', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

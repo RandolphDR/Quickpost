@@ -1,6 +1,6 @@
 <div class="@container w-full h-full gap-2 flex flex-col justify-start items-start">
     <header class="w-full p-2 flex flex-col justify-center items-start">
-        <h1 class="font-semibold text-xl @lg:text-3xl text-gray-800 dark:text-neutral-200 text-center">
+        <h1 class="font-semibold text-xl @lg:text-2xl text-gray-800 dark:text-neutral-200 text-center">
             Popular Blogs
         </h1>
     </header>

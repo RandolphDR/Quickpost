@@ -55,7 +55,7 @@
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <livewire:pages.blog.popular />
     </section>
-    <section class="p-4 w-full max-w-7xl border border-white flex flex-col justify-start items-start">
+    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <livewire:pages.blog.latest />
     </section>
 </x-app-layout>
