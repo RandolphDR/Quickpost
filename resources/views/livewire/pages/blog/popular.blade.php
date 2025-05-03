@@ -1,6 +1,6 @@
 <div class="@container w-full h-full gap-2 flex flex-col justify-start items-start">
     <header class="w-full p-2 flex flex-col justify-center items-start">
-        <h1 class="font-semibold text-3xl text-gray-800 dark:text-neutral-200 text-center">
+        <h1 class="font-semibold text-xl @lg:text-3xl text-gray-800 dark:text-neutral-200 text-center">
             Popular Blogs
         </h1>
     </header>
@@ -12,7 +12,7 @@
                 class="p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-gray-50 dark:bg-gray-800">
                 <div class="flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
                     <figure class="w-full @sm:w-1/2 @lg:w-full @sm:h-auto @lg:h-[50%] h-48 bg-slate-600 rounded-lg">
-                        <img src="{{ asset($post->cover_image) }}" alt="error" class="w-full h-full object-cover object-center">
+                        <img src="{{ asset($post->cover_image) }}" alt="error" class="w-full h-full object-cover object-center rounded-lg">
                     </figure>
                     <div
                         class="w-full @sm:w-1/2 @lg:w-full flex flex-col justify-between @lg:justify-start gap-2 @lg:h-[50%]">
