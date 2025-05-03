@@ -12,20 +12,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Session;
 
-class Register extends Component {
+class Register extends Component
+{
 
     public string $username = '', $firstname = '', $lastname = '', $middlename = '', $email = '', $phone = '', $birthday = '', $password = '', $password_confirmation = '';
-
-    private array $rules = [
-        'username' => ['required', 'string', 'max:100', 'unique:users,username'],
-        'firstname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
-        'lastname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
-        'middlename' => ['nullable', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-        'phone' => ['nullable', 'string', 'max:20', 'unique:users,phone'],
-        'birthday' => ['nullable', 'date', 'before_or_equal:' . Carbon::today()->subYears(12)->format('Y-m-d')],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-    ];
     private array $messages = [
         'username.required' => 'Please enter your Username.',
         'username.string' => 'Username must be a string.',
@@ -50,10 +40,20 @@ class Register extends Component {
         'password.min' => "Password must be at least 8 characters.",
     ];
 
-    public function register() {
+    public function register()
+    {
 
         $this->rules['password'][] = Rules\Password::defaults();
-        $validated = $this->validate($this->rules, $this->messages);
+        $validated = $this->validate([
+            'username' => ['required', 'string', 'max:100', 'unique:users,username'],
+            'firstname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
+            'lastname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
+            'middlename' => ['nullable', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'phone' => ['nullable', 'string', 'max:20', 'unique:users,phone'],
+            'birthday' => ['nullable', 'date', 'before_or_equal:' . Carbon::today()->subYears(12)->format('Y-m-d')],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], $this->messages);
         // Default Avatar Modify this in the future when you have a upload photo system
         $validated['avatar'] = 'storage/avatar/Avatar-Default.png';
         // End

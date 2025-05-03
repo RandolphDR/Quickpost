@@ -14,7 +14,9 @@ class Post extends Model
     protected $fillable = [];
 
     protected function casts() {
-        return [];
+        return [
+            'published_at' => 'datetime',
+        ];
     }
 
     public function user() {

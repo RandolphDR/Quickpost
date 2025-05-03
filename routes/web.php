@@ -17,4 +17,5 @@ Route::middleware('can:user-access')->prefix('')->group(function () {
 
 /* Import Routes Here */
 require __DIR__ . '/auth.php';
+require __DIR__ . '/blog.php';
 require __DIR__ . '/dashboard.php';
