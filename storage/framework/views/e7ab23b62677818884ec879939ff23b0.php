@@ -15,7 +15,8 @@
             Explore Blogs
         </h1>
         <p class="text-gray-500 text-xl dark:text-gray-400">
-            Stay updated with the latest inisights, trends, and expert tipss in our recent blog posts. From industry news to practical guides.
+            Stay updated with the latest inisights, trends, and expert tipss in our recent blog posts. From industry
+            news to practical guides.
         </p>
     </section>
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
@@ -26,6 +27,24 @@ $__split = function ($name, $params = []) {
 [$__name, $__params] = $__split('pages.blog.popular', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-1526195672-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+    </section>
+    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('pages.blog.latest', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-1526195672-1', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

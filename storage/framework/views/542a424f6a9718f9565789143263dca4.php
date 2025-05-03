@@ -27,7 +27,7 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-            <div class="">
+            <div class="mt-8">
                 <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];

@@ -9,10 +9,19 @@
         class="w-full overflow-y-auto @lg:overflow-x-auto py-2 flex flex-col @lg:flex-row justify-start items-center gap-4 scrollbar-custom">
         @foreach ($popularPosts as $post)
             <article
-                class="p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-gray-50 dark:bg-gray-800">
-                <div class="flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
+                class="p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
+                <div class="@lg:p-2 flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
                     <figure class="w-full @sm:w-1/2 @lg:w-full @sm:h-auto @lg:h-[50%] h-48 bg-slate-600 rounded-lg">
-                        <img src="{{ asset($post->cover_image) }}" alt="error" class="w-full h-full object-cover object-center rounded-lg">
+                        @if ($post->cover_image)
+                            <img src="{{ asset($post->cover_image) }}" alt="error"
+                                class="w-full h-full object-cover object-center rounded-lg">
+                        @else
+                            <div class="w-full h-full rounded-lg gap-2 flex flex-col justify-center items-center">
+                                <img src="{{ asset('images/no-background.png') }}" alt="error" class="w-1/3">
+                                <h1 class="text-black dark:text-neutral-200 text-sm @lg:text-xl font-medium">No Cover Image Found
+                                </h1>
+                            </div>
+                        @endif
                     </figure>
                     <div
                         class="w-full @sm:w-1/2 @lg:w-full flex flex-col justify-between @lg:justify-start gap-2 @lg:h-[50%]">

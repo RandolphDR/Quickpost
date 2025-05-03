@@ -6,10 +6,14 @@
             Explore Blogs
         </h1>
         <p class="text-gray-500 text-xl dark:text-gray-400">
-            Stay updated with the latest inisights, trends, and expert tipss in our recent blog posts. From industry news to practical guides.
+            Stay updated with the latest inisights, trends, and expert tipss in our recent blog posts. From industry
+            news to practical guides.
         </p>
     </section>
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <livewire:pages.blog.popular />
+    </section>
+    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
+        <livewire:pages.blog.latest />
     </section>
 </x-app-layout>

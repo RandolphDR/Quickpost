@@ -10,11 +10,21 @@ class ViewPost extends Component
 
     public $post;
 
-    public function mount($slug) {
-        $this->post = Post::where('slug', $slug)->firstOrFail();
+    public function mount($slug)
+    {
+        $this->post = Post::where('slug', $slug)
+            ->with([
+                'comments' => function ($query) {
+                    $query->latest();
+                },
+                'comments.user'
+            ])
+            ->firstOrFail();
     }
 
-    public function render() {
+
+    public function render()
+    {
         return view('livewire.pages.blog.view-post');
     }
 }

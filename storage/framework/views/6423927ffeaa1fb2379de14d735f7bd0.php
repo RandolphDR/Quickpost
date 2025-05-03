@@ -17,8 +17,8 @@
                     <span class="text-sm font-medium">Start Posting with QuickPost</span>
                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
-                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M19 12H5m14 0-4 4m4-4-4-4" />
                 </svg>
@@ -57,20 +57,23 @@
                     <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->guest()): ?>
                         <li>
                             <a href="<?php echo e(route('login')); ?>"
-                                class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
+                                class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                                wire:navigate>
                                 Login
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo e(route('register')); ?>"
-                                class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
+                                class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                                wire:navigate>
                                 Register
                             </a>
                         </li>
                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                     <li>
-                        <a href="#"
-                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
+                        <a href="<?php echo e(route('about')); ?>"
+                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                            wire:navigate>
                             About Us
                         </a>
                     </li>
