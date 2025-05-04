@@ -10,6 +10,8 @@
             news to practical guides.
         </p>
     </section>
+
+    {{-- REWORK PLAN: THE LAYOUT THE PRIORITY IS THE ALL BLOG POST AND PUT THE POPULAR AND LATEST TO SIDE! --}}
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <livewire:pages.blog.popular />
     </section>
