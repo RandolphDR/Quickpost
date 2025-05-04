@@ -9,7 +9,10 @@ class Like extends Model {
     /** @use HasFactory<\Database\Factories\LikeFactory> */
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id',
+        'post_id'
+    ];
 
     protected function casts() {
         return [];
@@ -22,4 +25,6 @@ class Like extends Model {
     public function post() {
         return $this->belongsTo(Post::class);
     }
+
+
 }

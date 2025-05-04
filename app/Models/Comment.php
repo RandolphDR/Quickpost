@@ -11,11 +11,11 @@ class Comment extends Model {
      * tory<\Database\Factories\CommentFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [];
-
-    protected function casts() {
-        return [];
-    }
+    protected $fillable = [
+        'post_id',
+        'user_id',
+        'body'
+    ];
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -24,4 +24,5 @@ class Comment extends Model {
     public function post() {
         return $this->belongsTo(Post::class);
     }
+
 }

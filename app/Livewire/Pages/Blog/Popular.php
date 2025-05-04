@@ -11,8 +11,19 @@ class Popular extends Component
 
     public function mount()
     {
-        $this->popularPosts = Post::withCount('likes')  // Count likes relation
-            ->orderBy('likes_count', 'desc')  // Order by like count
+        $this->popularPosts = Post::select([
+            'id',
+            'user_id',
+            'cover_image',
+            'title',
+            'short_description',
+            'slug',
+            'created_at'
+        ])
+            ->withCount('likes')
+            ->with(['user'])
+            ->where('status', 'published')
+            ->orderBy('likes_count', 'desc')
             ->limit(5)
             ->get();
     }

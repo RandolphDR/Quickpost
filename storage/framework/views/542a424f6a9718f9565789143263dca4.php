@@ -27,6 +27,22 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('pages.blog.comment-section', ['slug' => $slug]);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
             <div class="mt-8">
                 <?php
 $__split = function ($name, $params = []) {
@@ -34,7 +50,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('pages.blog.latest', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-1', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-2', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -55,7 +71,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('pages.blog.popular', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-2', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-3', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

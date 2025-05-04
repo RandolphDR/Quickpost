@@ -5,9 +5,7 @@ namespace App\Livewire\Pages\Blog;
 use Livewire\Component;
 use App\Models\Post;
 
-class ViewPost extends Component
-{
-
+class ViewPost extends Component {
     public $post;
 
     public function mount($slug)

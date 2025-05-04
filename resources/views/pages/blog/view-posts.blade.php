@@ -3,6 +3,7 @@
         <!-- Main content (Blog Post) -->
         <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <livewire:pages.blog.view-post :slug="$slug" />
+            <livewire:pages.blog.comment-section :slug="$slug" />
             <div class="mt-8">
                 <livewire:pages.blog.latest />
             </div>

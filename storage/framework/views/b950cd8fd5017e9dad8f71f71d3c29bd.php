@@ -1,0 +1,1 @@
+   <?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\storage\framework\views/28c32e20dca990174fdbdcd1146ba11c.blade.php ENDPATH**/ ?>

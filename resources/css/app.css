@@ -6,7 +6,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom Scrollbar Styling for Light Mode */
 .scrollbar-custom::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -14,33 +13,42 @@
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
     background-color: #4f46e5;
-    /* Thumb color */
     border-radius: 10px;
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
     background-color: transparent;
-    /* Track color */
     border-radius: 10px;
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     background-color: #1d4ed8;
-    /* Thumb hover color */
 }
 
-/* Custom Scrollbar Styling for Dark Mode */
 .dark .scrollbar-custom::-webkit-scrollbar-thumb {
     background-color: #4b8bf5;
-    /* Dark mode thumb color */
 }
 
 .dark .scrollbar-custom::-webkit-scrollbar-track {
     background-color: #374151;
-    /* Dark mode track color */
 }
 
 .dark .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     background-color: #3b82f6;
-    /* Dark mode thumb hover color */
+}
+
+@keyframes shine {
+    0% {
+        background-position: 50% 0;
+    }
+
+    100% {
+        background-position: -50% 0;
+    }
+}
+
+.animate-shine {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.15));
+    background-size: 200% 100%;
+    animation: shine 1s infinite linear;
 }

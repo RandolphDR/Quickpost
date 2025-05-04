@@ -22,7 +22,6 @@ class Navigation extends Component {
     }
 
     public function mount() {
-
         if(Auth::check()) {
             $this->name = auth()->user()->fullname;
         }

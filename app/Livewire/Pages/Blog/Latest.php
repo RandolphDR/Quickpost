@@ -9,10 +9,23 @@ class Latest extends Component
 {
     public $latestPosts;
 
-    public function mount() {
+    public function mount()
+    {
 
-        $this->latestPosts = Post::orderBy('created_at', 'desc')
+        $this->latestPosts = Post::select([
+            'id',
+            'user_id',
+            'cover_image',
+            'title',
+            'short_description',
+            'slug',
+            'created_at'
+        ])
+            ->with(['user'])
+            ->where('status', 'published')
+            ->latest()
             ->get();
+
     }
     public function render()
     {
