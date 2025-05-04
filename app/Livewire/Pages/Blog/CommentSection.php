@@ -3,7 +3,8 @@
 namespace App\Livewire\Pages\Blog;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\{Gate, Auth};
 use App\Models\{Post, Comment, Like};
 
 class CommentSection extends Component
@@ -21,18 +22,17 @@ class CommentSection extends Component
         'body.max' => 'Comment cannot exceed 500 characters.',
     ];
 
-    public function mount(string $slug)
-    {
-        $this->loadPost($slug);
-    }
-
     protected function loadPost(string $slug)
     {
-        $this->post = Post::with([
-            'comments' => fn($q) => $q->latest(),
-            'comments.user',
-            'likes'
-        ])->where('slug', $slug)->firstOrFail();
+        $this->post = Post::where('slug', $slug)
+            ->with([
+                'comments' => function ($query) {
+                    $query->latest();
+                },
+                'comments.user',
+                'likes'
+            ])
+            ->firstOrFail();
     }
 
     public function postComment()
@@ -62,28 +62,10 @@ class CommentSection extends Component
         }
     }
 
-    public function deleteComment(Comment $comment)
+    #[On('comment-updated')]
+    public function mount(string $slug)
     {
-        try {
-            $this->authorize('delete', $comment);
-
-            $comment->delete();
-            $this->loadPost($this->post->slug);
-
-            $this->dispatch(
-                'notify',
-                message: 'Comment deleted successfully!',
-                type: 'success'
-            );
-
-        } catch (\Exception $e) {
-
-            $this->dispatch('notify', [
-                'message' => 'Failed to delete comment: ' . $e->getMessage(),
-                'type' => 'error',
-            ]);
-        }
-
+        $this->loadPost($slug);
     }
 
     public function render()
