@@ -1,3 +1,4 @@
+@section('title', 'Login')
 <x-guest-layout>
     <aside class="w-1/2 h-screen p-16">
         <main class="w-full h-full flex flex-col justify-center items-center">

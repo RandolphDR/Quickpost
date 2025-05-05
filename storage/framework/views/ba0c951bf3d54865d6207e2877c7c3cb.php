@@ -1,5 +1,4 @@
-<article
-    class="p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
+<article class="p-1 @lg:p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
     <div class="p-2 flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
         <figure class="w-full @sm:w-1/2 @lg:w-full @sm:h-auto @lg:h-[50%] h-48 bg-slate-600 rounded-lg">
             <!--[if BLOCK]><![endif]--><?php if($post->cover_image): ?>

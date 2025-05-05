@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'My Profile'); ?>
+<?php $__env->startSection('title', Auth::check() && Auth::user()->username === $username ? 'My Profile' : $username); ?>
 
 <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
@@ -26,7 +26,7 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-    <section class="w-full max-w-7xl">
+    <section class="w-full max-w-7xl py-2">
         <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];

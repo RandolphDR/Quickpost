@@ -18,13 +18,13 @@
     <!-- Header Section -->
     <header class="w-full gap-4 flex flex-col justify-center items-start">
         <div class="w-full gap-2 flex justify-start items-center">
-            <span class="flex justify-center items-center gap-2">
+            <a href="<?php echo e(route('user.profile', ['username' => $post->user->username])); ?>"
+                class="flex justify-center items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline text-sm"
+                title="View Profile" wire:navigate>
                 <img src="<?php echo e(asset($post->user->avatar)); ?>" alt="error" class="rounded-full w-7 h-7 bg-gray-400">
-                <p class="text-gray-600 dark:text-gray-400 text-sm">
-                    <?php echo e($post->user->fullname); ?>
+                <?php echo e($post->user->fullname); ?>
 
-                </p>
-            </span>
+            </a>
             <p class="text-indigo-600 text-3xl">•</p>
             <p class="text-gray-600 dark:text-gray-400 text-sm">
                 <?php echo e($post->created_at->format('d F Y')); ?>

@@ -1,9 +1,10 @@
+@section('title', 'Register')
 <x-guest-layout>
     <section class="w-full h-screen p-16 flex flex-col justify-center items-center">
         <main class="px-16 py-4 gap-4 flex flex-col justify-center items-center bg-neutral-100 dark:bg-gray-800 rounded-2xl">
             <nav class="self-start">
                 <a href="{{ route('homepage') }}" wire:navigate>
-                    <x-application-logo class="" />
+                    <x-application-logo />
                 </a>
             </nav>
             <header class="pb-4 text-center">

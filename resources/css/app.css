@@ -52,3 +52,44 @@
     background-size: 200% 100%;
     animation: shine 1s infinite linear;
 }
+
+/* Custom animations */
+@keyframes checked-icon-like {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(-10deg);
+    }
+}
+
+.peer:checked~svg {
+    animation: checked-icon-like 0.5s;
+}
+
+/* Hover animation */
+.hover\:animate-shake:hover svg {
+    animation: shake 0.7s ease-in-out both;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(3deg);
+    }
+
+    50% {
+        transform: rotate(-3deg);
+    }
+
+    75% {
+        transform: rotate(1deg);
+    }
+}

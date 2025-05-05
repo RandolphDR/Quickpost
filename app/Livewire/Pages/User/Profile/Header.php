@@ -6,11 +6,13 @@ use Livewire\Component;
 
 use App\Models\User;
 
-class Header extends Component {
+class Header extends Component
+{
 
-    public $user;
+    public $user, $postCount, $likeCount;
 
-    public function mount($username) {
+    public function mount($username)
+    {
         $this->user = User::select([
             'id',
             'avatar',
@@ -23,9 +25,13 @@ class Header extends Component {
             ->where('username', $username)
             ->firstOrFail();
 
+        $this->postCount = $this->user->posts()->count();
+
+        $this->likeCount = $this->user->posts()->withCount('likes')->get()->sum('likes_count');
     }
 
-    public function render() {
+    public function render()
+    {
         return view('livewire.pages.user.profile.header');
     }
 }

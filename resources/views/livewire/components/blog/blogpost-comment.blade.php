@@ -2,15 +2,17 @@
     <header class="w-full flex justify-between items-center">
         <div class="w-full gap-2 flex justify-start items-center">
             <img src="{{ asset($comment->user->avatar) }}" alt="avatar" class="rounded-full w-10 h-10 bg-gray-400">
-            <span>
-                <p class="text-gray-900 dark:text-neutral-200 text-sm">
+            <div class="flex flex-col justify-center items-start">
+                <a href="{{ route('user.profile', ['username' => $comment->user->username]) }}"
+                    class="text-gray-900 dark:text-neutral-200 text-sm hover:text-blue-700 dark:hover:text-blue-500 hover:underline"
+                    title="View Profile" wire:navigate>
                     {{ $comment->user->fullname }}
-                </p>
+                </a>
 
                 <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-xs">
                     {{ $timeDisplay }}
                 </time>
-            </span>
+            </div>
         </div>
         @if (Gate::allows('manage-post', $post) || (Auth::check() && $comment->user->id === auth()->user()->id))
             <x-dropdown align="right" width="48">

@@ -1,3 +1,5 @@
+<?php $__env->startSection('title', ucwords(str_replace('-', ' ', $slug)) ); ?>
+
 <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
 <?php $component = App\View\Components\AppLayout::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -9,7 +11,6 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
-        <!-- Main content (Blog Post) -->
         <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <?php
 $__split = function ($name, $params = []) {

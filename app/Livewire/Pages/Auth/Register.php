@@ -54,6 +54,7 @@ class Register extends Component
             'birthday' => ['nullable', 'date', 'before_or_equal:' . Carbon::today()->subYears(12)->format('Y-m-d')],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], $this->messages);
+        
         // Default Avatar Modify this in the future when you have a upload photo system
         $validated['avatar'] = 'storage/avatar/Avatar-Default.png';
         // End
@@ -69,7 +70,8 @@ class Register extends Component
             'message' => 'Welcome to Shopfinity!',
             'type' => 'success',
         ]);
-        $this->redirect(route('homepage', absolute: false), navigate: true);
+
+        $this->redirectIntended('/', navigate: true);
     }
 
     public function render()
