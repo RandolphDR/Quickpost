@@ -59,4 +59,26 @@
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <livewire:pages.blog.latest />
     </section>
+    <section class="w-full min-h-[50vh] flex flex-col justify-center items-center text-center px-4 gap-4">
+        <h1 class="font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
+            {{ Auth::check() ? 'Explore Blogs' : ' Explore More When You Log In' }}
+        </h1>
+        <p class="text-gray-600 text-lg md:text-xl dark:text-gray-400 max-w-2xl">
+            Discover the latest insights, trends, and expert tips in our blog. Stay informed with fresh content and
+            practical guides.
+        </p>
+        <div class="mt-8 gap-3 flex justify-center">
+            <a href="{{ Auth::check() ? route('explore') : route('login') }}"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                wire:navigate>
+                EXPLORE MORE
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
 </x-app-layout>

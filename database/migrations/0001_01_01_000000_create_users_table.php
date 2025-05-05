@@ -29,6 +29,7 @@ return new class extends Migration {
             $table->string('password');
             $table->enum('role', ['developer', 'admin', 'user'])->default('user');
             $table->enum('account_status', ['active', 'inactive', 'banned', 'suspended'])->default('active');
+            $table->boolean('is_verified')->default(false);
             $table->timestamp('suspended_until')->nullable();
             $table->enum('active_status', ['active', 'idle', 'inactive', 'pending'])->default('pending');
             $table->rememberToken();

@@ -11,8 +11,7 @@ class BlogpostCard extends Component
 
     public $post;
 
-    public function placeholder()
-    {
+    public function placeholder() {
         return <<<'HTML'
             <article class="p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
                 <div class="p-2 flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
@@ -33,7 +32,7 @@ class BlogpostCard extends Component
                             <div class="h-4 w-5/6 bg-gray-200 dark:bg-zinc-500 rounded animate-shine"></div>
                         </main>
                         <footer class="w-full py-2">
-                            <div class="h-10 w-28 bg-gray-300 dark:bg-zinc-600 rounded animate-shine"></div>
+                            <div class="h-6 w-28 bg-gray-300 dark:bg-zinc-600 rounded animate-shine"></div>
                         </footer>
                     </div>
                 </div>

@@ -39,16 +39,14 @@
             </div>
 
             <div class="w-[40%] gap-8 flex justify-center items-center">
-                @guest
-                    <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage', 'blog')" wire:navigate>
-                        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
-                        </svg>
-                        {{ __('Home') }}
-                    </x-nav-link>
-                @endguest
+                <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage', 'blog')" wire:navigate>
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                    </svg>
+                    {{ __('Home') }}
+                </x-nav-link>
                 @can('user-access')
                     <x-nav-link :href="route('explore')" :active="request()->is('explore*')" wire:navigate>
                         <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -108,18 +106,13 @@
 
                 @auth
                     <div class="hidden sm:flex sm:items-center">
-                        <x-dropdown align="right" width="48">
+                        <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <button
                                     class="gap-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                                     <div class="w-10 h-10 rounded-full overflow-hidden bg-neutral-400 dark:bg-neutral-200">
-                                        <img src="{{ asset(auth()->user()->avatar) }}" alt="error"
+                                        <img src="{{ asset($user->avatar) }}" alt="error"
                                             class="w-full h-full object-cover rounded-full">
-                                    </div>
-                                    <div>
-                                        <p>
-                                            {{ $name }}
-                                        </p>
                                     </div>
                                     <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20">
@@ -131,17 +124,54 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('user.profile', ['username' => Auth::user()->username])" :active="request()->routeIs('user.profile')" wire:navigate>
-                                    {{ __('Profile') }}
-                                </x-dropdown-link>
-                                <x-dropdown-link :href="route('user.settings')" :active="request()->routeIs('user.settings')" wire:navigate>
-                                    {{ __('Settings') }}
-                                </x-dropdown-link>
-                                <button wire:click="logout" class="w-full text-start">
-                                    <x-dropdown-link>
-                                        {{ __('Log Out') }}
+                                <div
+                                    class="w-full gap-2 flex items-start px-4 py-2 border-b border-gray-200 dark:border-gray-600">
+                                    <img src="{{ asset($user->avatar) }}" alt="avatar"
+                                        class="rounded-full w-10 h-10 bg-gray-400">
+                                    <span class="min-w-0 flex-1">
+                                        <p
+                                            class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center">
+                                            {{ $user->fullname }}
+                                            @if ($user->is_verified)
+                                                <svg class="w-4 h-4 text-blue-600" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="currentColor" viewBox="0 0 24 24">
+                                                    <path fill-rule="evenodd"
+                                                        d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            @endif
+                                        </p>
+                                        <p class="text-gray-600 dark:text-gray-400 text-xs truncate max-w-[200px]">
+                                            {{ $user->email }}
+                                        </p>
+                                    </span>
+                                </div>
+
+                                <div class="py-1">
+                                    <x-dropdown-link :href="route('user.profile', ['username' => Auth::user()->username])" :active="request()->routeIs('user.profile') && request()->route('username') === Auth::user()->username" wire:navigate>
+                                        {{ __('My Profile') }}
                                     </x-dropdown-link>
-                                </button>
+
+                                    <x-dropdown-link :href="route('user.settings')" :active="request()->routeIs('user.settings')" wire:navigate>
+                                        {{ __('Settings') }}
+                                    </x-dropdown-link>
+                                    <x-dropdown-link>
+                                        {{ __('Manage Blogs') }}
+                                    </x-dropdown-link>
+                                    <x-dropdown-link>
+                                        {{ __('Create New Blog') }}
+                                    </x-dropdown-link>
+                                </div>
+
+                                <div class="border-t border-gray-200 dark:border-gray-600 pt-1">
+                                    <button wire:click="logout" class="w-full text-start">
+                                        <x-dropdown-link
+                                            class="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 px-4 py-2">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </button>
+                                </div>
                             </x-slot>
                         </x-dropdown>
                     </div>

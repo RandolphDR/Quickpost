@@ -83,7 +83,7 @@ if (isset($__slots)) unset($__slots);
     
 
     
-    <main class="w-full min-h-[90vh] flex flex-col justify-start items-center gap-2 bg-gray-100 dark:bg-gray-900">
+    <main class="w-full min-h-[90vh] py-4 flex flex-col justify-start items-center gap-2 bg-gray-100 dark:bg-gray-900">
         <?php echo e($slot); ?>
 
     </main>

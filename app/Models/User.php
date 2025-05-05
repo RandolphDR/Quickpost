@@ -35,7 +35,10 @@ class User extends Authenticatable
         'phone_verified_at',
         'password',
         'role',
-        'status',
+        'account_status',
+        'is_verified',
+        'suspended_until',
+        'active_status'
     ];
 
     /**
@@ -60,12 +63,14 @@ class User extends Authenticatable
             'birthdate' => 'date',
             'birthplace' => 'array',
             'address' => 'array',
-            'email_verified_at' => 'datetime',
-            'phone_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
             'is_accessible' => 'boolean',
             'is_terms_accepted' => 'boolean',
+            'is_verified' => 'boolean',
+            'email_verified_at' => 'datetime',
+            'phone_verified_at' => 'datetime',
+            'suspended_until' => 'datetime',
         ];
     }
 

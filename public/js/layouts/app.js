@@ -4,10 +4,13 @@ function setupThemeToggle() {
 
     function applyTheme() {
         const theme = localStorage.getItem("color-theme");
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
+        document.documentElement.classList.toggle("dark", theme === "dark");
+
+        const banner = document.getElementById("About-Banner");
+        if (banner) {
+            const lightSrc = banner.dataset.lightSrc;
+            const darkSrc = banner.dataset.darkSrc;
+            banner.src = theme === "dark" ? darkSrc : lightSrc;
         }
     }
 
@@ -50,6 +53,7 @@ function setupThemeToggle() {
         }
 
         setupIcons();
+        applyTheme();
     }
 
     function initialize() {

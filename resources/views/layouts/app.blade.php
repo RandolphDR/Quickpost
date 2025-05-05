@@ -51,7 +51,7 @@
     {{-- End of Header --}}
 
     {{-- Main Content --}}
-    <main class="w-full min-h-[90vh] flex flex-col justify-start items-center gap-2 bg-gray-100 dark:bg-gray-900">
+    <main class="w-full min-h-[90vh] py-4 flex flex-col justify-start items-center gap-2 bg-gray-100 dark:bg-gray-900">
         {{ $slot }}
     </main>
     {{-- End of Main Content --}}

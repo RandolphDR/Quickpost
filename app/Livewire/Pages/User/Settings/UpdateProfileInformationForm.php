@@ -105,11 +105,7 @@ class UpdateProfileInformationForm extends Component
             return;
         }
 
-        if (
-            $validated['firstname'] !== $currentData['firstname'] ||
-            $validated['middlename'] !== $currentData['middlename'] ||
-            $validated['lastname'] !== $currentData['lastname']
-        ) {
+        if ($validated['firstname'] !== $currentData['firstname'] || $validated['middlename'] !== $currentData['middlename'] || $validated['lastname'] !== $currentData['lastname'] || $validated['email'] !== $currentData['email']) {
             $this->dispatch('profile-updated');
         }
 

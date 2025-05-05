@@ -21,7 +21,7 @@ class Home extends Component
             } else if (Gate::allows('administrator-access')) {
                 $homeRoute = 'contact';
             } else if (Gate::allows('user-access')) {
-                $homeRoute = 'explore';
+                $homeRoute = 'homepage';
             }
             return $this->redirect(route($homeRoute), navigate: true);
         } else {

@@ -9,11 +9,10 @@ use App\Livewire\Actions\Logout;
 
 class Navigation extends Component {
 
-    public string $name = '';
+    public $user;
 
-    #[On('profile-updated')]
     public function profileUpdated() {
-        $this->name = auth()->user()->fresh()->fullname;
+        $this->user = Auth::fresh()->user();
     }
 
     public function logout(Logout $logout) {
@@ -21,9 +20,10 @@ class Navigation extends Component {
         return $this->redirect(route('homepage', absolute: false), navigate: true);
     }
 
+    #[On('profile-updated')]
     public function mount() {
         if(Auth::check()) {
-            $this->name = auth()->user()->fullname;
+            $this->user = Auth::user();
         }
 
     }

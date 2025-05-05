@@ -4,7 +4,7 @@
         <figure class="w-full @sm:w-1/2 @lg:w-full @sm:h-auto @lg:h-[50%] h-48 bg-slate-600 rounded-lg">
             @if ($post->cover_image)
                 <img src="{{ asset($post->cover_image) }}" alt="error"
-                    class="w-full h-full object-cover object-center rounded-lg">
+                    class="w-full h-full object-contain @lg:object-cover object-center rounded-lg">
             @else
                 <div class="w-full h-full rounded-lg gap-2 flex flex-col justify-center items-center">
                     <img src="{{ asset('images/no-background.png') }}" alt="error" class="w-1/3">
@@ -16,12 +16,11 @@
         </figure>
         <div class="w-full @sm:w-1/2 @lg:w-full flex flex-col justify-between @lg:justify-start gap-2 @lg:h-[50%]">
             <header class="w-full gap-2 hidden @lg:flex justify-start items-center">
-                <span class="flex justify-center items-center gap-2">
+                <a href="{{ route('user.profile', ['username' => $post->user->username]) }}"
+                    class="flex justify-center items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline text-sm" title="View Profile" wire:navigate>
                     <img src="{{ asset($post->user->avatar) }}" alt="error" class="rounded-full w-7 h-7 bg-gray-400">
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        {{ $post->user->fullname }}
-                    </p>
-                </span>
+                    {{ $post->user->fullname }}
+                </a>
                 <p class="text-indigo-600 text-3xl">•</p>
                 <p class="text-gray-600 dark:text-gray-400 text-sm">
                     {{ $post->created_at->format('d F Y') }}
