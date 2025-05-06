@@ -25,9 +25,10 @@
                 {{ $post->user->fullname }}
             </a>
             <p class="text-indigo-600 text-3xl">•</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">
-                {{ $post->created_at->format('d F Y') }}
-            </p>
+
+            <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-xs">
+                {{ $timeDisplay }}
+            </time>
         </div>
         <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100">{{ $post->title }}</h1>
     </header>

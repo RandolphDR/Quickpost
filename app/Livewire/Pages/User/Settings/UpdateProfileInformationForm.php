@@ -45,22 +45,6 @@ class UpdateProfileInformationForm extends Component
         'address.country.required' => 'Please enter your country.',
     ];
 
-    public function mount()
-    {
-        $user = Auth::user();
-
-        $this->username = $user->username;
-        $this->firstname = $user->firstname;
-        $this->lastname = $user->lastname;
-        $this->middlename = $user->middlename ?? '';
-        $this->birthday = optional($user->birthdate)->format('Y-m-d');
-        $this->age = $user->age;
-        $this->birthplace = $user->birthplace ?? ['city' => '', 'country' => ''];
-        $this->address = $user->address ?? ['street' => '', 'city' => '', 'state' => '', 'country' => '', 'zip' => ''];
-        $this->email = $user->email;
-        $this->phone = $user->phone ?? '';
-    }
-
     public function updateProfileInformation()
     {
         $user = Auth::user();
@@ -117,6 +101,21 @@ class UpdateProfileInformationForm extends Component
         ]);
     }
 
+    public function mount()
+    {
+        $user = Auth::user();
+
+        $this->username = $user->username;
+        $this->firstname = $user->firstname;
+        $this->lastname = $user->lastname;
+        $this->middlename = $user->middlename ?? '';
+        $this->birthday = optional($user->birthdate)->format('Y-m-d');
+        $this->age = $user->age;
+        $this->birthplace = $user->birthplace ?? ['city' => '', 'country' => ''];
+        $this->address = $user->address ?? ['street' => '', 'city' => '', 'state' => '', 'country' => '', 'zip' => ''];
+        $this->email = $user->email;
+        $this->phone = $user->phone ?? '';
+    }
 
     public function render()
     {

@@ -1,4 +1,5 @@
-<article class="p-1 @lg:p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
+<article
+    class="p-1 @lg:p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
     <div class="p-2 flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
         <figure class="w-full @sm:w-1/2 @lg:w-full @sm:h-auto @lg:h-[50%] h-48 bg-slate-600 rounded-lg">
             <!--[if BLOCK]><![endif]--><?php if($post->cover_image): ?>
@@ -16,7 +17,8 @@
         <div class="w-full @sm:w-1/2 @lg:w-full flex flex-col justify-between @lg:justify-start gap-2 @lg:h-[50%]">
             <header class="w-full gap-2 hidden @lg:flex justify-start items-center">
                 <a href="<?php echo e(route('user.profile', ['username' => $post->user->username])); ?>"
-                    class="flex justify-center items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline text-sm" title="View Profile" wire:navigate>
+                    class="flex justify-center items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline text-sm"
+                    title="View Profile" wire:navigate>
                     <img src="<?php echo e(asset($post->user->avatar)); ?>" alt="error" class="rounded-full w-7 h-7 bg-gray-400">
                     <?php echo e($post->user->fullname); ?>
 

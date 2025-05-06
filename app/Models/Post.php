@@ -13,21 +13,26 @@ class Post extends Model
 
     protected $fillable = [];
 
-    protected function casts() {
+    protected function casts()
+    {
         return [
             'published_at' => 'datetime',
         ];
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function likes() {
-        return $this->hasMany(Like::class);
+    public function likes()
+    {
+        return $this->hasMany(Like::class)->where('is_liked', true);
     }
+
 }

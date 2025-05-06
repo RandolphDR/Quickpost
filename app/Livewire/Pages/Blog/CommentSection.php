@@ -9,7 +9,10 @@ use App\Models\{Post, Comment, Like};
 
 class CommentSection extends Component
 {
-    public Post $post;
+
+    public $post;
+    public int $postLikeCount, $commentCount;
+    public bool $isLiked;
     public string $body;
 
     protected $rules = [
@@ -22,17 +25,41 @@ class CommentSection extends Component
         'body.max' => 'Comment cannot exceed 500 characters.',
     ];
 
+    public function toggleLike()
+    {
+        $like = Like::updateOrCreate(
+            [
+                'user_id' => auth()->id(),
+                'post_id' => $this->post->id
+            ],
+            ['is_liked' => !$this->isLiked]
+        );
+
+        $this->isLiked = $like->is_liked;
+
+        // $this->dispatch('notify', [
+        //     'message' => 'You have liked this post!',
+        //     'type' => 'success',
+        // ]);
+
+        $this->loadPost($this->post->slug);
+    }
+
     protected function loadPost(string $slug)
     {
-        $this->post = Post::where('slug', $slug)
+        $this->post = Post::select('id')
+            ->where('slug', $slug)
+            ->withCount(['likes'])
             ->with([
                 'comments' => function ($query) {
-                    $query->latest();
+                    $query->latest()->select('id', 'post_id', 'user_id', 'body', 'created_at');
                 },
-                'comments.user',
-                'likes'
+                'comments.user' => function ($query) {
+                    $query->select('id', 'username', 'firstname', 'middlename', 'lastname', 'avatar');
+                },
             ])
             ->firstOrFail();
+
     }
 
     public function postComment()
@@ -66,6 +93,10 @@ class CommentSection extends Component
     public function mount(string $slug)
     {
         $this->loadPost($slug);
+        $this->isLiked = $this->post->likes()
+            ->where('user_id', auth()->id())
+            ->where('is_liked', true)
+            ->exists();
     }
 
     public function render()

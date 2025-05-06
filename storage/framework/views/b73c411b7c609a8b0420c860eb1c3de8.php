@@ -16,7 +16,7 @@
                 </time>
             </div>
         </div>
-        <!--[if BLOCK]><![endif]--><?php if(Gate::allows('manage-post', $post) || (Auth::check() && $comment->user->id === auth()->user()->id)): ?>
+        <!--[if BLOCK]><![endif]--><?php if(Gate::allows('manage-post', $comment->post) || (Auth::check() && $comment->user->id === auth()->user()->id)): ?>
             <?php if (isset($component)) { $__componentOriginaldf8083d4a852c446488d8d384bbc7cbe = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginaldf8083d4a852c446488d8d384bbc7cbe = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dropdown','data' => ['align' => 'right','width' => '48']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

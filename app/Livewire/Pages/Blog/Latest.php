@@ -11,22 +11,12 @@ class Latest extends Component
 
     public function mount()
     {
-
-        $this->latestPosts = Post::select([
-            'id',
-            'user_id',
-            'cover_image',
-            'title',
-            'short_description',
-            'slug',
-            'created_at'
-        ])
-            ->with(['user'])
+        $this->latestPosts = Post::select(['id', 'status'])
             ->where('status', 'published')
             ->latest()
             ->get();
-
     }
+    
     public function render()
     {
         return view('livewire.pages.blog.latest');

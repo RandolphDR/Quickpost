@@ -52,6 +52,22 @@
                         </li>
                     @endguest
                     <li>
+                        <a href="{{ route('homepage') }}"
+                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                            wire:navigate>
+                            Home
+                        </a>
+                    </li>
+                    @can('user-access')
+                        <li>
+                            <a href="{{ route('explore') }}"
+                                class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                                wire:navigate>
+                                Explore
+                            </a>
+                        </li>
+                    @endcan
+                    <li>
                         <a href="{{ route('about') }}"
                             class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
                             wire:navigate>
@@ -101,7 +117,7 @@
                 <p class="text-lg font-medium text-gray-900 dark:text-white">Connect</p>
                 <ul class="mt-8 space-y-4 text-sm">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('contact') }}"
                             class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
                             Contact Us
                         </a>

@@ -18,7 +18,8 @@
             <div class="w-full">
                 <x-input-label for="middlename" :value="__('Middle Name (Optional)')" />
                 <x-text-input wire:model="middlename" id="middlename" type="text" name="middlename"
-                    placeholder="Enter your Middlename" class="block w-full mt-1" autofocus autocomplete="additional-name" />
+                    placeholder="Enter your Middlename" class="block w-full mt-1" autofocus
+                    autocomplete="additional-name" />
                 <x-input-error :messages="$errors->get('middlename')" class="mt-2" />
             </div>
         </div>
@@ -71,10 +72,22 @@
             </div>
         </div>
     </div>
-    <div class="w-auto gap-4 flex flex-col justify-center items-start">
-        <p class="text-xs text-gray-600 dark:text-neutral-400">By clicking Create Account, you agree to our Terms,
-            Privacy Policy and Cookies Policy. <br> You may receive SMS Notifications from us and can opt out any time.
+    <div class="w-full flex flex-col items-start gap-4">
+        <p class="text-xs text-gray-600 dark:text-neutral-400 leading-relaxed">
+            By clicking <strong>Create Account</strong>, you agree to our
+            <a href="{{ route('contact') }}" class="text-blue-600 hover:underline dark:text-blue-400" wire:navigate>
+                Terms
+            </a>,
+            <a href="{{ route('contact') }}" class="text-blue-600 hover:underline dark:text-blue-400" wire:navigate>
+                Privacy Policy
+            </a>, and
+            <a href="{{ route('contact') }}" class="text-blue-600 hover:underline dark:text-blue-400" wire:navigate>
+                Cookies Policy
+            </a>.
+            <br />
+            You may receive SMS notifications from us and can opt out at any time.
         </p>
+
         <x-primary-button class="w-full">
             {{ __('Create Account') }}
         </x-primary-button>

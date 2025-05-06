@@ -3,12 +3,12 @@
 namespace App\Livewire\Components\Blog;
 
 use Livewire\Component;
+use App\Models\Comment;
 use Illuminate\Support\Facades\{Gate, Auth};
-use App\Models\{Comment, Post};
 
 class BlogpostComment extends Component
 {
-    public $comment, $post;
+    public $comment;
     public string $timeDisplay, $isoTime;
 
     protected function calculateTimeDisplay(): string
@@ -27,13 +27,15 @@ class BlogpostComment extends Component
         return $createdAt->format('M j, Y \a\t g:i A');
     }
 
-    public function deleteComment(Comment $comment)
+    public function deleteComment($comment)
     {
 
-        if (Gate::allows('manage-post', $this->post) || Auth::check() && $comment->user->id === Auth::user()->id) {
-            $comment->delete();
+        $this->comment = Comment::with('post')->findOrFail($comment);
 
-            $this->dispatch('comment-updated', $this->post->slug);
+        if (Gate::allows('manage-post', $this->comment->post) || Auth::check() && $this->comment->user->id === Auth::user()->id) {
+            $this->comment->delete();
+
+            $this->dispatch('comment-updated', $this->comment->post->slug);
 
             $this->dispatch('notify', [
                 'message' => 'Comment deleted successfully!',
@@ -67,11 +69,21 @@ class BlogpostComment extends Component
         HTML;
     }
 
-    public function mount(Comment $comment, Post $post)
+    public function mount($commentId)
     {
-        $this->comment = $comment;
-        $this->post = $post;
-        $this->isoTime = $comment->created_at->toIso8601String();
+        $this->comment = Comment::with([
+            'user' => function ($query) {
+                $query->select('id', 'avatar', 'username', 'firstname', 'middlename', 'lastname');
+            },
+            'post' => function ($query) {
+                $query->select('id', 'user_id');
+            }
+        ])
+            ->select('id', 'post_id', 'user_id', 'body', 'created_at', 'updated_at')
+            ->where('id', $commentId)
+            ->firstOrFail();
+
+        $this->isoTime = $this->comment->created_at->toIso8601String();
         $this->timeDisplay = $this->calculateTimeDisplay();
     }
 

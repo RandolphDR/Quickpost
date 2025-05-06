@@ -6,7 +6,8 @@ use Livewire\Component;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-class Login extends Component {
+class Login extends Component
+{
 
     public string $username = '', $password = '';
     public bool $remember = false;
@@ -23,7 +24,8 @@ class Login extends Component {
         'password.string' => 'Password must be String',
     ];
 
-    protected function CheckUsername(string $username){
+    protected function CheckUsername(string $username)
+    {
 
         if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
             return 'email';
@@ -36,7 +38,8 @@ class Login extends Component {
         return 'username';
     }
 
-    public function login(): void {
+    public function login(): void
+    {
 
         $this->validate($this->rules, $this->messages);
 
@@ -53,7 +56,7 @@ class Login extends Component {
 
         Session::regenerate();
 
-        $this->redirectIntended('/' , navigate: true);
+        $this->redirectIntended('/', navigate: true);
     }
 
     public function mount()

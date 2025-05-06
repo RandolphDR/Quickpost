@@ -67,6 +67,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/layouts/app.js') }}"></script>
+    @stack('scripts')
     {{-- End of Scripts --}}
 </body>
 

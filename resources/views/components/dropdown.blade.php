@@ -8,6 +8,7 @@
     };
 
     $widthClass = match ($width) {
+        '60' => 'w-60',
         'auto' => 'w-auto',
         'fit' => 'w-fit',
         default => "w-{$width}",

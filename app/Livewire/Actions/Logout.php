@@ -14,10 +14,6 @@ class Logout
         Auth::guard('web')->logout();
         Session::invalidate();
         Session::regenerateToken();
-
-        Session::flash('notify', [
-            'message' => 'You have been logged out successfully!',
-            'type' => 'success',
-        ]);
+        
     }
 }

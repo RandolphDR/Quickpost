@@ -115,6 +115,7 @@ if (isset($__slots)) unset($__slots);
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/layouts/app.js')); ?>"></script>
+    <?php echo $__env->yieldPushContent('scripts'); ?>
     
 </body>
 

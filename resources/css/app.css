@@ -53,7 +53,35 @@
     animation: shine 1s infinite linear;
 }
 
-/* Custom animations */
+/* Instant click animation */
+.animate-icon-click svg {
+    animation: click-scale 0.3s ease-out;
+}
+
+/* Liked state animation */
+.animate-checked-icon-like {
+    animation: checked-icon-like 0.5s;
+}
+
+/* Hover animation */
+.hover\:animate-shake:hover svg {
+    animation: shake 0.7s ease-in-out both;
+}
+
+@keyframes click-scale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 @keyframes checked-icon-like {
     0% {
         transform: scale(0);
@@ -63,15 +91,10 @@
     50% {
         transform: scale(1.2) rotate(-10deg);
     }
-}
 
-.peer:checked~svg {
-    animation: checked-icon-like 0.5s;
-}
-
-/* Hover animation */
-.hover\:animate-shake:hover svg {
-    animation: shake 0.7s ease-in-out both;
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes shake {

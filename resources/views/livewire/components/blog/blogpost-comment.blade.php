@@ -14,7 +14,7 @@
                 </time>
             </div>
         </div>
-        @if (Gate::allows('manage-post', $post) || (Auth::check() && $comment->user->id === auth()->user()->id))
+        @if (Gate::allows('manage-post', $comment->post) || (Auth::check() && $comment->user->id === auth()->user()->id))
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button type="button">

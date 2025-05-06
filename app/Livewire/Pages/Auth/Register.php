@@ -43,7 +43,6 @@ class Register extends Component
     public function register()
     {
 
-        $this->rules['password'][] = Rules\Password::defaults();
         $validated = $this->validate([
             'username' => ['required', 'string', 'max:100', 'unique:users,username'],
             'firstname' => ['required', 'string', 'max:100', 'regex:/^[A-Za-z.\s]{2,}$/'],
@@ -52,12 +51,11 @@ class Register extends Component
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'phone' => ['nullable', 'string', 'max:20', 'unique:users,phone'],
             'birthday' => ['nullable', 'date', 'before_or_equal:' . Carbon::today()->subYears(12)->format('Y-m-d')],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', Rules\Password::defaults()],
         ], $this->messages);
-        
+
         // Default Avatar Modify this in the future when you have a upload photo system
         $validated['avatar'] = 'storage/avatar/Avatar-Default.png';
-        // End
         $validated['birthdate'] = $this->birthday;
         $validated['age'] = Carbon::parse($this->birthday)->age;
         $validated['password'] = Hash::make($validated['password']);
@@ -65,11 +63,6 @@ class Register extends Component
         event(new Registered(($user = User::create($validated))));
 
         Auth::login($user);
-
-        Session::flash('notify', [
-            'message' => 'Welcome to Shopfinity!',
-            'type' => 'success',
-        ]);
 
         $this->redirectIntended('/', navigate: true);
     }

@@ -12,7 +12,7 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('components.blog.blogpost-card', ['post' => $post,'lazy' => true]);
+[$__name, $__params] = $__split('components.blog.blogpost-card', ['postId' => $post->id,'lazy' => true]);
 
 $__html = app('livewire')->mount($__name, $__params, 'post-'.e($post->id).'', $__slots ?? [], get_defined_vars());
 

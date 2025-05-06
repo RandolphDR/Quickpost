@@ -71,6 +71,22 @@
                         </li>
                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                     <li>
+                        <a href="<?php echo e(route('homepage')); ?>"
+                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                            wire:navigate>
+                            Home
+                        </a>
+                    </li>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-access')): ?>
+                        <li>
+                            <a href="<?php echo e(route('explore')); ?>"
+                                class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                                wire:navigate>
+                                Explore
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <li>
                         <a href="<?php echo e(route('about')); ?>"
                             class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
                             wire:navigate>
@@ -120,7 +136,7 @@
                 <p class="text-lg font-medium text-gray-900 dark:text-white">Connect</p>
                 <ul class="mt-8 space-y-4 text-sm">
                     <li>
-                        <a href="#"
+                        <a href="<?php echo e(route('contact')); ?>"
                             class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
                             Contact Us
                         </a>

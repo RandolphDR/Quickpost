@@ -11,7 +11,8 @@ class BlogpostCard extends Component
 
     public $post;
 
-    public function placeholder() {
+    public function placeholder()
+    {
         return <<<'HTML'
             <article class="p-2 flex-shrink-0 flex @lg:w-[400px] @lg:h-[500px] w-full h-auto gap-2 flex-col justify-start items-start rounded-lg bg-white dark:bg-zinc-800">
                 <div class="p-2 flex flex-col @sm:flex-row @lg:flex-col w-full h-full gap-2">
@@ -40,9 +41,15 @@ class BlogpostCard extends Component
         HTML;
     }
 
-    public function mount(Post $post)
+    public function mount($postId)
     {
-        $this->post = $post;
+        $this->post = Post::with([
+            'user' => function ($query) {
+                $query->select('id', 'avatar', 'username', 'firstname', 'middlename', 'lastname');
+            }
+        ])->select('id', 'cover_image', 'title', 'slug', 'short_description', 'user_id', 'created_at', 'updated_at')
+            ->where('id', $postId)
+            ->firstOrFail();
     }
 
     public function render()
