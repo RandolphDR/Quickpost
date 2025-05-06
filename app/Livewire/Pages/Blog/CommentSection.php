@@ -4,7 +4,7 @@ namespace App\Livewire\Pages\Blog;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
-use Illuminate\Support\Facades\{Gate, Auth};
+use Illuminate\Support\Facades\{Gate, Auth, Session};
 use App\Models\{Post, Comment, Like};
 
 class CommentSection extends Component
@@ -27,6 +27,18 @@ class CommentSection extends Component
 
     public function toggleLike()
     {
+
+        if (!Auth::check()) {
+
+            Session::flash('notify', [
+                'message' => 'You need to be logged in to like a post.',
+                'type' => 'error',
+            ]);
+
+            $this->redirectIntended(route('login'), navigate: true);
+            return;
+        }
+
         $like = Like::updateOrCreate(
             [
                 'user_id' => auth()->id(),
@@ -37,10 +49,11 @@ class CommentSection extends Component
 
         $this->isLiked = $like->is_liked;
 
-        // $this->dispatch('notify', [
-        //     'message' => 'You have liked this post!',
-        //     'type' => 'success',
-        // ]);
+        $this->dispatch('notify', [
+            'message' => $this->isLiked ? 'You have liked this post!' : 'You have unliked this post.',
+            'type' => $this->isLiked ? 'success' : 'error',
+        ]);
+
 
         $this->loadPost($this->post->slug);
     }

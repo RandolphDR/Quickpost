@@ -1,7 +1,4 @@
 <div class="w-full px-4 py-4 gap-4 flex flex-col justify-start items-center">
-    @can('manage-post', $post)
-        <button class="text-gray-900 dark:text-neutral-200">This Blog Article is yours (Links Under Development)</button>
-    @endcan
     <figure class="w-full max-h-96 rounded-lg overflow-hidden flex justify-center items-center">
         @if ($post->cover_image)
             <img src="{{ asset($post->cover_image) }}" alt="error" class="h-full object-cover object-center">

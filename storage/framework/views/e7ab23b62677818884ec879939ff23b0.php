@@ -20,8 +20,15 @@
         </p>
     </section>
 
-    
-    
+    <p class="text-gray-500 text-xl dark:text-gray-400">
+        UPCOMING PLAN: </br>
+        - PRIORITIZE THE ALL BLOG POST AND PUT THE POPULAR AND LATEST TO SIDE! </br>
+        - DO NOT FORGET THE CATEGORY FEATURE </br>
+        - FIX THE NAVIGATION FOR USER WHO OWN THE BLOG ON VIEW POST </br>
+        - WE WILL DIVE DEEP INTO THE MANAGEMENT OF THE BLOG POST </br>
+    </p>
+
+
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <?php
 $__split = function ($name, $params = []) {
