@@ -11,7 +11,7 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('components.blog.blogpost-card', ['postId' => $post->id,'lazy' => true,'class' => 'w-full h-full p-1 lg:p-2']);
+[$__name, $__params] = $__split('components.blog.blogpost-card', ['postId' => $post->id,'class' => 'w-full h-full p-1 lg:p-2']);
 
 $__html = app('livewire')->mount($__name, $__params, 'post-'.e($post->id).'', $__slots ?? [], get_defined_vars());
 
@@ -30,5 +30,6 @@ if (isset($__slots)) unset($__slots);
         <?php echo e($allPosts->links('vendor.livewire.tailwind')); ?>
 
     </nav>
+
 </div>
 <?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/livewire/pages/blog/all.blade.php ENDPATH**/ ?>
