@@ -20,7 +20,13 @@
         </p>
     </section>
 
-    
+    <p class="text-gray-500 text-xl dark:text-gray-400">
+        UPCOMING PLAN: </br>
+        - PRIORITIZE THE ALL BLOG POST AND PUT THE POPULAR AND LATEST TO SIDE! </br>
+        - DO NOT FORGET THE CATEGORY FEATURE </br>
+        - FIX THE NAVIGATION FOR USER WHO OWN THE BLOG ON VIEW POST </br>
+        - WE WILL DIVE DEEP INTO THE MANAGEMENT OF THE BLOG POST </br>
+    </p>
 
     <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
         <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">

@@ -9,14 +9,13 @@ use App\Models\{Post, Comment, Like};
 
 class CommentSection extends Component
 {
-
     public $post;
     public int $postLikeCount, $commentCount;
     public bool $isLiked;
     public string $body;
 
     protected $rules = [
-        'body' => 'required|string|max:500'
+        'body' => ['required', 'string', 'max:500']
     ];
 
     protected $messages = [
@@ -27,51 +26,32 @@ class CommentSection extends Component
 
     public function toggleLike()
     {
-
         if (!Auth::check()) {
-
             Session::flash('notify', [
                 'message' => 'You need to be logged in to like a post.',
                 'type' => 'error',
             ]);
 
-            $this->redirectIntended(route('login'), navigate: true);
+            $this->redirect(route('login'), navigate: true);
             return;
         }
 
-        $like = Like::updateOrCreate(
+        $this->postLikeCount = $this->isLiked ? $this->postLikeCount - 1 : $this->postLikeCount + 1;
+
+        $this->isLiked = !$this->isLiked;
+
+        Like::updateOrCreate(
             [
                 'user_id' => auth()->id(),
                 'post_id' => $this->post->id
             ],
-            ['is_liked' => !$this->isLiked]
+            ['is_liked' => $this->isLiked]
         );
-
-        $this->isLiked = $like->is_liked;
 
         $this->dispatch('notify', [
             'message' => $this->isLiked ? 'You have liked this post!' : 'You have unliked this post.',
             'type' => $this->isLiked ? 'success' : 'error',
         ]);
-
-
-        $this->loadPost($this->post->slug);
-    }
-
-    protected function loadPost(string $slug)
-    {
-        $this->post = Post::select('id')
-            ->where('slug', $slug)
-            ->withCount(['likes'])
-            ->with([
-                'comments' => function ($query) {
-                    $query->latest()->select('id', 'post_id', 'user_id', 'body', 'created_at');
-                },
-                'comments.user' => function ($query) {
-                    $query->select('id', 'username', 'firstname', 'middlename', 'lastname', 'avatar');
-                },
-            ])
-            ->firstOrFail();
 
     }
 
@@ -100,6 +80,24 @@ class CommentSection extends Component
                 'type' => 'error',
             ]);
         }
+    }
+
+    protected function loadPost(string $slug)
+    {
+        $this->post = Post::select('id')
+            ->where('slug', $slug)
+            ->withCount(['likes'])
+            ->with([
+                'comments' => function ($query) {
+                    $query->latest()->select('id', 'post_id', 'user_id', 'body', 'created_at');
+                },
+                'comments.user' => function ($query) {
+                    $query->select('id', 'username', 'firstname', 'middlename', 'lastname', 'avatar');
+                },
+            ])
+            ->firstOrFail();
+
+        $this->postLikeCount = $this->post->likes_count;
     }
 
     #[On('comment-updated')]

@@ -19,8 +19,12 @@
                     </svg>
                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
             </button>
-            <span class="text-sm text-gray-900 dark:text-gray-400"><?php echo e($post->likes->count()); ?> Likes</span>
+
+            <span class="text-sm text-gray-900 dark:text-gray-400" wire:text="postLikeCount"><?php echo e($postLikeCount); ?>
+
+                Likes</span>
         </div>
+
 
         <div class="flex items-center gap-2">
             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
