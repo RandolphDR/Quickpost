@@ -53,6 +53,8 @@ class CommentSection extends Component
             'type' => $this->isLiked ? 'success' : 'error',
         ]);
 
+        $this->loadPost($this->post->slug);
+        
     }
 
     public function postComment()

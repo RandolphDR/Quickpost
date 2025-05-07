@@ -22,10 +22,9 @@
 
     <p class="text-gray-500 text-xl dark:text-gray-400">
         UPCOMING PLAN: </br>
-        - PRIORITIZE THE ALL BLOG POST AND PUT THE POPULAR AND LATEST TO SIDE! </br>
-        - DO NOT FORGET THE CATEGORY FEATURE </br>
-        - FIX THE NAVIGATION FOR USER WHO OWN THE BLOG ON VIEW POST </br>
+        - FINISH SETTING UP PROFILE PAGE </br>
         - WE WILL DIVE DEEP INTO THE MANAGEMENT OF THE BLOG POST </br>
+        - FIX SETTINGS ADD A LAZY LOADER FOR EACH SECTION </br>
     </p>
 
     <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
