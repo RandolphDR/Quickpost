@@ -1,8 +1,12 @@
 <div class="w-full h-full flex flex-col">
-    <header class="w-full p-4">
+    <header class="w-full p-4 flex justify-between items-center">
         <h1 class="font-semibold text-xl lg:text-2xl text-gray-800 dark:text-neutral-200">
             All Blog Posts
         </h1>
+        <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Page <?php echo e($allPosts->currentPage()); ?> of <?php echo e($allPosts->lastPage()); ?>
+
+        </p>
     </header>
 
     <main class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
