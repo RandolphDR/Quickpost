@@ -33,7 +33,7 @@ class ViewPost extends Component
             'id',
             'user_id',
             'cover_image',
-            'category',
+            'category_id',
             'title',
             'body',
             'slug',
@@ -41,14 +41,14 @@ class ViewPost extends Component
             'updated_at'
         ])
             ->with([
-                'user:id,username,avatar,firstname,lastname,middlename' // only needed fields
+                'user:id,username,avatar,firstname,lastname,middlename',
             ])
             ->where('slug', $slug)
             ->firstOrFail();
 
         $this->isoTime = $this->post->created_at->toIso8601String();
         $this->timeDisplay = $this->calculateTimeDisplay();
-        
+
     }
 
 

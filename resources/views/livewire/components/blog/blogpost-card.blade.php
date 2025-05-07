@@ -38,16 +38,14 @@
             </main>
 
             <footer class="w-full py-2">
-                <a href="{{ route('blog.view', ['slug' => $post->slug]) }}"
-                    class="py-1 px-2 inline-flex justify-center items-center rounded-lg border border-transparent bg-blue-600 text-sm text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-wider transition ease-in-out duration-150"
-                    wire:navigate title="Read: {{ $post->title }}">
+                <x-btn-nav-link :href="route('blog.view', ['slug' => $post->slug])" title="Read: {{ $post->title }}">
                     Read Post
                     <svg class="w-6 h-6 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 12H5m14 0-4 4m4-4-4-4" />
                     </svg>
-                </a>
+                </x-btn-nav-link>
             </footer>
         </div>
     </div>

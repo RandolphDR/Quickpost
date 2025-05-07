@@ -4,10 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Post;
-use App\Models\Comment;
-use App\Models\Like;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(CategorySeeder::class);
 
         User::factory()->create([
             'avatar' => 'storage/avatar/1744116544_myprofile.png',
@@ -67,10 +64,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
         ]);
 
+        // Create additional users using factory with 'user' role
         User::factory()
             ->createWithRole(5, 'user')
             ->create();
 
-        $this->call([PostSeeder::class]);
+        // Seed posts
+        $this->call(PostSeeder::class);
     }
 }
+

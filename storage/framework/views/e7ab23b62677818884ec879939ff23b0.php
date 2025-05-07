@@ -10,7 +10,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <section class="w-full h-[50vh] gap-4 flex flex-col justify-center items-center">
+    <section class="w-full h-[40vh] gap-4 flex flex-col justify-center items-center">
         <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
             Explore Blogs
         </h1>
@@ -20,21 +20,15 @@
         </p>
     </section>
 
-    <p class="text-gray-500 text-xl dark:text-gray-400">
-        UPCOMING PLAN: </br>
-        - PRIORITIZE THE ALL BLOG POST AND PUT THE POPULAR AND LATEST TO SIDE! </br>
-        - DO NOT FORGET THE CATEGORY FEATURE </br>
-        - FIX THE NAVIGATION FOR USER WHO OWN THE BLOG ON VIEW POST </br>
-        - WE WILL DIVE DEEP INTO THE MANAGEMENT OF THE BLOG POST </br>
-    </p>
+    
 
-
-    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
-        <?php
+    <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
+        <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
+            <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('pages.blog.popular', []);
+[$__name, $__params] = $__split('pages.blog.all', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-1526195672-0', $__slots ?? [], get_defined_vars());
 
@@ -46,13 +40,14 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-    </section>
-    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
-        <?php
+        </section>
+
+        <aside class="lg:w-1/3 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('pages.blog.latest', []);
+[$__name, $__params] = $__split('pages.blog.popular', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-1526195672-1', $__slots ?? [], get_defined_vars());
 
@@ -64,7 +59,8 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-    </section>
+        </aside>
+    </main>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

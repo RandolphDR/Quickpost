@@ -16,7 +16,7 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('pages.blog.breadcrumbs-nav', []);
+[$__name, $__params] = $__split('pages.blog.breadcrumbs-nav', ['slug' => $slug]);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-0', $__slots ?? [], get_defined_vars());
 
@@ -60,12 +60,12 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-            <div class="mt-8">
+            <div class="mt-4">
                 <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('pages.blog.latest', []);
+[$__name, $__params] = $__split('pages.blog.related', ['slug' => $slug]);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-3003384197-3', $__slots ?? [], get_defined_vars());
 

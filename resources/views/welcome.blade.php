@@ -36,8 +36,8 @@
 
                     <!-- Buttons -->
                     <div class="mt-8 gap-3 flex justify-center">
-                        <a href="{{ route('login') }}"
-                            class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                        <a href="#"
+                            class="py-3 px-4 inline-flex justify-center items-center rounded-lg border border-transparent bg-blue-600 text-sm font-medium text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-wider transition ease-in-out duration-150"
                             wire:navigate>
                             CREATE YOUR BLOG
                             <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -61,7 +61,7 @@
     </section>
     <section class="w-full min-h-[50vh] flex flex-col justify-center items-center text-center px-4 gap-4">
         <h1 class="font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
-            {{ Auth::check() ? 'Explore Blogs' : ' Explore More When You Log In' }}
+            {{ Auth::check() ? 'Explore More Blogs' : ' Explore More When You Log In' }}
         </h1>
         <p class="text-gray-600 text-lg md:text-xl dark:text-gray-400 max-w-2xl">
             Discover the latest insights, trends, and expert tips in our blog. Stay informed with fresh content and
@@ -69,9 +69,9 @@
         </p>
         <div class="mt-8 gap-3 flex justify-center">
             <a href="{{ Auth::check() ? route('explore') : route('login') }}"
-                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                class="py-3 px-4 inline-flex justify-center items-center rounded-lg border border-transparent bg-blue-600 text-sm font-medium text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-wider transition ease-in-out duration-150"
                 wire:navigate>
-                EXPLORE MORE
+                CLICK HERE
                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">

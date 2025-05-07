@@ -42,16 +42,32 @@
             </main>
 
             <footer class="w-full py-2">
-                <a href="<?php echo e(route('blog.view', ['slug' => $post->slug])); ?>"
-                    class="py-1 px-2 inline-flex justify-center items-center rounded-lg border border-transparent bg-blue-600 text-sm text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-wider transition ease-in-out duration-150"
-                    wire:navigate title="Read: <?php echo e($post->title); ?>">
+                <?php if (isset($component)) { $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.btn-nav-link','data' => ['href' => route('blog.view', ['slug' => $post->slug]),'title' => 'Read: '.e($post->title).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('btn-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('blog.view', ['slug' => $post->slug])),'title' => 'Read: '.e($post->title).'']); ?>
                     Read Post
                     <svg class="w-6 h-6 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 12H5m14 0-4 4m4-4-4-4" />
                     </svg>
-                </a>
+                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
+<?php $attributes = $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc; ?>
+<?php unset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
+<?php $component = $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc; ?>
+<?php unset($__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc); ?>
+<?php endif; ?>
             </footer>
         </div>
     </div>

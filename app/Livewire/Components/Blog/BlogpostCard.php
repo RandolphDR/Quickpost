@@ -43,11 +43,8 @@ class BlogpostCard extends Component
 
     public function mount($postId)
     {
-        $this->post = Post::with([
-            'user' => function ($query) {
-                $query->select('id', 'avatar', 'username', 'firstname', 'middlename', 'lastname');
-            }
-        ])->select('id', 'cover_image', 'title', 'slug', 'short_description', 'user_id', 'created_at', 'updated_at')
+        $this->post = Post::with(['user:id,username,avatar,firstname,lastname,middlename'])
+            ->select('id', 'cover_image', 'title', 'slug', 'short_description', 'user_id', 'created_at', 'updated_at')
             ->where('id', $postId)
             ->firstOrFail();
     }

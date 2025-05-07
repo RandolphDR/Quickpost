@@ -14,9 +14,10 @@ class Latest extends Component
         $this->latestPosts = Post::select(['id', 'status'])
             ->where('status', 'published')
             ->latest()
+            ->limit(5)
             ->get();
     }
-    
+
     public function render()
     {
         return view('livewire.pages.blog.latest');

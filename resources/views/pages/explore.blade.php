@@ -1,7 +1,7 @@
 @section('title', 'Explore')
 
 <x-app-layout>
-    <section class="w-full h-[50vh] gap-4 flex flex-col justify-center items-center">
+    <section class="w-full h-[40vh] gap-4 flex flex-col justify-center items-center">
         <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
             Explore Blogs
         </h1>
@@ -11,19 +11,21 @@
         </p>
     </section>
 
-    <p class="text-gray-500 text-xl dark:text-gray-400">
+    {{-- <p class="text-gray-500 text-xl dark:text-gray-400">
         UPCOMING PLAN: </br>
         - PRIORITIZE THE ALL BLOG POST AND PUT THE POPULAR AND LATEST TO SIDE! </br>
         - DO NOT FORGET THE CATEGORY FEATURE </br>
         - FIX THE NAVIGATION FOR USER WHO OWN THE BLOG ON VIEW POST </br>
         - WE WILL DIVE DEEP INTO THE MANAGEMENT OF THE BLOG POST </br>
-    </p>
+    </p> --}}
 
+    <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
+        <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
+            <livewire:pages.blog.all />
+        </section>
 
-    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
-        <livewire:pages.blog.popular />
-    </section>
-    <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
-        <livewire:pages.blog.latest />
-    </section>
+        <aside class="lg:w-1/3 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <livewire:pages.blog.popular />
+        </aside>
+    </main>
 </x-app-layout>

@@ -1,4 +1,4 @@
-<div class="w-full px-4 py-4 gap-4 flex flex-col justify-start items-center">
+<div class="w-full px-4 py-4 gap-4 flex flex-col justify-start items-center mt-4">
     <figure class="w-full max-h-96 rounded-lg overflow-hidden flex justify-center items-center">
         <!--[if BLOCK]><![endif]--><?php if($post->cover_image): ?>
             <img src="<?php echo e(asset($post->cover_image)); ?>" alt="error" class="h-full object-cover object-center">
