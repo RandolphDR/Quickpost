@@ -5,7 +5,7 @@
         </h1>
     </header>
 
-    <main
+    <main wire:init="loadPosts"
         class="w-full overflow-y-auto @lg:overflow-x-auto py-2 flex flex-col @lg:flex-row justify-start items-center gap-4 scrollbar-custom">
         @foreach ($relatedPosts as $post)
             <livewire:components.blog.blogpost-card :postId="$post->id" lazy wire:key="post-{{ $post->id }}" />

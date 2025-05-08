@@ -8,12 +8,12 @@ use App\Models\Post;
 class Related extends Component
 {
 
-    public $relatedPosts;
+    public $relatedPosts, $slug;
 
-    public function mount($slug)
+    public function loadPosts()
     {
         $currentPost = Post::select(['id', 'category_id'])
-            ->where('slug', $slug)
+            ->where('slug', $this->slug)
             ->where('status', 'published')
             ->firstOrFail();
 
@@ -25,7 +25,12 @@ class Related extends Component
             ])
             ->latest()
             ->get();
-            
+    }
+
+    public function mount($slug)
+    {
+        $this->slug = $slug;
+        $this->relatedPosts = collect();
     }
 
 

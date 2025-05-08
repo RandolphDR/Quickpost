@@ -52,12 +52,13 @@
 
             {{-- Desktop View --}}
             <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                <div class="text-sm text-gray-700 dark:text-gray-300">
+                <div class="text-sm text-gray-600 dark:text-neutral-400">
                     Page {{ $paginator->currentPage() }} - Showing
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     to
                     <span class="font-medium">{{ $paginator->lastItem() }}</span>
                 </div>
+
 
                 <div>
                     <span class="relative z-0 inline-flex shadow-sm rounded-md">

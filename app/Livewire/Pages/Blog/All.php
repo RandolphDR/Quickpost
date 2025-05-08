@@ -11,13 +11,10 @@ class All extends Component
 
     public function render()
     {
-
-        $getAllPosts = Post::select(['id', 'status'])
-            ->latest()
-            ->paginate(10);
-
         return view('livewire.pages.blog.all', [
-            'allPosts' => $getAllPosts,
+            'allPosts' => Post::select(['id', 'status'])
+                ->latest()
+                ->paginate(10),
         ]);
     }
 }

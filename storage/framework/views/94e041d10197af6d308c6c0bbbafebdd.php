@@ -5,10 +5,10 @@
         </h1>
     </header>
 
-    <main
-        class="w-full overflow-y-auto @lg:overflow-x-auto py-2 flex flex-col @lg:flex-row justify-start items-center gap-4 scrollbar-custom">
-        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $latestPosts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php
+    <main wire:init="loadPosts" class="w-full overflow-y-auto @lg:overflow-x-auto py-2 flex flex-col @lg:flex-row justify-start items-center gap-4 scrollbar-custom">
+        <!--[if BLOCK]><![endif]--><?php if($latestPosts->isNotEmpty()): ?>
+            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $latestPosts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
@@ -24,7 +24,14 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+        <?php else: ?>
+            <div class="w-full p-6 bg-gray-100 dark:bg-zinc-800 rounded-2xl shadow text-center">
+                <p class="text-gray-500 dark:text-neutral-200 text-base">
+                    No latest blogs available at the moment.
+                </p>
+            </div>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     </main>
 </div>
 <?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/livewire/pages/blog/latest.blade.php ENDPATH**/ ?>

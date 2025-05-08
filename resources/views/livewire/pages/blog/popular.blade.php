@@ -7,16 +7,8 @@
 
     <main
         class="w-full overflow-y-auto @lg:overflow-x-auto py-2 flex flex-col @lg:flex-row justify-start items-center gap-4 scrollbar-custom">
-        @if ($popularPosts->isNotEmpty())
-            @foreach ($popularPosts as $post)
-                <livewire:components.blog.blogpost-card :postId="$post->id" lazy wire:key="post-{{ $post->id }}" />
-            @endforeach
-        @else
-            <div class="w-full p-6 bg-gray-100 dark:bg-zinc-800 rounded-2xl shadow text-center">
-                <p class="text-gray-500 dark:text-neutral-200 text-base">
-                    No popular blogs available at the moment.
-                </p>
-            </div>
-        @endif
+        @foreach ($popularPosts as $post)
+            <livewire:components.blog.blogpost-card :postId="$post->id" lazy wire:key="post-{{ $post->id }}" />
+        @endforeach
     </main>
 </div>

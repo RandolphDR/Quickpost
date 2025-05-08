@@ -9,13 +9,18 @@ class Latest extends Component
 {
     public $latestPosts;
 
-    public function mount()
+    public function loadPosts()
     {
         $this->latestPosts = Post::select(['id', 'status'])
             ->where('status', 'published')
             ->latest()
             ->limit(5)
             ->get();
+    }
+
+    public function mount()
+    {
+        $this->latestPosts = collect();
     }
 
     public function render()

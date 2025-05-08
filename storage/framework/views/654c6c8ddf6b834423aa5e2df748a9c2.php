@@ -5,7 +5,7 @@
         </h1>
     </header>
 
-    <main
+    <main wire:init="loadPosts"
         class="w-full overflow-y-auto @lg:overflow-x-auto py-2 flex flex-col @lg:flex-row justify-start items-center gap-4 scrollbar-custom">
         <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $relatedPosts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php
