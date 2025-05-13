@@ -88,7 +88,7 @@ if (isset($__slots)) unset($__slots);
                 <form wire:submit.prevent="postComment" class="w-full">
                     <textarea wire:model="body"
                         class="w-full rounded-lg border-gray-300 dark:border-zinc-600 dark:bg-zinc-700
-                           p-3 text-gray-900 dark:text-neutral-200 focus:ring-indigo-500 resize-none"
+                           p-3 text-gray-900 dark:text-neutral-200 focus:ring-indigo-500 placeholder-gray-500 dark:placeholder-gray-400 resize-none"
                         rows="4" placeholder="Write your comment as <?php echo e(Auth::user()->fullname); ?>..."></textarea>
                     <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>

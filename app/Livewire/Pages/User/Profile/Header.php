@@ -9,7 +9,7 @@ use App\Models\User;
 class Header extends Component
 {
 
-    public $user, $postCount, $likeCount;
+    public $user, $totalPostCount, $totalLikeCount;
 
     public function mount($username)
     {
@@ -25,9 +25,8 @@ class Header extends Component
             ->where('username', $username)
             ->firstOrFail();
 
-        $this->postCount = $this->user->posts()->count();
-
-        $this->likeCount = $this->user->posts()->withCount('likes')->get()->sum('likes_count');
+        $this->totalPostCount = $this->user->posts()->count();
+        $this->totalLikeCount = $this->user->posts()->withCount('likes')->get()->sum('likes_count');
     }
 
     public function render()

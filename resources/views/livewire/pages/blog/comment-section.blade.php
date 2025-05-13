@@ -72,7 +72,7 @@
                 <form wire:submit.prevent="postComment" class="w-full">
                     <textarea wire:model="body"
                         class="w-full rounded-lg border-gray-300 dark:border-zinc-600 dark:bg-zinc-700
-                           p-3 text-gray-900 dark:text-neutral-200 focus:ring-indigo-500 resize-none"
+                           p-3 text-gray-900 dark:text-neutral-200 focus:ring-indigo-500 placeholder-gray-500 dark:placeholder-gray-400 resize-none"
                         rows="4" placeholder="Write your comment as {{ Auth::user()->fullname }}..."></textarea>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
 

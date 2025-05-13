@@ -11,7 +11,6 @@ Route::view('contact', 'pages.contact')->name('contact');
 
 Route::middleware('can:user-access')->group(function () {
     Route::view('settings', 'pages.user.settings')->name('user.settings');
-    Route::view('explore', 'pages.explore')->name('explore');
 });
 
 /* Import Routes Here */

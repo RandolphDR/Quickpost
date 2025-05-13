@@ -1,7 +1,8 @@
 <div class="w-full h-full flex flex-col">
     <header class="w-full p-4 flex justify-between items-center">
         <h1 class="font-semibold text-xl lg:text-2xl text-gray-800 dark:text-neutral-200">
-            All Blog Posts
+            <?php echo e($username ? "{$username}'s Blog Posts" : 'All Blog Posts'); ?>
+
         </h1>
         <p class="text-sm text-gray-600 dark:text-neutral-400">
             <span wire:loading.flex>
