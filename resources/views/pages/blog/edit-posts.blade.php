@@ -15,7 +15,6 @@
         </header>
         <section class="w-full p-4 bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">This is where your blog posts edit fields are.</h1>
-
         </section>
     </main>
 </x-app-layout>

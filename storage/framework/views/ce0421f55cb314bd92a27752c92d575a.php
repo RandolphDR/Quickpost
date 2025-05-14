@@ -23,7 +23,7 @@
         <a href="#"
             class="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
             wire:navigate>
-            <?php echo e($post->category->name); ?>
+            <?php echo e($post->status); ?>
 
         </a>
         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

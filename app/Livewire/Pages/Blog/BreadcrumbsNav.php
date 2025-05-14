@@ -18,6 +18,7 @@ class BreadcrumbsNav extends Component
             'user_id',
             'category_id',
             'title',
+            'status', // delete after debugging
             'slug',
         ])
             ->with([

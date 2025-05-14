@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Blog;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\{Auth, Gate};
 use App\Models\Post;
 
 class ViewPost extends Component
@@ -29,28 +30,29 @@ class ViewPost extends Component
 
     public function mount($slug)
     {
-        $this->post = Post::select([
-            'id',
-            'user_id',
-            'cover_image',
-            'category_id',
-            'title',
-            'body',
-            'slug',
-            'created_at',
-            'updated_at'
+        $this->post = Post::with([
+            'user:id,username,avatar,firstname,lastname,middlename',
+            'category:id,name'
         ])
-            ->with([
-                'user:id,username,avatar,firstname,lastname,middlename',
+            ->select([
+                'id',
+                'user_id',
+                'cover_image',
+                'category_id',
+                'title',
+                'body',
+                'slug',
+                'status',
+                'created_at',
+                'updated_at'
             ])
             ->where('slug', $slug)
             ->firstOrFail();
 
         $this->isoTime = $this->post->created_at->toIso8601String();
-        $this->timeDisplay = $this->calculateTimeDisplay();
-
+        $this->timeDisplay = $this->post->created_at->diffForHumans();
+        // To Fix on the frontend of this code everyone can visit it by link but it will censored or throw a warning for the contents.
     }
-
 
     public function render()
     {

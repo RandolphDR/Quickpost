@@ -9,10 +9,6 @@ Route::view('welcome', 'welcome')->name('homepage');
 Route::view('about', 'pages.about')->name('about');
 Route::view('contact', 'pages.contact')->name('contact');
 
-Route::middleware('can:user-access')->group(function () {
-    Route::view('settings', 'pages.user.settings')->name('user.settings');
-});
-
 /* Import Routes Here */
 require __DIR__ . '/auth.php';
 require __DIR__ . '/profile.php';
