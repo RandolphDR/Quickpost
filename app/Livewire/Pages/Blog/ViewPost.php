@@ -3,7 +3,7 @@
 namespace App\Livewire\Pages\Blog;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\{Auth, Gate};
+use Illuminate\Support\Facades\Gate;
 use App\Models\Post;
 
 class ViewPost extends Component
@@ -48,6 +48,10 @@ class ViewPost extends Component
             ])
             ->where('slug', $slug)
             ->firstOrFail();
+
+        if (Gate::denies('manage-post', $this->post)) {
+            $this->post = Post::where('status', 'published');
+        }
 
         $this->isoTime = $this->post->created_at->toIso8601String();
         $this->timeDisplay = $this->post->created_at->diffForHumans();

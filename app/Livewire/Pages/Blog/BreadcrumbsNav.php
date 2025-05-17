@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Livewire\Pages\Blog;
-
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use App\Models\Post;
 
@@ -27,6 +27,10 @@ class BreadcrumbsNav extends Component
             ])
             ->where('slug', $slug)
             ->firstOrFail();
+
+        if (Gate::denies('manage-post', $this->post)) {
+            $this->post = Post::where('status', 'published');
+        }
     }
 
     public function render()

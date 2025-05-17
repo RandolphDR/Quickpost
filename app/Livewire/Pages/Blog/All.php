@@ -14,7 +14,7 @@ class All extends Component
 
     public function render()
     {
-        $query = Post::query()->with('user'); // Eager load user relationship
+        $query = Post::query()->with('user');
 
         // Handle username filter
         if ($this->username) {
@@ -23,7 +23,7 @@ class All extends Component
         }
 
         // Apply status filters based on permissions
-        if (!Gate::allows('manage-posts')) {
+        if (Gate::denies('manage-posts')) {
             $query->where('status', 'published');
 
             // If viewing specific user's posts, ensure they're published

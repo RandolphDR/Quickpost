@@ -13,7 +13,7 @@
     <main class="w-full max-w-7xl gap-2 flex flex-col justify-start items-center">
         <header class="w-full py-4 px-6 flex justify-between items-center bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <aside class="">
-                <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">Manage your Blogs</h1>
+                <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium"><?php echo e(Gate::allows('administrator-access') ? 'Manage all blogs' : "Manage your blogs"); ?></h1>
             </aside>
             <nav class="">
                 <?php if (isset($component)) { $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc = $component; } ?>
