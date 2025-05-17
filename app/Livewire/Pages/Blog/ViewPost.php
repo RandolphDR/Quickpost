@@ -50,12 +50,11 @@ class ViewPost extends Component
             ->firstOrFail();
 
         if (Gate::denies('manage-post', $this->post)) {
-            $this->post = Post::where('status', 'published');
+            abort(404);
         }
 
         $this->isoTime = $this->post->created_at->toIso8601String();
         $this->timeDisplay = $this->post->created_at->diffForHumans();
-        // To Fix on the frontend of this code everyone can visit it by link but it will censored or throw a warning for the contents.
     }
 
     public function render()

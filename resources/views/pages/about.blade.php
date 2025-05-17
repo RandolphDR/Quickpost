@@ -50,7 +50,6 @@
                     <nav class="flex items-center gap-4">
                         <a href="https://github.com/RandolphDR" target="_blank" title="Visit My Github"
                             class="group relative flex items-center justify-center p-1.5 rounded-xl bg-neutral-100/80 dark:bg-gray-800/90 shadow-sm hover:shadow-md dark:shadow-gray-900/30 transition-all duration-200 hover:scale-[1.08] active:scale-95 border border-gray-200/50 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600">
-
                             <svg class="w-8 h-8 text-gray-800 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
@@ -61,7 +60,6 @@
 
                         <a href="https://facebook.com/RandolphDR" target="_blank" title="Visit My Facebook"
                             class="group relative flex items-center justify-center p-1.5 rounded-xl bg-neutral-100/80 dark:bg-gray-800/90 shadow-sm hover:shadow-md dark:shadow-gray-900/30 transition-all duration-200 hover:scale-[1.08] active:scale-95 border border-gray-200/50 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600">
-
                             <svg class="w-8 h-8 text-gray-800 dark:text-gray-100/90 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
@@ -69,6 +67,11 @@
                                     d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z"
                                     clip-rule="evenodd" />
                             </svg>
+                        </a>
+                        <a href="{{ route('user.profile', 'RandolphDR') }}" target="_blank" title="Visit My Quickpost"
+                            class="group relative flex items-center justify-center p-1.5 rounded-xl bg-neutral-100/80 dark:bg-gray-800/90 shadow-sm hover:shadow-md dark:shadow-gray-900/30 transition-all duration-200 hover:scale-[1.08] active:scale-95 border border-gray-200/50 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600">
+
+                            <img src="{{ asset('website-logo.svg') }}" alt="error" class="w-8 h-8">
                         </a>
                     </nav>
                 </article>

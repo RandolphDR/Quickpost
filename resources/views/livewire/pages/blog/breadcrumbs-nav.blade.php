@@ -50,11 +50,10 @@
                     </button>
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link class="text-sm px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <x-dropdown-link :href="route('blog.edit', $post->slug)" class="text-sm px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700">
                         Edit
                     </x-dropdown-link>
-                    <x-dropdown-link
-                        class="text-sm px-3 py-1.5 text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <x-dropdown-link class="text-sm px-3 py-1.5 text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700">
                         Delete
                     </x-dropdown-link>
                 </x-slot>

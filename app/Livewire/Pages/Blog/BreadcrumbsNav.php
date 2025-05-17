@@ -18,7 +18,6 @@ class BreadcrumbsNav extends Component
             'user_id',
             'category_id',
             'title',
-            'status', // delete after debugging
             'slug',
         ])
             ->with([
@@ -29,7 +28,7 @@ class BreadcrumbsNav extends Component
             ->firstOrFail();
 
         if (Gate::denies('manage-post', $this->post)) {
-            $this->post = Post::where('status', 'published');
+            abort(404);
         }
     }
 

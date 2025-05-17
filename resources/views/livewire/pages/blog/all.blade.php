@@ -1,4 +1,4 @@
-<div class="w-full h-full flex flex-col">
+<main class="w-full h-full flex flex-col">
     <header class="w-full p-4 flex justify-between items-center">
         <h1 class="font-semibold text-xl lg:text-2xl text-gray-800 dark:text-neutral-200">
             {{ $username ? "{$username}'s Blog Posts" : 'All Blog Posts' }}
@@ -22,7 +22,7 @@
         </p>
     </header>
 
-    <main class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+    <section class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
         <div wire:loading.flex class="col-span-full gap-2 flex flex-col items-center justify-center">
             <svg class="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24">
@@ -43,9 +43,9 @@
                     class="w-full h-full p-1 lg:p-2" />
             @endforeach
         </div>
-    </main>
+    </section>
 
     <nav class="mt-8 w-full" wire:loading.remove>
         {{ $allPosts->links('vendor.livewire.tailwind') }}
     </nav>
-</div>
+</main>

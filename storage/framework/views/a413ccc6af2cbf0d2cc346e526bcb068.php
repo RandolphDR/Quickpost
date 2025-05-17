@@ -11,37 +11,41 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     <main class="w-full max-w-7xl gap-2 flex flex-col justify-start items-center">
-        <header
-            class="w-full py-4 px-6 flex justify-between items-center bg-white dark:bg-gray-800 shadow-md rounded-xl">
-            <aside class="">
-                <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">Edit your Blogs</h1>
-            </aside>
-            <nav class="">
-                <?php if (isset($component)) { $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.btn-nav-link','data' => ['class' => 'py-2']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('btn-nav-link'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'py-2']); ?>
-                    Button Nav Link
-                 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
-<?php $attributes = $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc; ?>
-<?php unset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
-<?php $component = $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc; ?>
-<?php unset($__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc); ?>
-<?php endif; ?>
-            </nav>
+        <header class="w-full bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden">
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('components.blog.manage.header', ['slug' => $slug]);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-2216908251-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
         </header>
         <section class="w-full p-4 bg-white dark:bg-gray-800 shadow-md rounded-xl">
-            <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">This is where your blog posts edit fields are.</h1>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('components.blog.manage.edit-form', ['slug' => $slug]);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-2216908251-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
         </section>
     </main>
  <?php echo $__env->renderComponent(); ?>

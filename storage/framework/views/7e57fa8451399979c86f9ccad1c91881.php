@@ -53,7 +53,7 @@ if (isset($__slots)) unset($__slots);
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('pages.blog.all', ['username' => $username]);
+[$__name, $__params] = $__split('pages.user.profile.body', ['username' => $username]);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-1218749444-2', $__slots ?? [], get_defined_vars());
 

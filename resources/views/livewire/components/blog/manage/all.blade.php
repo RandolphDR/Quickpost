@@ -128,7 +128,7 @@
                                     <x-dropdown-link :href="route('blog.view', ['slug' => $post->slug])" title="Read: {{ $post->title }}">
                                         View
                                     </x-dropdown-link>
-                                    <x-dropdown-link :href="route('blog.edit')" title="Edit: {{ $post->title }}">
+                                    <x-dropdown-link :href="route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
                                         Edit
                                     </x-dropdown-link>
                                     <x-dropdown-link>

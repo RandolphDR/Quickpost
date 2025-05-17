@@ -12,5 +12,5 @@ Route::middleware('can:user-access')->prefix('explore')->group(function () {
 
 Route::middleware('auth')->prefix('blog')->group(function () {
     Route::view('manage', 'pages.blog.manage-posts')->name('blog.manage');
-    Route::view('edit', 'pages.blog.edit-posts')->name('blog.edit');
+    Route::view('manage/edit/{slug}', 'pages.blog.edit-posts')->name('blog.edit');
 });

@@ -1,4 +1,10 @@
 <div class="w-full px-4 py-4 gap-4 flex flex-col justify-start items-center mt-4">
+    <!--[if BLOCK]><![endif]--><?php if($post->status === 'draft'): ?>
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 px-4 py-2 rounded">
+            <strong>Note:</strong> This post is currently in <span class="font-semibold">Draft</span> status and not
+            visible to public users.
+        </div>
+    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     <figure class="w-full max-h-96 rounded-lg overflow-hidden flex justify-center items-center">
         <!--[if BLOCK]><![endif]--><?php if($post->cover_image): ?>
             <img src="<?php echo e(asset($post->cover_image)); ?>" alt="error" class="h-full object-cover object-center">

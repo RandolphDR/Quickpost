@@ -10,7 +10,7 @@
             <livewire:pages.user.profile.stats :username="$username" />
         </aside>
         <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
-            <livewire:pages.blog.all :username="$username" />
+            <livewire:pages.user.profile.body :username="$username" />
         </section>
     </main>
 </x-app-layout>
