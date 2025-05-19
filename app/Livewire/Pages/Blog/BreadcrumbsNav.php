@@ -19,6 +19,7 @@ class BreadcrumbsNav extends Component
             'category_id',
             'title',
             'slug',
+            'status'
         ])
             ->with([
                 'user:id',
@@ -27,7 +28,7 @@ class BreadcrumbsNav extends Component
             ->where('slug', $slug)
             ->firstOrFail();
 
-        if (Gate::denies('manage-post', $this->post)) {
+        if ($this->post->status !== 'published' && Gate::denies('manage-post', $this->post)) {
             abort(404);
         }
     }

@@ -10,27 +10,34 @@ class All extends Component
 {
     use WithPagination;
 
-    public ?string $username = null;
+    public ?string $username = null, $status = 'published';
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        $this->resetPage();
+    }
 
     public function render()
     {
         $query = Post::query()->with('user');
 
-        // Handle username filter
         if ($this->username) {
             $user = User::where('username', $this->username)->firstOrFail();
             $query->where('user_id', $user->id);
         }
 
-        // Apply status filters based on permissions
-        if (Gate::denies('manage-posts')) {
+        if ($query->where('user_id', '!=', Auth::user()->id ?? null)) {
             $query->where('status', 'published');
 
-            // If viewing specific user's posts, ensure they're published
             if ($this->username && Auth::check() && Auth::user()->is($user)) {
                 $query->orWhere('user_id', Auth::id());
             }
         }
+
+        // if (Gate::allows('manage-post')) {
+
+        // }
 
         $posts = $query->latest()
             ->paginate(10)

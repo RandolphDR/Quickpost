@@ -148,7 +148,7 @@
                                     <x-dropdown-link :href="route('blog.manage')" :active="request()->routeIs('blog.manage')">
                                         {{ __('Manage Blogs') }}
                                     </x-dropdown-link>
-                                    <x-dropdown-link>
+                                    <x-dropdown-link :href="route('blog.create')" :active="request()->routeIs('blog.create')">
                                         {{ __('Create New Blog') }}
                                     </x-dropdown-link>
                                 </div>

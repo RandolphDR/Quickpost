@@ -5,7 +5,6 @@ namespace App\Livewire\Components\Blog\Manage;
 use Livewire\{Component, WithPagination};
 use Illuminate\Support\Facades\{Auth, Gate};
 use App\Models\Post;
-use App\Models\User;
 
 class All extends Component
 {

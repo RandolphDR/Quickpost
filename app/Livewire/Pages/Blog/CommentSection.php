@@ -99,10 +99,6 @@ class CommentSection extends Component
             ])
             ->firstOrFail();
 
-        // if(Gate::denies('manage-post', $this->post)) {
-        //     $this->post = Post::where('status', 'published');
-        // }
-
         $this->postLikeCount = $this->post->likes_count;
     }
 

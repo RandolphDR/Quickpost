@@ -1,6 +1,8 @@
 <div class="p-3 flex justify-between items-center">
-    <aside class="px-3 py-1">
-        <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">{{ $post->title }}</h1>
+    <aside class="px-3 py-1 w-1/2">
+        <input type="text"
+            class="w-full text-xl text-gray-800 dark:text-neutral-300 font-medium bg-transparent border-none outline-none focus:outline-none focus:ring-0"
+            placeholder="Untitled Blog" value="{{ $post->title ?? '' }}">
     </aside>
     <nav class="gap-2 flex justify-center items-center">
         <button onclick="event.preventDefault(); window.history.back();"
@@ -12,17 +14,20 @@
             </svg>
             Exit
         </button>
-        <button onclick="event.preventDefault(); window.history.back();"
-            class="group border border-gray-300 dark:border-gray-600 rounded-lg py-1 px-2 gap-1 inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 text-sm font-medium transition-colors duration-150">
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 11.917 9.724 16.5 19 7.5" />
-            </svg>
+        @if (!$slug)
+            <button onclick="event.preventDefault(); window.history.back();"
+                class="group border border-gray-300 dark:border-gray-600 rounded-lg py-1 px-2 gap-1 inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 text-sm font-medium transition-colors duration-150">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 11.917 9.724 16.5 19 7.5" />
+                </svg>
 
-            Save as draft
-        </button>
-        <button class="group bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-1 px-2 gap-1 inline-flex items-center text-sm font-medium transition-colors duration-150">
+                Save as draft
+            </button>
+        @endif
+        <button
+            class="group bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-1 px-2 gap-1 inline-flex items-center text-sm font-medium transition-colors duration-150">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
