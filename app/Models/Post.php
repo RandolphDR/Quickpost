@@ -11,7 +11,16 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id',
+        'cover_image',
+        'category_id',
+        'title',
+        'short_description',
+        'body',
+        'slug',
+        'status',
+    ];
 
     protected function casts()
     {

@@ -11,17 +11,19 @@
             </div>
         </main>
     @else
-        <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
-            <nav class="flex space-x-4">
-                <x-nav-link>
-                    Published
-                </x-nav-link>
+        @if (Auth::check() && $username === Auth::user()->username)
+            <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
+                <nav class="flex space-x-4">
+                    <x-nav-link>
+                        Published
+                    </x-nav-link>
 
-                <x-nav-link>
-                    Drafts
-                </x-nav-link>
-            </nav>
-        </div>
+                    <x-nav-link>
+                        Drafts
+                    </x-nav-link>
+                </nav>
+            </div>
+        @endif
         <livewire:pages.blog.all :username="$username" />
     @endif
 </div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Livewire\Components\Blog\Manage;
-
+use Livewire\Attributes\On;
 use Livewire\Component;
 use App\Models\Post;
 
@@ -9,6 +9,12 @@ class Header extends Component
 {
     public $post;
     public ?string $slug = null;
+    public string $title = '';
+
+    public function saveChanges()
+    {
+        $this->dispatch('updatePosts', title: $this->title);
+    }
 
     public function mount()
     {
@@ -28,6 +34,8 @@ class Header extends Component
                 ->where('slug', $this->slug)
                 ->firstOrFail();
         }
+
+        $this->title = $this->post->title ?? '';
     }
 
     public function render()

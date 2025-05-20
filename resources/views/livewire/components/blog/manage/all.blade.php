@@ -28,16 +28,16 @@
                             Owner
                         </th>
                     @endcan
+                    @can('user-access')
+                        <th
+                            class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            Category
+                        </th>
+                    @endcan
                     <th
                         class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                         Title
                     </th>
-                    @can('user-access')
-                        <th
-                            class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                            Slug
-                        </th>
-                    @endcan
                     <th
                         class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                         Status</th>
@@ -86,10 +86,12 @@
                                 </div>
                             </td>
                         @endcan
-                        <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">{{ $post->title }}</td>
                         @can('user-access')
-                            <td class="px-4 py-2 text-sm text-gray-900 dark:text-neutral-200">{{ $post->slug }}</td>
+                            <td class="px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400">
+                                {{ $post->category->name }}
+                            </td>
                         @endcan
+                        <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">{{ $post->title }}</td>
                         <td class="px-4 py-4 text-sm">
                             @if ($post->status === 'published')
                                 <span

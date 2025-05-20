@@ -11,13 +11,6 @@
         </p>
     </section>
 
-    <p class="text-gray-500 text-xl dark:text-gray-400">
-        UPCOMING PLAN: </br>
-        - FINISH SETTING UP PROFILE PAGE </br>
-        - WE WILL DIVE DEEP INTO THE MANAGEMENT OF THE BLOG POST </br>
-        - FIX SETTINGS ADD A LAZY LOADER FOR EACH SECTION </br>
-    </p>
-
     <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
         <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
             <livewire:pages.blog.all />

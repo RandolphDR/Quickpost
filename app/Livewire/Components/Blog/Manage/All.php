@@ -16,15 +16,18 @@ class All extends Component
         $query = Post::select([
             'id',
             'user_id',
+            'category_id',
             'slug',
             'title',
             'status',
             'published_at',
             'created_at',
             'updated_at'
-        ])->with([
-                    'user:id,avatar,firstname,middlename,lastname,email'
-                ])->orderBy('id', 'asc');
+        ])
+            ->with([
+                'category:id,name',
+                'user:id,avatar,firstname,middlename,lastname,email'
+            ])->orderBy('id', 'asc');
 
         if (Gate::denies('administrator-access')) {
             $query->where('user_id', Auth::user()->id);
