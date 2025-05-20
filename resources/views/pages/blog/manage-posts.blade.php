@@ -9,7 +9,7 @@
                     {{ Gate::allows('administrator-access') ? 'Manage all blogs' : 'Manage your blogs' }}</h1>
             </aside>
             <nav class="">
-                <x-btn-nav-link class="py-2">
+                <x-btn-nav-link :href="route('blog.create')" class="py-2">
                     Create New Blog
                 </x-btn-nav-link>
             </nav>

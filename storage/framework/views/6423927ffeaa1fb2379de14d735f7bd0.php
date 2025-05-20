@@ -9,8 +9,9 @@
             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
 
-            <a href=""
-                class="inline-flex items-center gap-2 rounded-full border border-white bg-white dark:bg-indigo-600 dark:border-transparent px-8 py-3 text-indigo-600 dark:text-white/90 hover:bg-transparent hover:text-white focus:ring-3 focus:outline-hidden">
+            <a href="<?php echo e(route('blog.create')); ?>"
+                class="inline-flex items-center gap-2 rounded-full border border-white bg-white dark:bg-indigo-600 dark:border-transparent px-8 py-3 text-indigo-600 dark:text-white/90 hover:bg-transparent hover:text-white focus:ring-3 focus:outline-hidden"
+                wire:navigate>
                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
                     <span class="text-sm font-medium">Make a Post Now</span>
                 <?php else: ?>

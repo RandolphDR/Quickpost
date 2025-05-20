@@ -7,7 +7,7 @@ Route::get('explore/blog/{slug}', function ($slug) {
 })->name('blog.view');
 
 Route::middleware('can:user-access')->prefix('explore')->group(function () {
-    Route::view('explore', 'pages.explore')->name('explore');
+    Route::view('/', 'pages.explore')->name('explore');
 });
 
 Route::middleware('auth')->prefix('blog')->group(function () {

@@ -21,7 +21,7 @@
     </section>
 
     <main class="w-full flex flex-col lg:flex-row gap-8 p-6">
-        <section class="lg:w-3/4 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
+        <section class="lg:w-3/4 w-full bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden">
             <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -40,7 +40,7 @@ if (isset($__slots)) unset($__slots);
 ?>
         </section>
 
-        <aside class="lg:w-1/3 w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <aside class="lg:w-1/3 w-full bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
