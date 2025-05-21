@@ -1,8 +1,4 @@
-<?php $__env->startSection('title', 'Create Post'); ?>
-
-<?php $__env->startPush('scripts'); ?>
-    <script src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.min.js"></script>
-<?php $__env->stopPush(); ?>
+<?php $__env->startSection('title', 'Create Posts'); ?>
 
 <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
@@ -14,13 +10,12 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <main class="w-full max-w-7xl gap-2 flex flex-col justify-start items-center">
-        <header class="w-full bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden">
-            <?php
+    <main class="w-full max-w-7xl flex flex-col justify-start items-center">
+        <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('components.blog.manage.header', []);
+[$__name, $__params] = $__split('components.blog.manage.create-form', []);
 
 $__html = app('livewire')->mount($__name, $__params, 'lw-2435640851-0', $__slots ?? [], get_defined_vars());
 
@@ -32,25 +27,6 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
-        </header>
-        <section class="w-full p-4 bg-white dark:bg-gray-800 shadow-md rounded-xl">
-            <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('components.blog.manage.create-form', []);
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-2435640851-1', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-        </section>
     </main>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

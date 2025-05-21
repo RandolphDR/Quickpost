@@ -3,7 +3,7 @@
     <header class="w-full bg-white dark:bg-gray-800 shadow-md rounded-xl">
         <div class="py-3 px-4 flex justify-between items-center">
             <aside class="w-1/2">
-                <input type="text" wire:model.defer="title"
+                <input type="text" wire:model="title"
                     class="w-full text-xl text-gray-800 dark:text-neutral-300 font-medium bg-transparent border-0 border-b border-gray-300 dark:border-neutral-600 focus:border-gray-800 dark:focus:border-neutral-300 outline-none focus:ring-0"
                     placeholder="Untitled Blog">
                 <x-input-error class="mt-2" :messages="$errors->get('title')" />
