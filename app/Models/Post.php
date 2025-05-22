@@ -21,6 +21,7 @@ class Post extends Model
         'body',
         'slug',
         'status',
+        'published_at'
     ];
 
     protected function casts()
@@ -33,7 +34,7 @@ class Post extends Model
     public static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($post) {
             $post->slug = self::generateUniqueSlug($post->title);
         });

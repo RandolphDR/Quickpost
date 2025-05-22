@@ -55,7 +55,7 @@
                         Edit
                     </x-dropdown-link>
                     <x-dropdown-link
-                        x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion-{{ $post->slug }}')">
+                        x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion-{{ $post->id }}')">
                         Delete
                     </x-dropdown-link>
                 </x-slot>
@@ -63,7 +63,7 @@
         @endif
     </div>
 
-    <x-modal name="confirm-post-deletion-{{ $post->slug }}" focusable>
+    <x-modal name="confirm-post-deletion-{{ $post->id }}" focusable>
         <div class="p-6">
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 Delete Blog Post
@@ -78,7 +78,7 @@
                     Cancel
                 </x-secondary-button>
 
-                <x-danger-button wire:click="deletePost('{{ $post->slug }}')" x-on:click="$dispatch('close')">
+                <x-danger-button wire:click="deletePost('{{ $post->id }}')" x-on:click="$dispatch('close')">
                     Delete Blogpost
                 </x-danger-button>
             </div>

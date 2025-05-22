@@ -99,12 +99,14 @@ class EditForm extends Component
         return $this->redirect(route('blog.view', $this->post->slug), navigate: true);
     }
 
-    #[On('deletePost')]
-    public function deletePost($slug)
-    {
-        $post = Post::select(['id', 'slug'])->findOrFail($slug);
-        $post->delete();
-    }
+    // #[On('deletePost')]
+    // public function deletePost($slug)
+    // {
+    //     $post = Post::select(['id', 'slug'])->findOrFail($slug);
+    //     // $post->delete();
+
+    //     dd($post->toArray());
+    // }
 
     public function render()
     {

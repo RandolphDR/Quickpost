@@ -18,6 +18,13 @@ class All extends Component
         $this->resetPage();
     }
 
+    public function mount()
+    {
+        if ($notification = session('notify')) {
+            $this->dispatch('notify', $notification);
+        }
+    }
+
     public function render()
     {
         $query = Post::query()->with('user');
@@ -29,8 +36,7 @@ class All extends Component
 
             if (!$currentUser?->is($user)) {
                 $query->where('status', 'published');
-            }
-            else if ($this->status !== 'all') {
+            } else if ($this->status !== 'all') {
                 $query->where('status', $this->status);
             }
         } else {
