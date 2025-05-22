@@ -38,7 +38,7 @@
 
     <!-- Main Content -->
     <article class="w-full">
-        <p class="text-gray-900 dark:text-neutral-200">{{ $post->body }}</p>
+        <p class="text-gray-900 dark:text-neutral-200 whitespace-pre-line">{{ $post->body }}</p>
     </article>
 
     <hr class="w-full my-2 border-gray-700 dark:border-neutral-200">
