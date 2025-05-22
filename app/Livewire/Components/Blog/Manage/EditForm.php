@@ -7,6 +7,8 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
 use App\Models\{Post, Category};
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Session;
 
 class EditForm extends Component
 {
@@ -89,10 +91,19 @@ class EditForm extends Component
 
         $this->post->update($validated);
 
-        $this->dispatch('notify', [
+        Session::flash('notify', [
             'message' => 'Post updated successfully.',
             'type' => 'success',
         ]);
+
+        return $this->redirect(route('blog.view', $this->post->slug), navigate: true);
+    }
+
+    #[On('deletePost')]
+    public function deletePost($slug)
+    {
+        $post = Post::select(['id', 'slug'])->findOrFail($slug);
+        $post->delete();
     }
 
     public function render()

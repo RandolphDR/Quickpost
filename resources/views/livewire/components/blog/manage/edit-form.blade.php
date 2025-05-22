@@ -94,6 +94,7 @@
                     @endforeach
                 </select>
             </section>
+            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
         </aside>
 
         <section class="w-3/4 p-4 flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-md rounded-xl">

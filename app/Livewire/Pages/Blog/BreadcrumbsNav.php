@@ -10,6 +10,11 @@ class BreadcrumbsNav extends Component
 
     public $post;
 
+    public function deletePost($slug) {
+        // $this->dispatch('', []);
+        dd($slug);
+    }
+
     public function mount($slug)
     {
 

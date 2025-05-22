@@ -55,6 +55,10 @@ class ViewPost extends Component
 
         $this->isoTime = $this->post->created_at->toIso8601String();
         $this->timeDisplay = $this->post->created_at->diffForHumans();
+
+        if ($notification = session('notify')) {
+            $this->dispatch('notify', $notification);
+        }
     }
 
     public function render()

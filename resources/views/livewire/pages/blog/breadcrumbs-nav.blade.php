@@ -50,14 +50,38 @@
                     </button>
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('blog.edit', $post->slug)" class="text-sm px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <x-dropdown-link :href="route('blog.edit', $post->slug)"
+                        class="text-sm px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700">
                         Edit
                     </x-dropdown-link>
-                    <x-dropdown-link class="text-sm px-3 py-1.5 text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <x-dropdown-link
+                        x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion-{{ $post->slug }}')">
                         Delete
                     </x-dropdown-link>
                 </x-slot>
             </x-dropdown>
         @endif
     </div>
+
+    <x-modal name="confirm-post-deletion-{{ $post->slug }}" focusable>
+        <div class="p-6">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Delete Blog Post
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Are you sure you want to delete this blogpost? This action cannot be undone.
+            </p>
+
+            <div class="mt-6 flex justify-end gap-4">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    Cancel
+                </x-secondary-button>
+
+                <x-danger-button wire:click="deletePost('{{ $post->slug }}')" x-on:click="$dispatch('close')">
+                    Delete Blogpost
+                </x-danger-button>
+            </div>
+        </div>
+    </x-modal>
 </nav>

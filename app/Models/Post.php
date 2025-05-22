@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -27,6 +28,38 @@ class Post extends Model
         return [
             'published_at' => 'datetime',
         ];
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($post) {
+            $post->slug = self::generateUniqueSlug($post->title);
+        });
+
+        static::updating(function ($post) {
+            if ($post->isDirty('title')) {
+                $post->slug = self::generateUniqueSlug($post->title, $post->id);
+            }
+        });
+    }
+
+    protected static function generateUniqueSlug($title, $ignoreId = null)
+    {
+        $slug = Str::slug($title);
+        $originalSlug = $slug;
+        $counter = 1;
+
+        while (
+            self::where('slug', $slug)
+                ->when($ignoreId, fn($query) => $query->where('id', '!=', $ignoreId))
+                ->exists()
+        ) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
+
+        return $slug;
     }
 
     public function user()
