@@ -21,6 +21,10 @@
                     <x-nav-link>
                         Drafts
                     </x-nav-link>
+
+                    <x-nav-link>
+                        Trashed
+                    </x-nav-link>
                 </nav>
             </div>
         @endif

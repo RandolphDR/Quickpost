@@ -30,8 +30,19 @@
                     </svg>
                     View Post
                 </a>
+                <button type="button"
+                    x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion-{{ $post->id }}')"
+                    class="group bg-red-600 hover:bg-red-500 active:bg-red-700 text-white rounded-lg py-1 px-2 gap-1 inline-flex items-center text-sm font-medium transition-colors duration-150">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Delete Blog Post
+                </button>
                 <button type="submit"
-                    class="group bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-1 px-2 gap-1 inline-flex items-center text-sm font-medium transition-colors duration-150">
+                    class="group bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white rounded-lg py-1 px-2 gap-1 inline-flex items-center text-sm font-medium transition-colors duration-150">
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -109,7 +120,8 @@
             </section>
 
             <section class="w-full">
-                <label for="body" class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Body</label>
+                <label for="body"
+                    class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Body</label>
                 <textarea id="body" rows="20" wire:model.defer="body"
                     class="leading-relaxed tracking-wide resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter Body" required></textarea>
@@ -117,4 +129,26 @@
             </section>
         </section>
     </main>
+
+    <x-modal name="confirm-post-deletion-{{ $post->id }}" focusable>
+        <div class="p-6">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Delete Blog Post
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Are you sure you want to delete this blogpost? This action cannot be undone.
+            </p>
+
+            <div class="mt-6 flex justify-end gap-4">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    Cancel
+                </x-secondary-button>
+
+                <x-danger-button wire:click.prevent="deletePost('{{ $post->id }}')" x-on:click="$dispatch('close')">
+                    Delete Blogpost
+                </x-danger-button>
+            </div>
+        </div>
+    </x-modal>
 </form>

@@ -28,10 +28,26 @@
                 {{ $post->user->fullname }}
             </a>
             <p class="text-indigo-600 text-3xl">•</p>
-
-            <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-xs">
-                {{ $timeDisplay }}
-            </time>
+            <div class="gap-1 flex">
+                <p class="text-xs text-gray-900 dark:text-neutral-200">Created Date:</p>
+                <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-xs">
+                    {{ $createdAt }}
+                </time>
+            </div>
+            <p class="text-indigo-600 text-3xl">•</p>
+            <div class="gap-1 flex">
+                <p class="text-xs text-gray-900 dark:text-neutral-200">Last Updated:</p>
+                <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-xs">
+                    {{ $updatedAt }}
+                </time>
+            </div>
+            <p class="text-indigo-600 text-3xl">•</p>
+            <div class="gap-1 flex">
+                <p class="text-xs text-gray-900 dark:text-neutral-200">Published Date:</p>
+                <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-xs">
+                    {{ $publishedAt }}
+                </time>
+            </div>
         </div>
         <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100">{{ $post->title }}</h1>
     </header>

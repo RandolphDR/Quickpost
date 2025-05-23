@@ -29,11 +29,29 @@
 
             </a>
             <p class="text-indigo-600 text-3xl">•</p>
+            <div class="gap-1 flex">
+                <p class="text-xs text-gray-900 dark:text-neutral-200">Created Date:</p>
+                <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
+                    <?php echo e($createdAt); ?>
 
-            <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
-                <?php echo e($timeDisplay); ?>
+                </time>
+            </div>
+            <p class="text-indigo-600 text-3xl">•</p>
+            <div class="gap-1 flex">
+                <p class="text-xs text-gray-900 dark:text-neutral-200">Last Updated:</p>
+                <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
+                    <?php echo e($updatedAt); ?>
 
-            </time>
+                </time>
+            </div>
+            <p class="text-indigo-600 text-3xl">•</p>
+            <div class="gap-1 flex">
+                <p class="text-xs text-gray-900 dark:text-neutral-200">Published Date:</p>
+                <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
+                    <?php echo e($publishedAt); ?>
+
+                </time>
+            </div>
         </div>
         <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100"><?php echo e($post->title); ?></h1>
     </header>

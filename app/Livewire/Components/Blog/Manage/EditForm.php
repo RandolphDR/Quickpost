@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Components\Blog\Manage;
 
+use App\Livewire\Actions\Blog\Delete;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
@@ -25,6 +26,7 @@ class EditForm extends Component
 
     public function mount($slug)
     {
+
         $this->post = Post::select([
             'id',
             'user_id',
@@ -41,6 +43,10 @@ class EditForm extends Component
             ->with(['user:id,username,avatar,firstname,lastname,middlename', 'category:id,name'])
             ->where('slug', $slug)
             ->firstOrFail();
+
+        if (Gate::denies('manage-post', $this->post)) {
+            abort(403);
+        }
 
         $this->existingCoverImage = $this->post->cover_image ?? '';
         $this->title = $this->post->title;
@@ -99,14 +105,23 @@ class EditForm extends Component
         return $this->redirect(route('blog.view', $this->post->slug), navigate: true);
     }
 
-    // #[On('deletePost')]
-    // public function deletePost($slug)
+    // public function deletePost($postId)
     // {
-    //     $post = Post::select(['id', 'slug'])->findOrFail($slug);
-    //     // $post->delete();
+    //     $post = Post::select(['id'])->findOrFail($postId);
+    //     $post->delete();
 
-    //     dd($post->toArray());
+    //     Session::flash('notify', [
+    //         'message' => 'Post deleted successfully.',
+    //         'type' => 'error',
+    //     ]);
+
+    //     return $this->redirect(route('explore'), navigate: true);
     // }
+
+    public function deletePost($postId)
+    {
+        return (new Delete())($this, $postId);
+    }
 
     public function render()
     {

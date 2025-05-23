@@ -26,6 +26,10 @@ class CreateForm extends Component
         'body' => 'required|string',
     ];
 
+    // private $messages = [
+    //     'category_id.required' => 'Please choose post category'
+    // ];
+
     public function mount()
     {
         $this->categories = Category::select(['id', 'name'])
@@ -55,6 +59,7 @@ class CreateForm extends Component
     private function createPost($status)
     {
         $coverImagePath = null;
+        $publishDate = null;
 
         if ($this->newCoverImage) {
             $extension = $this->newCoverImage->getClientOriginalExtension();
@@ -66,6 +71,10 @@ class CreateForm extends Component
             $coverImagePath = 'storage/' . $path;
         }
 
+        if($status === 'published') {
+            $publishDate = now();
+        }
+
         $post = Post::create([
             'title' => $this->title,
             'cover_image' => $coverImagePath,
@@ -73,7 +82,8 @@ class CreateForm extends Component
             'short_description' => $this->short_description,
             'body' => $this->body,
             'status' => $status,
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'published_at' => $publishDate
         ]);
 
         Session::flash('notify', [

@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Livewire\Pages\Blog;
-use Illuminate\Support\Facades\{Gate, Session};
+
+use Illuminate\Support\Facades\{Auth, Gate, Session};
+use App\Livewire\Actions\Blog\Delete;
 use Livewire\Component;
 use App\Models\Post;
 
@@ -9,19 +11,11 @@ class BreadcrumbsNav extends Component
 {
 
     public $post;
-
     public function deletePost($postId)
     {
-        $post = Post::select(['id'])->findOrFail($postId);
-        $post->delete();
-
-        Session::flash('notify', [
-            'message' => 'Post deleted successfully.',
-            'type' => 'success',
-        ]);
-
-        return $this->redirect(route('explore'), navigate: true);
+        return (new Delete())($this, $postId);
     }
+
 
     public function mount($slug)
     {
@@ -42,7 +36,7 @@ class BreadcrumbsNav extends Component
             ->firstOrFail();
 
         if ($this->post->status !== 'published' && Gate::denies('manage-post', $this->post)) {
-            abort(404);
+            abort(403);
         }
     }
 

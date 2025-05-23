@@ -12,24 +12,43 @@ class ViewPost extends Component
     public string $timeDisplay;
     public string $isoTime;
 
-    protected function calculateTimeDisplay(): string
+    public string $createdAt, $publishedAt, $updatedAt;
+
+    protected function calculateTimeDisplay(string $field): string
     {
-        $createdAt = $this->post->created_at;
+        $timestamp = $this->post->{$field} ?? null;
+
+        if (!$timestamp) {
+            return 'N/A';
+        }
+
         $now = now();
 
-        if ($createdAt->diffInSeconds($now) < 60) {
+        if ($timestamp->diffInSeconds($now) < 60) {
             return 'Just Now';
         }
 
-        if ($createdAt->diffInHours($now) < 24) {
-            return $createdAt->diffForHumans();
+        if ($timestamp->diffInHours($now) < 24) {
+            return $timestamp->diffForHumans();
         }
 
-        return $createdAt->format('M j, Y \a\t g:i A');
+        return $timestamp->format('M j, Y \a\t g:i A');
+    }
+
+    protected function setTimeDisplay()
+    {
+        $this->createdAt = $this->calculateTimeDisplay('created_at');
+        $this->publishedAt = $this->calculateTimeDisplay('published_at');
+        $this->updatedAt = $this->calculateTimeDisplay('updated_at');
     }
 
     public function mount($slug)
     {
+
+        if ($notification = session('notify')) {
+            $this->dispatch('notify', $notification);
+        }
+
         $this->post = Post::with([
             'user:id,username,avatar,firstname,lastname,middlename',
             'category:id,name'
@@ -43,6 +62,7 @@ class ViewPost extends Component
                 'body',
                 'slug',
                 'status',
+                'published_at',
                 'created_at',
                 'updated_at'
             ])
@@ -53,12 +73,7 @@ class ViewPost extends Component
             abort(404);
         }
 
-        $this->isoTime = $this->post->created_at->toIso8601String();
-        $this->timeDisplay = $this->post->created_at->diffForHumans();
-
-        if ($notification = session('notify')) {
-            $this->dispatch('notify', $notification);
-        }
+        $this->setTimeDisplay();
     }
 
     public function render()
