@@ -90,7 +90,7 @@ if (isset($__slots)) unset($__slots);
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                         </p>
                         <p class="text-gray-600 dark:text-gray-400 text-xs">
-                            Posting as registered user
+                            Posting as <?php echo e(auth()->user()->is_verified ? 'verified' : 'registered'); ?> user
                         </p>
                     </span>
                 </div>

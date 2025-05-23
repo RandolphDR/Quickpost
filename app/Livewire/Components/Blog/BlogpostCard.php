@@ -10,7 +10,7 @@ class BlogpostCard extends Component
 {
 
     public $post;
-
+    
     public function placeholder()
     {
         return <<<'HTML'
@@ -43,7 +43,7 @@ class BlogpostCard extends Component
 
     public function mount($postId)
     {
-        $this->post = Post::with(['user:id,username,avatar,firstname,lastname,middlename'])
+        $this->post = Post::with(['user:id,username,avatar,firstname,lastname,middlename,is_verified'])
             ->select(['id', 'cover_image', 'title', 'slug', 'short_description', 'user_id', 'created_at', 'updated_at'])
             ->where('id', $postId)
             ->firstOrFail();
