@@ -8,7 +8,6 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
 use App\Models\{Post, Category};
-use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Session;
 
 class EditForm extends Component
@@ -24,9 +23,28 @@ class EditForm extends Component
     public string $short_description = '';
     public string $body = '';
 
+    protected $rules = [
+        'newCoverImage' => ['nullable', 'image', 'max:10240'],
+        'category_id' => ['required', 'exists:categories,id'],
+        'title' => ['required', 'string', 'max:255'],
+        'short_description' => ['required', 'string', 'max:255'],
+        'body' => ['required', 'string'],
+    ];
+
+    protected $messages = [
+        'newCoverImage.image' => 'The cover image must be a valid image file.',
+        'newCoverImage.max' => 'The cover image must not be larger than 10MB.',
+        'category_id.required' => 'The category is required.',
+        'category_id.exists' => 'The selected category is invalid.',
+        'title.required' => 'The title is required.',
+        'title.max' => 'The title must not exceed 255 characters.',
+        'short_description.required' => 'The short description is required.',
+        'short_description.max' => 'The short description must not exceed 255 characters.',
+        'body.required' => 'The post content is required.',
+    ];
+
     public function mount($slug)
     {
-
         $this->post = Post::select([
             'id',
             'user_id',
@@ -37,6 +55,7 @@ class EditForm extends Component
             'body',
             'slug',
             'status',
+            'published_at',
             'created_at',
             'updated_at'
         ])
@@ -44,9 +63,7 @@ class EditForm extends Component
             ->where('slug', $slug)
             ->firstOrFail();
 
-        if (Gate::denies('manage-post', $this->post)) {
-            abort(403);
-        }
+        Gate::authorize('manage-post', $this->post);
 
         $this->existingCoverImage = $this->post->cover_image ?? '';
         $this->title = $this->post->title;
@@ -59,43 +76,56 @@ class EditForm extends Component
             ->get();
     }
 
-    public function updatePosts()
+    public function saveChanges()
+    {
+        $this->validate();
+
+        $status = $this->post->status === 'published' ? 'published' : $this->post->status;
+        $this->updatePosts($status);
+    }
+
+    public function publish()
+    {
+        if ($this->post->status !== 'draft') {
+            $this->dispatch('notify', [
+                'message' => 'Post is already published.',
+                'type' => 'error',
+            ]);
+            return;
+        }
+
+        $this->validate();
+        $this->updatePosts('published');
+    }
+
+    private function updatePosts($status)
     {
         Gate::authorize('manage-post', $this->post);
 
-        $validated = $this->validate([
-            'newCoverImage' => ['nullable', 'image', 'max:10240'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'title' => ['required', 'string', 'max:255'],
-            'short_description' => ['required', 'string', 'max:255'],
-            'body' => ['required', 'string'],
-        ], [
-            'newCoverImage.image' => 'The cover image must be a valid image file.',
-            'newCoverImage.max' => 'The cover image must not be larger than 10MB.',
-            'category_id.required' => 'The category is required.',
-            'category_id.exists' => 'The selected category is invalid.',
-            'title.required' => 'The title is required.',
-            'title.max' => 'The title must not exceed 255 characters.',
-            'short_description.required' => 'The short description is required.',
-            'short_description.max' => 'The short description must not exceed 255 characters.',
-            'body.required' => 'The post content is required.',
-        ]);
+        $coverImage = $this->existingCoverImage;
 
         if ($this->newCoverImage) {
             $extension = $this->newCoverImage->getClientOriginalExtension();
             $originalName = pathinfo($this->newCoverImage->getClientOriginalName(), PATHINFO_FILENAME);
-            $slug = Str::slug($originalName);
-            $filename = $slug . '-' . now()->format('mdYHis') . '.' . $extension;
-
+            $filename = Str::slug($originalName) . '-' . now()->format('mdYHis') . '.' . $extension;
             $path = $this->newCoverImage->storeAs('post_cover_images', $filename, 'public');
-            $validated['cover_image'] = 'storage/' . $path;
-        } else {
-            $validated['cover_image'] = $this->existingCoverImage;
+            $coverImage = 'storage/' . $path;
         }
 
-        unset($validated['newCoverImage']);
+        $updateData = [
+            'title' => $this->title,
+            'category_id' => $this->category_id,
+            'short_description' => $this->short_description,
+            'body' => $this->body,
+            'status' => $status,
+            'cover_image' => $coverImage,
+        ];
 
-        $this->post->update($validated);
+        if ($this->post->status === 'draft' && $status === 'published') {
+            $updateData['published_at'] = now();
+        }
+
+        $this->post->update($updateData);
 
         Session::flash('notify', [
             'message' => 'Post updated successfully.',
@@ -104,19 +134,6 @@ class EditForm extends Component
 
         return $this->redirect(route('blog.view', $this->post->slug), navigate: true);
     }
-
-    // public function deletePost($postId)
-    // {
-    //     $post = Post::select(['id'])->findOrFail($postId);
-    //     $post->delete();
-
-    //     Session::flash('notify', [
-    //         'message' => 'Post deleted successfully.',
-    //         'type' => 'error',
-    //     ]);
-
-    //     return $this->redirect(route('explore'), navigate: true);
-    // }
 
     public function deletePost($postId)
     {

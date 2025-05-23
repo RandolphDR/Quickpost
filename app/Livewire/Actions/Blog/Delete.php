@@ -12,7 +12,7 @@ class Delete
     {
         $post = Post::select(['id', 'user_id'])->findOrFail($postId);
 
-        if (!Gate::allows('manage-post', $post)) {
+        if (Gate::denies('manage-post', $post)) {
             $component->dispatch('notify', [
                 'message' => 'You are not authorized to delete this post.',
                 'type' => 'error',

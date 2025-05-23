@@ -133,13 +133,36 @@
                                     <x-dropdown-link :href="route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
                                         Edit
                                     </x-dropdown-link>
-                                    <x-dropdown-link>
+                                    <x-dropdown-link
+                                        x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion-{{ $post->id }}')">
                                         Delete
                                     </x-dropdown-link>
                                 </x-slot>
                             </x-dropdown>
                         </td>
                     </tr>
+                    <x-modal name="confirm-post-deletion-{{ $post->id }}" focusable>
+                        <div class="p-6">
+                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                Delete Blog Post
+                            </h2>
+
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                Are you sure you want to delete this blogpost? This action cannot be undone.
+                            </p>
+
+                            <div class="mt-6 flex justify-end gap-4">
+                                <x-secondary-button x-on:click="$dispatch('close')">
+                                    Cancel
+                                </x-secondary-button>
+
+                                <x-danger-button wire:click="deletePost('{{ $post->id }}')"
+                                    x-on:click="$dispatch('close')">
+                                    Delete Blogpost
+                                </x-danger-button>
+                            </div>
+                        </div>
+                    </x-modal>
                 @endforeach
             </tbody>
         </table>

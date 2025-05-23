@@ -11,6 +11,26 @@ class All extends Component
 
     use WithPagination;
 
+    public function deletePost($postId)
+    {
+        $post = Post::select(['id', 'user_id'])->findOrFail($postId);
+
+        if (Gate::denies('manage-post', $post)) {
+            $this->dispatch('notify', [
+                'message' => 'You are not authorized to delete this post.',
+                'type' => 'error',
+            ]);
+            return;
+        }
+
+        $post->delete();
+
+        $this->dispatch('notify', [
+            'message' => 'Post deleted successfully.',
+            'type' => 'success',
+        ]);
+    }
+
     public function render()
     {
         $query = Post::select([

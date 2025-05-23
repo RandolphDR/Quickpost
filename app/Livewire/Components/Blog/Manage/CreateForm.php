@@ -26,10 +26,6 @@ class CreateForm extends Component
         'body' => 'required|string',
     ];
 
-    // private $messages = [
-    //     'category_id.required' => 'Please choose post category'
-    // ];
-
     public function mount()
     {
         $this->categories = Category::select(['id', 'name'])
@@ -40,11 +36,11 @@ class CreateForm extends Component
     public function saveDraft()
     {
         $this->validate([
-            'title' => 'sometimes|string|max:255',
+            'title' => 'required|string|max:255',
             'newCoverImage' => 'nullable|image|max:10240',
-            'category_id' => 'sometimes|exists:categories,id',
-            'short_description' => 'sometimes|string|max:500',
-            'body' => 'sometimes|string',
+            'category_id' => 'required|exists:categories,id',
+            'short_description' => 'required|string|max:500',
+            'body' => 'required|string',
         ]);
 
         $this->createPost('draft');
