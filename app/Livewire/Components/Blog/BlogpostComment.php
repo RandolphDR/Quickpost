@@ -73,7 +73,7 @@ class BlogpostComment extends Component
     {
         $this->comment = Comment::with([
             'user' => function ($query) {
-                $query->select('id', 'avatar', 'username', 'firstname', 'middlename', 'lastname');
+                $query->select('id', 'avatar', 'username', 'firstname', 'middlename', 'lastname', 'is_verified');
             },
             'post' => function ($query) {
                 $query->select('id', 'user_id');

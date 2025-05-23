@@ -50,7 +50,7 @@ class ViewPost extends Component
         }
 
         $this->post = Post::with([
-            'user:id,username,avatar,firstname,lastname,middlename',
+            'user:id,username,avatar,firstname,lastname,middlename,is_verified',
             'category:id,name'
         ])
             ->select([

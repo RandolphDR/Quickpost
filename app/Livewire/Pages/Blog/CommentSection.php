@@ -94,7 +94,7 @@ class CommentSection extends Component
                     $query->latest()->select('id', 'post_id', 'user_id', 'body', 'created_at');
                 },
                 'comments.user' => function ($query) {
-                    $query->select('id', 'username', 'firstname', 'middlename', 'lastname', 'avatar');
+                    $query->select('id', 'username', 'firstname', 'middlename', 'lastname', 'avatar', 'is_verified');
                 },
             ])
             ->firstOrFail();
