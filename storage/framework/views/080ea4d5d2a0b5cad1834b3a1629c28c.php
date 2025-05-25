@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     
-    <title><?php echo e(config('app.name')); ?> | Dashboard</title>
+    <title>Dashboard | <?php echo $__env->yieldContent('title', config('app.name')); ?></title>
     <link rel="icon" href="<?php echo e(asset('website-logo.svg')); ?>" type="image/x-icon">
     
 
@@ -30,8 +30,9 @@
     
 </head>
 
-<body class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
-    <aside class="py-3 px-6 min-w-[300px] w-[25%] border border-gray-300">
+<body class="bg-gray-100 dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
+    
+    <aside class="min-w-[300px] w-[25%]">
         <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -49,10 +50,33 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
     </aside>
-    <main class="py-3 px-6 w-full h-screen border border-gray-300">
+    
 
+    
+    <main class="w-full h-screen">
+        <header class="">
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('components.dashboard.header', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+        </header>
+        <section class="p-4">
+            <?php echo e($slot); ?>
+
+        </section>
     </main>
-
     
 
     <!-- Scripts -->

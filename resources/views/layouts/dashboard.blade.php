@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Tab Settings --}}
-    <title>{{ config('app.name') }} | Dashboard</title>
+    <title>Dashboard | @yield('title', config('app.name'))</title>
     <link rel="icon" href="{{ asset('website-logo.svg') }}" type="image/x-icon">
     {{-- End of Tab Settings --}}
 
@@ -30,31 +30,23 @@
     {{-- End of Theme Checker --}}
 </head>
 
-<body class="bg-white dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
-    <aside class="py-3 px-6 min-w-[300px] w-[25%] border border-gray-300">
+<body class="bg-gray-100 dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
+    {{-- Aside Navigationbar --}}
+    <aside class="min-w-[300px] w-[25%]">
         <livewire:components.dashboard.navigation />
     </aside>
-    <main class="py-3 px-6 w-full h-screen border border-gray-300">
+    {{-- End of Aside Navigationbar --}}
 
+    {{-- Main Content --}}
+    <main class="w-full h-screen">
+        <header class="">
+            <livewire:components.dashboard.header />
+        </header>
+        <section class="p-4">
+            {{ $slot }}
+        </section>
     </main>
-
-    {{-- <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex">
-        <aside class="min-h-screen w-[20%] bg-white dark:bg-gray-900">
-            <livewire:components.dashboard.navigation />
-        </aside>
-        <main class="flex-1 bg-white dark:bg-gray-900 w-full">
-            <div class="w-full h-full flex flex-col">
-                <livewire:components.dashboard.header />
-                <section class="flex-1 border border-gray-700 flex flex-col justify-center items-center">
-                    <h1 class="text-black dark:text-white/90 text-4xl font-medium">
-                        This Dashboard is Under Development.
-                    </h1>
-                    <h1 class="text-black dark:text-white/90 text-4xl font-medium">Hi
-                        {{ auth()->user()->name . ' Your Role is: ' . auth()->user()->role }}</h1>
-                </section>
-            </div>
-        </main>
-    </div> --}}
+    {{-- End of Main Content --}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/layouts/app.js') }}"></script>

@@ -79,6 +79,7 @@
                         </path>
                     </svg>
                 </button>
+                {{-- End of Theme Toggle --}}
                 <!-- Guest Links -->
                 @guest
                     <div class="hidden sm:flex space-x-8">
@@ -91,6 +92,7 @@
                         </x-nav-link>
                     </div>
                 @endguest
+                {{-- End of Guest Links --}}
 
                 @auth
                     <div class="hidden sm:flex sm:items-center">
