@@ -9,7 +9,7 @@
             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
 
-            <a href="<?php echo e(route('blog.create')); ?>"
+            <a href="<?php echo e(Auth::check() ? route('blog.create') : route('login')); ?>"
                 class="inline-flex items-center gap-2 rounded-full border border-white bg-white dark:bg-indigo-600 dark:border-transparent px-8 py-3 text-indigo-600 dark:text-white/90 hover:bg-transparent hover:text-white focus:ring-3 focus:outline-hidden"
                 wire:navigate>
                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
@@ -138,13 +138,15 @@
                 <ul class="mt-8 space-y-4 text-sm">
                     <li>
                         <a href="<?php echo e(route('contact')); ?>"
-                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
+                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                            wire:navigate>
                             Contact Us
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300">
+                        <a href="<?php echo e(route('contact')); ?>"
+                            class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-300"
+                            wire:navigate>
                             FAQs
                         </a>
                     </li>

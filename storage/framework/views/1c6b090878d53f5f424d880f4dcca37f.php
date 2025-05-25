@@ -189,6 +189,7 @@ if (isset($__slots)) unset($__slots);
                         </path>
                     </svg>
                 </button>
+                
                 <!-- Guest Links -->
                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->guest()): ?>
                     <div class="hidden sm:flex space-x-8">
@@ -239,6 +240,7 @@ if (isset($__slots)) unset($__slots);
 <?php endif; ?>
                     </div>
                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                
 
                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
                     <div class="hidden sm:flex sm:items-center">

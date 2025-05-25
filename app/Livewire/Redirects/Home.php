@@ -15,7 +15,6 @@ class Home extends Component
         $homeRoute = 'homepage';
 
         if (Auth::check()) {
-
             if (Gate::allows('developer-access')) {
                 $homeRoute = 'admin.dashboard';
             } else if (Gate::allows('administrator-access')) {

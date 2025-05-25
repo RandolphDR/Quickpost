@@ -1,4 +1,4 @@
-<div class="p-5">
+<div class="py-5">
     <p class="font-outfit-sans text-center text-sm text-gray-500 dark:text-gray-400">
         &#169; <?php echo e(date('Y')); ?> <?php echo e(config('app.name')); ?>. Developed by <?php echo e(config('app.developer')); ?>
 
