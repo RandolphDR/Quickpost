@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Redirects\Home;
 
 Route::get('/', Home::class);
-Route::view('welcome', 'welcome')->name('homepage');
-Route::view('about', 'pages.about')->name('about');
-Route::view('contact', 'pages.contact')->name('contact');
+
+Route::middleware(App\Http\Middleware\GuestUserAccess::class)->group(function () {
+    Route::view('welcome', 'welcome')->name('homepage');
+    Route::view('about', 'pages.about')->name('about');
+    Route::view('contact', 'pages.contact')->name('contact');
+});
 
 /* Import Routes Here */
 require __DIR__ . '/auth.php';

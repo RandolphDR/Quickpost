@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="mt-8 gap-3 flex justify-center">
-                        <a href="#"
+                        <a href="<?php echo e(route('blog.create')); ?>"
                             class="py-3 px-4 inline-flex justify-center items-center rounded-lg border border-transparent bg-blue-600 text-sm font-medium text-white hover:bg-blue-800 active:bg-blue-600 focus:bg-blue-700 focus:outline-none active:ring-2 active:ring-indigo-500 active:ring-offset-2 dark:focus:ring-offset-gray-800 tracking-wider transition ease-in-out duration-150"
                             wire:navigate>
                             CREATE YOUR BLOG
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>  
 
     <section class="p-4 w-full max-w-7xl flex flex-col justify-start items-start">
         <?php

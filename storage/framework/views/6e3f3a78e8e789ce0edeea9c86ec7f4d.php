@@ -85,6 +85,14 @@ if (isset($__slots)) unset($__slots);
             <p class="text-xl text-gray-400 dark:text-gray-500">
                 <?php echo $__env->yieldContent('message'); ?>
             </p>
+            <button onclick="event.preventDefault(); window.history.back();"
+                class="mt-4 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg transition-colors duration-200 hover:bg-blue-700">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Go Back
+            </button>
         </article>
     </main>
     
