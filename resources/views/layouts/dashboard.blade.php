@@ -39,15 +39,23 @@
 
     {{-- Main Content --}}
     <main class="ml-[20%] w-full min-h-screen">
+        {{-- Content Header --}}
         <header class="fixed top-0 left-[20%] right-0 h-20 z-10">
             <livewire:components.dashboard.header />
         </header>
+        {{-- End of Content Header --}}
+
+        {{-- Content Slot --}}
         <section class="mt-20 pt-5 px-5">
             {{ $slot }}
         </section>
+        {{-- End of Content Slot --}}
+
+        {{-- Footer --}}
         <footer>
             <livewire:components.dashboard.footer />
         </footer>
+        {{-- End of Footer --}}
     </main>
     {{-- End of Main Content --}}
 

@@ -75,6 +75,11 @@
                         </div>
 
                         <div class="py-1">
+                            <x-dropdown-link :href="route('user.profile', ['username' => Auth::user()->username])" :active="request()->routeIs('user.profile') &&
+                                request()->route('username') === Auth::user()->username">
+                                {{ __('My Profile') }}
+                            </x-dropdown-link>
+
                             <x-dropdown-link :href="route('user.settings')" :active="request()->routeIs('user.settings')">
                                 {{ __('Settings') }}
                             </x-dropdown-link>

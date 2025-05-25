@@ -54,6 +54,7 @@ if (isset($__slots)) unset($__slots);
 
     
     <main class="ml-[20%] w-full min-h-screen">
+        
         <header class="fixed top-0 left-[20%] right-0 h-20 z-10">
             <?php
 $__split = function ($name, $params = []) {
@@ -72,10 +73,16 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
         </header>
+        
+
+        
         <section class="mt-20 pt-5 px-5">
             <?php echo e($slot); ?>
 
         </section>
+        
+
+        
         <footer>
             <?php
 $__split = function ($name, $params = []) {
@@ -94,6 +101,7 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
         </footer>
+        
     </main>
     
 
