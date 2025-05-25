@@ -1,5 +1,5 @@
 <div
-    class="w-full h-20 flex flex-row justify-between items-center py-3 px-6 bg-white dark:bg-gray-800 shadow-md border-b border-gray-400 dark:border-gray-700">
+    class="flex flex-row justify-between items-center py-3 px-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
     <div class="w-[40%] h-full flex flex-row justify-center items-center">
         <form class="flex-1 flex items-center">
             <label for="simple-search" class="sr-only">Search</label>

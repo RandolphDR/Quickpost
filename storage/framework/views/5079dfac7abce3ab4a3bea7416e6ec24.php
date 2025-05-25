@@ -8,15 +8,13 @@
 <?php $attributes = $attributes->except(\App\View\Components\DashboardLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <div class="w-full h-full flex flex-col">
-        <section class="flex-1 flex flex-col justify-center items-center">
-            <h1 class="text-black dark:text-white/90 text-4xl font-medium">
-                This Dashboard is Under Development.
-            </h1>
-            <h1 class="text-black dark:text-white/90 text-4xl font-medium">Hi <?php echo e(auth()->user()->firstname); ?>
+    <div class="w-full h-[200vh] flex flex-col justify-start items-center border">
+        <h1 class="text-black dark:text-white/90 text-4xl font-medium">
+            This Dashboard is Under Development.
+        </h1>
+        <h1 class="text-black dark:text-white/90 text-4xl font-medium">Hi <?php echo e(auth()->user()->firstname); ?>
 
-                <?php echo e(auth()->user()->name . ' Your Role is: ' . auth()->user()->role); ?></h1>
-        </section>
+            <?php echo e(auth()->user()->name . ' Your Role is: ' . auth()->user()->role); ?></h1>
     </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

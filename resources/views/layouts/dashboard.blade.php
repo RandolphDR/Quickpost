@@ -32,19 +32,22 @@
 
 <body class="bg-gray-100 dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
     {{-- Aside Navigationbar --}}
-    <aside class="min-w-[300px] w-[25%]">
+    <aside class="fixed top-0 left-0 h-screen w-[20%] min-w-[300px]">
         <livewire:components.dashboard.navigation />
     </aside>
     {{-- End of Aside Navigationbar --}}
 
     {{-- Main Content --}}
-    <main class="w-full h-screen">
-        <header class="">
+    <main class="ml-[20%] w-full min-h-screen">
+        <header class="fixed top-0 left-[20%] right-0 h-20 z-10">
             <livewire:components.dashboard.header />
         </header>
-        <section class="p-4">
+        <section class="mt-20 pt-5 px-5">
             {{ $slot }}
         </section>
+        <footer>
+            <livewire:components.dashboard.footer />
+        </footer>
     </main>
     {{-- End of Main Content --}}
 

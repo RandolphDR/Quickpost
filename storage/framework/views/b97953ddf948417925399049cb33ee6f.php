@@ -1,5 +1,5 @@
 <nav
-    class="w-full h-full gap-4 flex flex-col py-3 px-6 bg-white dark:bg-gray-800 shadow-md border-r border-gray-400 dark:border-gray-700">
+    class="h-full gap-4 flex flex-col py-3 px-6 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
     <header class="w-full h-20 flex flex-col justify-center items-start">
         <a href="<?php echo e(route('admin.dashboard')); ?>" wire:navigate>
             <?php if (isset($component)) { $__componentOriginal8892e718f3d0d7a916180885c6f012e7 = $component; } ?>
