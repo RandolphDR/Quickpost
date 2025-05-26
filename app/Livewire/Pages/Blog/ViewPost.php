@@ -32,7 +32,7 @@ class ViewPost extends Component
             return $timestamp->diffForHumans();
         }
 
-        return $timestamp->format('M j, Y \a\t g:i A');
+        return $timestamp->format('M j, Y \a\t g:i a \P\H\T');
     }
 
     protected function setTimeDisplay()

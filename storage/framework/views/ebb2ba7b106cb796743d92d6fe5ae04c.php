@@ -25,8 +25,6 @@
     </header>
 
     <section class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-        
-
         <div wire:loading.flex class="col-span-full gap-2 flex flex-col items-center justify-center py-4">
             <div class="flex flex-row gap-2">
                 <div class="w-3 h-3 rounded-full bg-blue-600 animate-bounce [animation-delay:.1s]"></div>

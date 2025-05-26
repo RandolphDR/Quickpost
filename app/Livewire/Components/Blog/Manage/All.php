@@ -46,7 +46,7 @@ class All extends Component
         ])
             ->with([
                 'category:id,name',
-                'user:id,avatar,firstname,middlename,lastname,email'
+                'user:id,avatar,firstname,middlename,lastname,email,is_verified'
             ])->orderBy('id', 'asc');
 
         if (Gate::denies('administrator-access')) {

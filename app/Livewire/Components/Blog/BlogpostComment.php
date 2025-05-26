@@ -39,7 +39,7 @@ class BlogpostComment extends Component
 
             $this->dispatch('notify', [
                 'message' => 'Comment deleted successfully!',
-                'type' => 'error',
+                'type' => 'success',
             ]);
         } else {
             $this->dispatch('notify', [

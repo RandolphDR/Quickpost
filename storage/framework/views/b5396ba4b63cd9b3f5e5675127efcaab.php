@@ -5,26 +5,18 @@
             visible to public users.
         </div>
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-    <figure class="w-full max-h-96 rounded-lg overflow-hidden flex justify-center items-center">
-        <!--[if BLOCK]><![endif]--><?php if($post->cover_image): ?>
-            <img src="<?php echo e(asset($post->cover_image)); ?>" alt="error" class="h-full object-cover object-center">
-        <?php else: ?>
-            <div class="w-full rounded-lg gap-2 flex flex-col justify-center items-center">
-                <img src="<?php echo e(asset('images/no-background.png')); ?>" alt="error" class="w-1/3">
-                <h1 class="text-black dark:text-neutral-200 text-xl font-medium">No Cover
-                    Image Found
-                </h1>
-            </div>
-        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-    </figure>
 
-    <!-- Header Section -->
     <header class="w-full gap-4 flex flex-col justify-center items-start">
-        <div class="w-full gap-2 flex justify-start items-center">
+        <div class="gap-2 flex flex-col justify-start items-start">
+            <h4 class="px-2 py-1 text-sm font-medium text-white bg-blue-600 dark:bg-blue-600 rounded-lg">
+                <?php echo e($post->category->name); ?>
+
+            </h4>
+            <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100"><?php echo e($post->title); ?></h1>
             <a href="<?php echo e(route('user.profile', ['username' => $post->user->username])); ?>"
                 class="flex justify-center items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline text-sm"
                 title="View Profile" wire:navigate>
-                <img src="<?php echo e(asset($post->user->avatar)); ?>" alt="error" class="rounded-full w-7 h-7 bg-gray-400">
+                <img src="<?php echo e(asset($post->user->avatar)); ?>" alt="error" class="rounded-full w-6 h-6 bg-gray-400">
                 <span class="gap-1 flex items-center">
                     <?php echo e($post->user->fullname); ?>
 
@@ -40,33 +32,35 @@
                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                 </span>
             </a>
-            <p class="text-indigo-600 text-3xl">•</p>
-            <div class="gap-1 flex">
-                <p class="text-xs text-gray-900 dark:text-neutral-200">Created Date:</p>
-                <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
-                    <?php echo e($createdAt); ?>
-
-                </time>
-            </div>
-            <p class="text-indigo-600 text-3xl">•</p>
-            <div class="gap-1 flex">
-                <p class="text-xs text-gray-900 dark:text-neutral-200">Last Updated:</p>
-                <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
-                    <?php echo e($updatedAt); ?>
-
-                </time>
-            </div>
-            <p class="text-indigo-600 text-3xl">•</p>
-            <div class="gap-1 flex">
-                <p class="text-xs text-gray-900 dark:text-neutral-200">Published Date:</p>
-                <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-xs">
-                    <?php echo e($publishedAt); ?>
-
-                </time>
-            </div>
         </div>
-        <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100"><?php echo e($post->title); ?></h1>
+        <div class="gap-2 flex justify-start items-center">
+            <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-sm">
+                Published on <?php echo e($publishedAt); ?>
+
+            </time>
+            <p class="text-indigo-600 text-3xl">•</p>
+            <time datetime="<?php echo e($isoTime); ?>" class="text-gray-600 dark:text-gray-400 text-sm">
+                Last Updated: <?php echo e($updatedAt); ?>
+
+            </time>
+        </div>
+
+        <hr class="w-full mb-2 border-gray-700 dark:border-neutral-200">
     </header>
+
+    <figure class="w-full max-h-96 rounded-lg overflow-hidden flex flex-col justify-center items-center">
+        <!--[if BLOCK]><![endif]--><?php if($post->cover_image): ?>
+            <img src="<?php echo e(asset($post->cover_image)); ?>" alt="error" class="h-full object-cover object-center">
+            <h4 class="mt-2 text-sm text-gray-600 dark:text-gray-400">Cover Image of <?php echo e($post->title); ?></h4>
+        <?php else: ?>
+            <div class="w-full rounded-lg gap-2 flex flex-col justify-center items-center">
+                <img src="<?php echo e(asset('images/no-background.png')); ?>" alt="error" class="w-1/3">
+                <h1 class="text-black dark:text-neutral-200 text-xl font-medium">No Cover
+                    Image Found
+                </h1>
+            </div>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+    </figure>
 
     <!-- Main Content -->
     <article class="w-full">
