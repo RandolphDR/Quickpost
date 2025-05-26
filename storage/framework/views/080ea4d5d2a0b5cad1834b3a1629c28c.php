@@ -32,6 +32,25 @@
 
 <body class="bg-gray-100 dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
     
+    <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('components.ui.notification', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+    
+
+    
     <aside class="fixed top-0 left-0 h-screen w-[20%] min-w-[300px]">
         <?php
 $__split = function ($name, $params = []) {
@@ -39,7 +58,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('components.dashboard.navigation', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-1', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -62,7 +81,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('components.dashboard.header', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-1', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-2', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -90,7 +109,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('components.dashboard.footer', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-2', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1428929712-3', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

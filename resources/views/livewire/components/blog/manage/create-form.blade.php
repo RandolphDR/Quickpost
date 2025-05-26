@@ -69,10 +69,10 @@
                 <input id="cover_image" type="file" accept="image/*" wire:model="newCoverImage" class="hidden" />
                 <x-input-error class="mt-2" :messages="$errors->get('newCoverImage')" />
             </label>
-            <section class="w-full flex flex-col justify-start items-center">
+            <section class="w-full flex flex-col justify-center items-center">
                 <select wire:model="category_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="" disabled>Select a category</option>
+                    <option value="null" disabled>Select a category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">
                             {{ $category->name }}
@@ -81,6 +81,24 @@
                 </select>
                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
             </section>
+            @can('administrator-access')
+                <section class="w-full flex flex-col justify-center items-center">
+                    <div class="w-full gap-2 flex flex-col items-start">
+                        <label for="user_id" class="text-sm text-gray-700 dark:text-neutral-200">
+                            Select Blogpost Owner
+                        </label>
+                        <select wire:model="user_id" id="user_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}">
+                                    {{ $user->id === Auth::user()->id ? $user->fullname . ' (You)' : $user->fullname }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
+                    </div>
+                </section>
+            @endcan
         </aside>
         <section class="w-3/4 p-4 flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <section class="w-full">
@@ -94,7 +112,8 @@
             </section>
 
             <section class="w-full">
-                <label for="body" class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Body</label>
+                <label for="body"
+                    class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Body</label>
                 <textarea id="body" rows="20" wire:model="body"
                     class="leading-relaxed tracking-wide resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter Body" required></textarea>

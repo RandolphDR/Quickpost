@@ -34,36 +34,25 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars); ?>
 
-<div
-    x-data="{
-        open: <?php echo e($active ? 'true' : 'false'); ?>,
-        height: 0,
-        init() {
-            const content = this.$refs.content;
-            this.height = this.open ? content.scrollHeight : 0;
+<div x-data="{
+    open: <?php echo e($active ? 'true' : 'false'); ?>,
+    height: 0,
+    init() {
+        const content = this.$refs.content;
+        this.height = this.open ? content.scrollHeight : 0;
 
-            this.$watch('open', value => {
-                this.height = value ? content.scrollHeight : 0;
-            });
-        }
-    }"
-    class="w-full"
->
-    <div
-        @click="open = !open"
-        :class="open ? 'bg-gray-200 dark:bg-gray-700' : ''"
-        class="cursor-pointer rounded-lg"
-    >
+        this.$watch('open', value => {
+            this.height = value ? content.scrollHeight : 0;
+        });
+    }
+}" class="w-full">
+    <div @click="open = !open" :class="open ? 'bg-gray-200 dark:bg-gray-700' : ''" class="cursor-pointer rounded-lg">
         <?php echo e($trigger); ?>
 
     </div>
 
-    <div
-        x-ref="content"
-        :style="{ height: open ? height + 'px' : '0px' }"
-        :class="open ? 'mt-2' : ''"
-        class="transition-all duration-300 ease-in-out overflow-hidden <?php echo e($contentClasses); ?>"
-    >
+    <div x-ref="content" :style="{ height: open ? height + 'px' : '0px' }" :class="open ? 'mt-2' : ''"
+        class="gap-1 flex flex-col transition-all duration-300 ease-in-out overflow-hidden <?php echo e($contentClasses); ?>">
         <?php echo e($content); ?>
 
     </div>

@@ -3,19 +3,17 @@
 namespace App\Livewire\Components\Blog\Manage;
 
 use Livewire\{Component, WithFileUploads};
-use Illuminate\Support\Facades\{Auth, Session};
-use App\Models\{Post, Category};
+use Illuminate\Support\Facades\{Auth, Session, Gate};
+use App\Models\{User, Post, Category};
 use Illuminate\Support\Str;
 
 class CreateForm extends Component
 {
     use WithFileUploads;
-    public $categories;
-    public $title = "";
-    public $newCoverImage = "";
-    public $category_id = "";
-    public $short_description = "";
-    public $body = "";
+
+    public $categories, $users;
+
+    public $user_id = null, $title = "", $newCoverImage = "", $category_id = null, $short_description = "", $body = "";
 
     protected $rules = [
         'title' => 'required|string|max:255',
@@ -27,7 +25,15 @@ class CreateForm extends Component
 
     public function mount()
     {
+        if ($notification = session('notify')) {
+            $this->dispatch('notify', $notification);
+        }
+
         $this->categories = Category::select(['id', 'name'])
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $this->users = User::select(['id', 'firstname', 'lastname', 'middlename'])
             ->orderBy('id', 'asc')
             ->get();
     }
@@ -35,11 +41,12 @@ class CreateForm extends Component
     public function saveDraft()
     {
         $this->validate([
-            'title' => 'required|string|max:255',
-            'newCoverImage' => 'nullable|image|max:10240',
-            'category_id' => 'required|exists:categories,id',
-            'short_description' => 'required|string|max:500',
-            'body' => 'required|string',
+            'user_id' => ['nullable', 'exists:users,id'],
+            'title' => ['required', 'string', 'max:255'],
+            'newCoverImage' => ['nullable', 'image', 'max:10240'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'short_description' => ['required', 'string', 'max:500'],
+            'body' => ['required', 'string'],
         ]);
 
         $this->createPost('draft');
@@ -66,8 +73,12 @@ class CreateForm extends Component
             $coverImagePath = 'storage/' . $path;
         }
 
-        if($status === 'published') {
+        if ($status === 'published') {
             $publishDate = now();
+        }
+
+        if (Gate::denies('administrator-access') || $this->user_id === null) {
+            $this->user_id = Auth::user()->id;
         }
 
         $post = Post::create([
@@ -77,7 +88,7 @@ class CreateForm extends Component
             'short_description' => $this->short_description,
             'body' => $this->body,
             'status' => $status,
-            'user_id' => Auth::id(),
+            'user_id' => $this->user_id,
             'published_at' => $publishDate
         ]);
 
@@ -86,7 +97,7 @@ class CreateForm extends Component
             'type' => 'success',
         ]);
 
-        return $this->redirect(route('blog.view', $post->slug), navigate: true);
+        return $this->redirect(Gate::allows('administrator-access') ? route('admin.blog.create') : route('blog.view', $post->slug), navigate: true);
     }
 
     public function render()

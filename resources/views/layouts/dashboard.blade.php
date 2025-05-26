@@ -31,6 +31,10 @@
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 font-outfit-sans antialiased w-full flex justify-center items-stretch">
+    {{-- Notification --}}
+    <livewire:components.ui.notification />
+    {{-- End of Notification --}}
+
     {{-- Aside Navigationbar --}}
     <aside class="fixed top-0 left-0 h-screen w-[20%] min-w-[300px]">
         <livewire:components.dashboard.navigation />

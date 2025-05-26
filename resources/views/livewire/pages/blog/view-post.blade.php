@@ -8,7 +8,7 @@
 
     <header class="w-full gap-4 flex flex-col justify-center items-start">
         <div class="gap-2 flex flex-col justify-start items-start">
-            <h4 class="px-2 py-1 text-sm font-medium text-white bg-blue-600 dark:bg-blue-600 rounded-lg">
+            <h4 class="text-sm font-semibold text-blue-700 dark:text-blue-400">
                 {{ $post->category->name }}
             </h4>
             <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100">{{ $post->title }}</h1>
