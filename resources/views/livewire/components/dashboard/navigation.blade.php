@@ -14,7 +14,6 @@
             </svg>
             Dashboard
         </x-dashboard-nav-link>
-
         <x-dashboard-dropdown :active="request()->is('admin/blog*')">
             <x-slot name="trigger">
                 <button

@@ -51,7 +51,6 @@
 <?php $component = $__componentOriginal6f0f38b956b6b145f1aa2b3c8617d5f5; ?>
 <?php unset($__componentOriginal6f0f38b956b6b145f1aa2b3c8617d5f5); ?>
 <?php endif; ?>
-
         <?php if (isset($component)) { $__componentOriginal85371be99fe7282853a7db83964dc204 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal85371be99fe7282853a7db83964dc204 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-dropdown','data' => ['active' => request()->is('admin/blog*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

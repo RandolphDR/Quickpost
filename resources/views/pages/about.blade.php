@@ -34,7 +34,6 @@
             </p>
         </header>
         <main class="w-full gap-8 flex flex-row justify-center items-start">
-            {{-- <div class="w-[450px] h-[530px] rounded-xl shadow-lg bg-white dark:bg-gray-800"> --}}
             <div
                 class="w-[450px] h-[530px] rounded-2xl bg-white dark:bg-gray-800 shadow-xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl dark:hover:shadow-[0_30px_80px_rgba(96,165,250,0.35)]">
                 <figure class="w-full h-5/6 rounded-t-xl overflow-hidden">

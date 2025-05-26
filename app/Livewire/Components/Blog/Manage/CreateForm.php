@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 class CreateForm extends Component
 {
     use WithFileUploads;
-
     public $categories;
     public $title = "";
     public $newCoverImage = "";
