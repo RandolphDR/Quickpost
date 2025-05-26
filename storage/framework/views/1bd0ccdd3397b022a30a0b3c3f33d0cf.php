@@ -1,7 +1,7 @@
     <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['contentClasses' => 'border-l-2 border-gray-600 pl-4 ml-3 space-y-1']));
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['contentClasses' => 'border-l-2 border-gray-200 dark:border-gray-600 pl-4 ml-3 space-y-1']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -16,7 +16,7 @@ $attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
 unset($__propNames);
 unset($__newAttributes);
 
-foreach (array_filter((['contentClasses' => 'border-l-2 border-gray-600 pl-4 ml-3 space-y-1']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+foreach (array_filter((['contentClasses' => 'border-l-2 border-gray-200 dark:border-gray-600 pl-4 ml-3 space-y-1']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
 
@@ -32,7 +32,7 @@ unset($__defined_vars); ?>
         const content = $refs.content;
         height = value ? content.scrollHeight : 0;
     })" class="w-full">
-        <div @click="open = !open" :class="open ? 'bg-gray-700' : ''" class="cursor-pointer rounded-lg">
+        <div @click="open = !open" :class="open ? 'bg-gray-200 dark:bg-gray-700' : ''" class="cursor-pointer rounded-lg">
             <?php echo e($trigger); ?>
 
         </div>

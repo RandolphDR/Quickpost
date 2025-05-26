@@ -1,12 +1,13 @@
 @props(['active'])
 
 @php
-    $classes =
-        $active ?? false
-            ? 'py-2 px-3 bg-blue-600 rounded-lg w-full flex items-center gap-2.5 text-neutral-100 font-outfit-sans font-medium transition duration-300 ease-in-out'
-            : 'py-2 px-3 rounded-lg w-full flex items-center gap-2.5 text-gray-400 hover:bg-gray-700 hover:text-neutral-100 font-outfit-sans font-medium transition duration-300 ease-in-out';
+    $activeClasses =
+        $active ?? false ? 'bg-gray-200 dark:bg-gray-700' : 'hover:bg-gray-200 dark:hover:bg-gray-700';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
+<a
+    {{ $attributes->merge([
+        'class' => "py-2 px-3 rounded-lg w-full flex items-center gap-2.5 font-outfit-sans font-medium transition duration-200 ease-in-out text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white $activeClasses",
+    ]) }}>
     {{ $slot }}
 </a>

@@ -1,10 +1,10 @@
-    @props(['contentClasses' => 'border-l-2 border-gray-600 pl-4 ml-3 space-y-1'])
+    @props(['contentClasses' => 'border-l-2 border-gray-200 dark:border-gray-600 pl-4 ml-3 space-y-1'])
 
     <div x-data="{ open: false, height: 0 }" x-init="$watch('open', value => {
         const content = $refs.content;
         height = value ? content.scrollHeight : 0;
     })" class="w-full">
-        <div @click="open = !open" :class="open ? 'bg-gray-700' : ''" class="cursor-pointer rounded-lg">
+        <div @click="open = !open" :class="open ? 'bg-gray-200 dark:bg-gray-700' : ''" class="cursor-pointer rounded-lg">
             {{ $trigger }}
         </div>
 
