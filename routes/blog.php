@@ -17,7 +17,3 @@ Route::middleware('can:user-access')->group(function () {
         Route::view('edit/{slug}', 'pages.blog.edit-post')->name('blog.edit');
     });
 });
-
-Route::middleware('can:administrator-access')->group(function () {
-
-});

@@ -54,14 +54,14 @@
 
         <?php if (isset($component)) { $__componentOriginal85371be99fe7282853a7db83964dc204 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal85371be99fe7282853a7db83964dc204 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-dropdown','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-dropdown','data' => ['active' => request()->is('admin/blog*')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dashboard-dropdown'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>
+<?php $component->withAttributes(['active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->is('admin/blog*'))]); ?>
              <?php $__env->slot('trigger', null, []); ?> 
                 <button
                     class="py-2 px-3 rounded-lg w-full flex items-center justify-between gap-2.5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white font-outfit-sans font-medium transition duration-200 ease-in-out">
@@ -84,14 +84,14 @@
              <?php $__env->slot('content', null, []); ?> 
                 <?php if (isset($component)) { $__componentOriginal6f0f38b956b6b145f1aa2b3c8617d5f5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal6f0f38b956b6b145f1aa2b3c8617d5f5 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-nav-link','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-nav-link','data' => ['href' => route('admin.blog.manage'),'active' => request()->routeIs('admin.blog.manage')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dashboard-nav-link'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>All Blogs <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.blog.manage')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('admin.blog.manage'))]); ?>All Blogs <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal6f0f38b956b6b145f1aa2b3c8617d5f5)): ?>
 <?php $attributes = $__attributesOriginal6f0f38b956b6b145f1aa2b3c8617d5f5; ?>
@@ -103,14 +103,14 @@
 <?php endif; ?>
                 <?php if (isset($component)) { $__componentOriginal6f0f38b956b6b145f1aa2b3c8617d5f5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal6f0f38b956b6b145f1aa2b3c8617d5f5 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-nav-link','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dashboard-nav-link','data' => ['href' => route('admin.blog.create'),'active' => request()->routeIs('admin.blog.create')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dashboard-nav-link'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>Create New Blog <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.blog.create')),'active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('admin.blog.create'))]); ?>Create New Blog <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal6f0f38b956b6b145f1aa2b3c8617d5f5)): ?>
 <?php $attributes = $__attributesOriginal6f0f38b956b6b145f1aa2b3c8617d5f5; ?>

@@ -12,9 +12,9 @@
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
-[$__name, $__params] = $__split('pages.dashboard.dashboard', []);
+[$__name, $__params] = $__split('components.blog.manage.all', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-679109307-0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-4126659537-0', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -34,4 +34,4 @@ if (isset($__slots)) unset($__slots);
 <?php $component = $__componentOriginal0de143e5b61900e6d7b990ac144ae3fb; ?>
 <?php unset($__componentOriginal0de143e5b61900e6d7b990ac144ae3fb); ?>
 <?php endif; ?>
-<?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/dashboard.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/pages/dashboard/blog/manage-posts.blade.php ENDPATH**/ ?>

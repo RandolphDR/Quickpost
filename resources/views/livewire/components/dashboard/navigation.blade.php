@@ -15,7 +15,7 @@
             Dashboard
         </x-dashboard-nav-link>
 
-        <x-dashboard-dropdown>
+        <x-dashboard-dropdown :active="request()->is('admin/blog*')">
             <x-slot name="trigger">
                 <button
                     class="py-2 px-3 rounded-lg w-full flex items-center justify-between gap-2.5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white font-outfit-sans font-medium transition duration-200 ease-in-out">
@@ -36,8 +36,8 @@
             </x-slot>
 
             <x-slot name="content">
-                <x-dashboard-nav-link>All Blogs</x-dashboard-nav-link>
-                <x-dashboard-nav-link>Create New Blog</x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.blog.manage')" :active="request()->routeIs('admin.blog.manage')">All Blogs</x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.blog.create')" :active="request()->routeIs('admin.blog.create')">Create New Blog</x-dashboard-nav-link>
             </x-slot>
         </x-dashboard-dropdown>
 
