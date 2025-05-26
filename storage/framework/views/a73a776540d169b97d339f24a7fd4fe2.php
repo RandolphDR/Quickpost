@@ -8,6 +8,35 @@
 <?php $attributes = $attributes->except(\App\View\Components\DashboardLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+    <header class="w-full py-4 px-6 flex justify-between items-center bg-white dark:bg-gray-800 shadow-md rounded-xl">
+        <aside class="">
+            <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">
+                <?php echo e(Gate::allows('administrator-access') ? 'Manage all blogs' : 'Manage your blogs'); ?></h1>
+        </aside>
+        <nav class="">
+            <?php if (isset($component)) { $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.btn-nav-link','data' => ['href' => route('blog.create'),'class' => 'py-2']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('btn-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('blog.create')),'class' => 'py-2']); ?>
+                Create New Blog
+             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
+<?php $attributes = $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc; ?>
+<?php unset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
+<?php $component = $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc; ?>
+<?php unset($__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc); ?>
+<?php endif; ?>
+        </nav>
+    </header>
     <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];

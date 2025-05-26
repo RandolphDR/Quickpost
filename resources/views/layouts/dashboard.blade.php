@@ -46,7 +46,7 @@
         {{-- End of Content Header --}}
 
         {{-- Content Slot --}}
-        <section class="mt-20 pt-5 px-5">
+        <section class="mt-20 pt-5 px-5 flex flex-col justify-start items-center gap-4">
             {{ $slot }}
         </section>
         {{-- End of Content Slot --}}
