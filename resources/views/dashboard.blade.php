@@ -16,6 +16,7 @@
         <div class="w-full gap-5 flex">
             <livewire:components.dashboard.users.summary-card lazy />
             <livewire:components.dashboard.blogs.summary-card lazy />
+            <livewire:components.dashboard.category.summary-card lazy />
         </div>
     </section>
 </x-dashboard-layout>

@@ -7,7 +7,7 @@ Route::middleware('can:administrator-access')->prefix('admin')->group(function (
 
     Route::prefix('categories')->group(function () {
         Route::view('manage', 'pages.dashboard.category.manage-categories')->name('admin.categories.manage');
-        // Route::view('create', 'pages.dashboard.blog.create-post')->name('admin.blog.create');
+        Route::view('create', 'pages.dashboard.category.create-category')->name('admin.categories.create');
     });
 
     Route::prefix('blog')->group(function () {

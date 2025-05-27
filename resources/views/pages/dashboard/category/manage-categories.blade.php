@@ -8,10 +8,10 @@
             </h1>
         </aside>
         <nav class="">
-            <x-btn-nav-link :href="route('admin.blog.create')" class="py-2">
-                + Create New Category
+            <x-btn-nav-link :href="route('admin.categories.create')" class="py-2">
+                + Add New Category
             </x-btn-nav-link>
         </nav>
     </header>
-    {{-- <livewire:components.blog.manage.all /> --}}
+    <livewire:components.dashboard.category.all />
 </x-dashboard-layout>

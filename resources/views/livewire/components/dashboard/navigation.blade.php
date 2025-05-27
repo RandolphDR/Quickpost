@@ -61,7 +61,7 @@
 
             <x-slot name="content">
                 <x-dashboard-nav-link :href="route('admin.categories.manage')" :active="request()->routeIs('admin.categories.manage')">All Categories</x-dashboard-nav-link>
-                <x-dashboard-nav-link :href="route('admin.blog.create')" :active="request()->routeIs('admin.blog.create')">Create New Category </x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.categories.create')" :active="request()->routeIs('admin.categories.create')">Create New Category </x-dashboard-nav-link>
             </x-slot>
         </x-dashboard-dropdown>
 

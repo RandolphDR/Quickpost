@@ -70,6 +70,22 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('components.dashboard.category.summary-card', ['lazy' => true]);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-679109307-3', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
         </div>
     </section>
  <?php echo $__env->renderComponent(); ?>
