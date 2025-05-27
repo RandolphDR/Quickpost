@@ -11,7 +11,7 @@ class Header extends Component {
 
     public function mount() {
         $now = Carbon::now();
-        $this->dateToday = $now->format('l, jS F Y');
+        $this->dateToday = $now->format('g:i A, l, jS F Y');
 
         $hour = $now->hour;
         $this->greetings = match (true) {

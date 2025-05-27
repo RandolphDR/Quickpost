@@ -119,7 +119,7 @@
                                     </x-slot>
                                     <x-slot name="content">
                                         <x-dropdown-link :href="route('admin.user.profile', ['username' => $user->username])" title="View Profile">
-                                            View
+                                            Visit Profile
                                         </x-dropdown-link>
                                         <x-dropdown-link>
                                             Edit
