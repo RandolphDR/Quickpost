@@ -13,7 +13,7 @@
     <header class="w-full flex justify-between items-center">
         <aside class="">
             <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">
-                Manage all blogs
+                Manage All Blogs
             </h1>
         </aside>
         <nav class="">

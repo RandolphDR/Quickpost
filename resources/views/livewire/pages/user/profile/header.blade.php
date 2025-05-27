@@ -72,7 +72,7 @@
                         </div>
                     </span>
                 </div>
-                @if (Gate::allows('user-access') && $user->id === auth()->user()->id)
+                @if ($user->id === auth()->user()->id)
                     <nav class="gap-4 flex justify-center items-center">
                         <x-btn-nav-link class="py-2 px-4" :href="route('blog.manage')">
                             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"

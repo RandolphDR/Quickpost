@@ -67,8 +67,9 @@
                                         <img src="{{ asset($post->user->avatar) }}" alt="avatar"
                                             class="rounded-full w-10 h-10 bg-gray-400">
                                         <span class="min-w-0 flex-1">
-                                            <p
-                                                class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center">
+                                            <a href="{{ route('admin.user.profile', ['username' => $post->user->username]) }}"
+                                                class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center hover:underline hover:underline-offset-2 transition-colors"
+                                                wire:navigate title="View Profile">
                                                 {{ $post->user->fullname }}
                                                 @if ($post->user->is_verified)
                                                     <svg class="w-4 h-4 text-blue-600" aria-hidden="true"
@@ -79,7 +80,7 @@
                                                             clip-rule="evenodd" />
                                                     </svg>
                                                 @endif
-                                            </p>
+                                            </a>
                                             <p class="text-gray-600 dark:text-gray-400 text-xs truncate max-w-[200px]">
                                                 {{ $post->user->email }}
                                             </p>

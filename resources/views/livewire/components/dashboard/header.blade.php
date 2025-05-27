@@ -83,6 +83,14 @@
                             <x-dropdown-link :href="route('admin.user.settings')" :active="request()->routeIs('admin.user.settings')">
                                 {{ __('Settings') }}
                             </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('admin.blog.create')" :active="request()->routeIs('admin.blog.create')">
+                                {{ __('Create New Blog') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('admin.user.create')" :active="request()->routeIs('admin.user.create')">
+                                {{ __('Create New User') }}
+                            </x-dropdown-link>
                         </div>
 
                         <div class="border-t border-gray-200 dark:border-gray-600 pt-1">

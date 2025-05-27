@@ -67,8 +67,9 @@
                                         <img src="<?php echo e(asset($post->user->avatar)); ?>" alt="avatar"
                                             class="rounded-full w-10 h-10 bg-gray-400">
                                         <span class="min-w-0 flex-1">
-                                            <p
-                                                class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center">
+                                            <a href="<?php echo e(route('admin.user.profile', ['username' => $post->user->username])); ?>"
+                                                class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center hover:underline hover:underline-offset-2 transition-colors"
+                                                wire:navigate title="View Profile">
                                                 <?php echo e($post->user->fullname); ?>
 
                                                 <!--[if BLOCK]><![endif]--><?php if($post->user->is_verified): ?>
@@ -80,7 +81,7 @@
                                                             clip-rule="evenodd" />
                                                     </svg>
                                                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                                            </p>
+                                            </a>
                                             <p class="text-gray-600 dark:text-gray-400 text-xs truncate max-w-[200px]">
                                                 <?php echo e($post->user->email); ?>
 

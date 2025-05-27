@@ -73,7 +73,7 @@
                         </div>
                     </span>
                 </div>
-                <!--[if BLOCK]><![endif]--><?php if(Gate::allows('user-access') && $user->id === auth()->user()->id): ?>
+                <!--[if BLOCK]><![endif]--><?php if($user->id === auth()->user()->id): ?>
                     <nav class="gap-4 flex justify-center items-center">
                         <?php if (isset($component)) { $__componentOriginal65b18da726c0045d2ff66e7a6a1eacfc = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc = $attributes; } ?>

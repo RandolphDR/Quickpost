@@ -12,45 +12,37 @@
 
     <div wire:loading.remove>
         <div class="rounded-lg">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead class="bg-gray-300 dark:bg-gray-700 rounded-t-lg">
                     <tr>
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                             ID
                         </th>
-                        @can('administrator-access')
-                            <th
-                                class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                                Owner
-                            </th>
-                        @endcan
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                            Category
+                            User Profile
                         </th>
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                            Title
+                            Phone
                         </th>
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                            Status
+                            Verified Status
                         </th>
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                            Published At
+                            Role
                         </th>
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                             Created At
                         </th>
-                        @can('user-access')
-                            <th
-                                class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                                Last Updated
-                            </th>
-                        @endcan
+                        <th
+                            class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Last Updated At
+                        </th>
                         <th
                             class="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                             Actions
@@ -58,63 +50,61 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                    @foreach ($allPosts as $post)
+                    @foreach ($allUsers as $user)
                         <tr>
-                            <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">{{ $post->id }}</td>
-                            @can('administrator-access')
-                                <td class="px-4 py-4">
-                                    <div class="gap-2 flex justify-center items-center">
-                                        <img src="{{ asset($post->user->avatar) }}" alt="avatar"
-                                            class="rounded-full w-10 h-10 bg-gray-400">
-                                        <span class="min-w-0 flex-1">
-                                            <p
-                                                class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center">
-                                                {{ $post->user->fullname }}
-                                                @if ($post->user->is_verified)
-                                                    <svg class="w-4 h-4 text-blue-600" aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        fill="currentColor" viewBox="0 0 24 24">
-                                                        <path fill-rule="evenodd"
-                                                            d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z"
-                                                            clip-rule="evenodd" />
-                                                    </svg>
-                                                @endif
-                                            </p>
-                                            <p class="text-gray-600 dark:text-gray-400 text-xs truncate max-w-[200px]">
-                                                {{ $post->user->email }}
-                                            </p>
-                                        </span>
-                                    </div>
-                                </td>
-                            @endcan
-                            <td class="px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400">
-                                {{ $post->category->name }}
+                            <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">{{ $user->id }}</td>
+                            <td class="px-4 py-4">
+                                <div class="gap-2 flex justify-center items-center">
+                                    <img src="{{ asset($user->avatar) }}" alt="avatar"
+                                        class="rounded-full w-10 h-10 bg-gray-400">
+                                    <span class="min-w-0 flex-1">
+                                        <a href="{{ route('admin.user.profile', ['username' => $user->username]) }}"
+                                            class="text-gray-900 dark:text-neutral-200 text-sm truncate gap-1 flex items-center hover:underline hover:underline-offset-2 transition-colors"
+                                            title="View profile" wire:navigate>
+                                            {{ $user->fullname }}
+                                            @if ($user->is_verified)
+                                                <svg class="w-4 h-4 text-blue-600" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    fill="currentColor" viewBox="0 0 24 24">
+                                                    <path fill-rule="evenodd"
+                                                        d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            @endif
+                                            {{ $user->id === Auth::user()->id ? '(You)' : '' }}
+                                        </a>
+                                        <p class="text-gray-600 dark:text-gray-400 text-xs truncate max-w-[200px]"
+                                            title="{{ $user->email }}">
+                                            {{ $user->email }}
+                                        </p>
+                                    </span>
+                                </div>
                             </td>
-                            <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">{{ $post->title }}</td>
+                            <td class="px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400">
+                                {{ $user->phone }}
+                            </td>
                             <td class="px-4 py-4 text-sm">
-                                @if ($post->status === 'published')
+                                @if ($user->is_verified)
                                     <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                        Published
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-600 text-neutral-100">
+                                        Verified User
                                     </span>
                                 @else
                                     <span
                                         class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                                        Draft
+                                        Not Verified
                                     </span>
                                 @endif
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">
-                                {{ $post->published_at ? $post->published_at->format('F j, Y \a\t g:i a') : '—' }}
+                                {{ ucfirst($user->role) }}
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">
-                                {{ $post->created_at->format('F j, Y \a\t g:i a') }}
+                                {{ $user->created_at->format('F j, Y \a\t g:i a') }}
                             </td>
-                            @can('user-access')
-                                <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">
-                                    {{ $post->updated_at->format('F j, Y \a\t g:i a') }}
-                                </td>
-                            @endcan
+                            <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">
+                                {{ $user->updated_at->format('F j, Y \a\t g:i a') }}
+                            </td>
                             <td class="">
                                 <x-dropdown align="right" width="48">
                                     <x-slot name="trigger">
@@ -128,21 +118,21 @@
                                         </button>
                                     </x-slot>
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('blog.view', ['slug' => $post->slug])" title="Read: {{ $post->title }}">
+                                        <x-dropdown-link :href="route('admin.user.profile', ['username' => $user->username])" title="View Profile">
                                             View
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
+                                        <x-dropdown-link>
                                             Edit
                                         </x-dropdown-link>
                                         <x-dropdown-link
-                                            x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion-{{ $post->id }}')">
+                                            x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion-{{ $user->id }}')">
                                             Delete
                                         </x-dropdown-link>
                                     </x-slot>
                                 </x-dropdown>
                             </td>
                         </tr>
-                        <x-modal name="confirm-post-deletion-{{ $post->id }}" focusable>
+                        <x-modal name="confirm-user-deletion-{{ $user->id }}" focusable>
                             <div class="p-6">
                                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                                     Delete Blog Post
@@ -157,7 +147,7 @@
                                         Cancel
                                     </x-secondary-button>
 
-                                    <x-danger-button wire:click="deletePost('{{ $post->id }}')"
+                                    <x-danger-button wire:click="deleteUser('{{ $user->id }}')"
                                         x-on:click="$dispatch('close')">
                                         Delete Blogpost
                                     </x-danger-button>
@@ -169,7 +159,7 @@
             </table>
         </div>
         <nav class="mt-8 w-full">
-            {{ $allPosts->links('vendor.livewire.tailwind') }}
+            {{ $allUsers->links('vendor.livewire.tailwind') }}
         </nav>
     </div>
 </div>

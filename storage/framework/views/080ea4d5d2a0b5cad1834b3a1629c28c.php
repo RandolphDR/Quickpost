@@ -103,7 +103,7 @@ if (isset($__slots)) unset($__slots);
         
 
         
-        <section class="mt-20 pt-5 px-5 flex flex-col justify-start items-center gap-4">
+        <section class="mt-[5.16rem] pt-5 px-5 flex flex-col justify-start items-center gap-4">
             <?php echo e($slot); ?>
 
         </section>
