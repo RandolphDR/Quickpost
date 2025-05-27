@@ -3,7 +3,7 @@
 namespace App\Livewire\Pages\User\Profile;
 
 use Livewire\Component;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class Header extends Component
@@ -13,6 +13,11 @@ class Header extends Component
 
     public function mount($username)
     {
+
+        if (!$username) {
+            $username = Auth::user()->username;
+        }
+
         $this->user = User::select([
             'id',
             'avatar',

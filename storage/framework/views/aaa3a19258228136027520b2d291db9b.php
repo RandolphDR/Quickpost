@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'All Blogs'); ?>
+<?php $__env->startSection('title', 'All Users'); ?>
 
 <?php if (isset($component)) { $__componentOriginal0de143e5b61900e6d7b990ac144ae3fb = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal0de143e5b61900e6d7b990ac144ae3fb = $attributes; } ?>
@@ -13,7 +13,7 @@
     <header class="w-full flex justify-between items-center">
         <aside class="">
             <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">
-                Manage all blogs
+                Manage all users
             </h1>
         </aside>
         <nav class="">
@@ -27,7 +27,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.blog.create')),'class' => 'py-2']); ?>
-                + Create New Blog
+                + Add New User
              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal65b18da726c0045d2ff66e7a6a1eacfc)): ?>
@@ -40,22 +40,6 @@
 <?php endif; ?>
         </nav>
     </header>
-    <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('components.blog.manage.all', []);
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-4126659537-0', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal0de143e5b61900e6d7b990ac144ae3fb)): ?>
@@ -66,4 +50,4 @@ if (isset($__slots)) unset($__slots);
 <?php $component = $__componentOriginal0de143e5b61900e6d7b990ac144ae3fb; ?>
 <?php unset($__componentOriginal0de143e5b61900e6d7b990ac144ae3fb); ?>
 <?php endif; ?>
-<?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/pages/dashboard/blog/manage-posts.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/pages/dashboard/user/manage-users.blade.php ENDPATH**/ ?>

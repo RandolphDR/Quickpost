@@ -9,4 +9,12 @@ Route::middleware('can:administrator-access')->prefix('admin')->group(function (
         Route::view('manage', 'pages.dashboard.blog.manage-posts')->name('admin.blog.manage');
         Route::view('create', 'pages.dashboard.blog.create-post')->name('admin.blog.create');
     });
+
+    Route::prefix('users')->group(function () {
+        Route::view('manage', 'pages.dashboard.user.manage-users')->name('admin.user.manage');
+        Route::view('create', 'pages.dashboard.user.create-user')->name('admin.user.create');
+    });
+
+    Route::view('profile/{username}', 'pages.dashboard.user.profile')->name('admin.user.profile');
+    Route::view('settings', 'pages.dashboard.user.settings')->name('admin.user.settings');
 });

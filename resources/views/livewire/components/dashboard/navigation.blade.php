@@ -41,7 +41,7 @@
             </x-slot>
         </x-dashboard-dropdown>
 
-        <x-dashboard-dropdown>
+        <x-dashboard-dropdown :active="request()->routeIs('admin.user.manage') || request()->routeIs('admin.user.create')">
             <x-slot name="trigger">
                 <button
                     class="py-2 px-3 rounded-lg w-full flex items-center justify-between gap-2.5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white font-outfit-sans font-medium transition duration-200 ease-in-out">
@@ -62,12 +62,14 @@
             </x-slot>
 
             <x-slot name="content">
-                <x-dashboard-nav-link>All Users</x-dashboard-nav-link>
-                <x-dashboard-nav-link>Create New User</x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.user.manage')" :active="request()->routeIs('admin.user.manage')">All Users</x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.user.create')" :active="request()->routeIs('admin.user.create')">Create New User</x-dashboard-nav-link>
             </x-slot>
         </x-dashboard-dropdown>
 
-        <x-dashboard-dropdown>
+        <x-dashboard-dropdown :active="(request()->routeIs('admin.user.profile') &&
+            request()->route('username') === Auth::user()->username) ||
+            request()->routeIs('admin.user.settings')">
             <x-slot name="trigger">
                 <button
                     class="py-2 px-3 rounded-lg w-full flex items-center justify-between gap-2.5 text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white font-outfit-sans font-medium transition duration-200 ease-in-out">
@@ -88,8 +90,11 @@
             </x-slot>
 
             <x-slot name="content">
-                <x-dashboard-nav-link>My Profile</x-dashboard-nav-link>
-                <x-dashboard-nav-link>Settings</x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.user.profile', ['username' => Auth::user()->username])" :active="request()->routeIs('admin.user.profile') &&
+                    request()->route('username') === Auth::user()->username">
+                    {{ __('My Profile') }}
+                </x-dashboard-nav-link>
+                <x-dashboard-nav-link :href="route('admin.user.settings')" :active="request()->routeIs('admin.user.settings')">Settings</x-dashboard-nav-link>
             </x-slot>
         </x-dashboard-dropdown>
     </main>
