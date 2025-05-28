@@ -57,7 +57,7 @@
             </nav>
         </div>
     </header>
-    <section class="w-full gap-4 flex justify-center items-stretch">
+    <main class="w-full gap-4 flex justify-center items-stretch">
         <aside
             class="w-1/3 p-4 gap-4 flex flex-col justify-start items-center bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <label for="cover_image"
@@ -237,6 +237,6 @@
 <?php endif; ?>
             </section>
         </section>
-    </section>
+    </main>
 </form>
 <?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/livewire/components/blog/manage/create-form.blade.php ENDPATH**/ ?>

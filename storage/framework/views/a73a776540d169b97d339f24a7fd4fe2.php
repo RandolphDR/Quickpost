@@ -10,7 +10,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\DashboardLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <header class="w-full flex justify-between items-center">
+    <header class="w-full flex justify-between items-center py-2">
         <aside class="">
             <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">
                 Manage All Blogs

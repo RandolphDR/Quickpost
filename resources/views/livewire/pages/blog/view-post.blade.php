@@ -44,10 +44,13 @@
         <hr class="w-full mb-2 border-gray-700 dark:border-neutral-200">
     </header>
 
-    <figure class="w-full max-h-96 rounded-lg overflow-hidden flex flex-col justify-center items-center">
+    <figure class="w-full flex flex-col justify-center items-center">
         @if ($post->cover_image)
-            <img src="{{ asset($post->cover_image) }}" alt="error" class="h-full object-cover object-center">
-            <h4 class="mt-2 text-sm text-gray-600 dark:text-gray-400">Cover Image of {{ $post->title }}</h4>
+            <img src="{{ asset($post->cover_image) }}" alt="error"
+                class="rounded-lg h-96 object-cover object-center">
+            <h4 class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                Cover Image of "{{ $post->title }}"
+            </h4>
         @else
             <div class="w-full rounded-lg gap-2 flex flex-col justify-center items-center">
                 <img src="{{ asset('images/no-background.png') }}" alt="error" class="w-1/3">

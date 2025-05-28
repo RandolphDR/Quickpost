@@ -1,7 +1,7 @@
 @section('title', 'All Blogs')
 
 <x-dashboard-layout>
-    <header class="w-full flex justify-between items-center">
+    <header class="w-full flex justify-between items-center py-2">
         <aside class="">
             <h1 class="text-xl  text-gray-800 dark:text-neutral-200 font-medium">
                 Manage All Blogs

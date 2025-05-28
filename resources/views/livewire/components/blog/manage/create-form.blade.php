@@ -38,7 +38,7 @@
             </nav>
         </div>
     </header>
-    <section class="w-full gap-4 flex justify-center items-stretch">
+    <main class="w-full gap-4 flex justify-center items-stretch">
         <aside
             class="w-1/3 p-4 gap-4 flex flex-col justify-start items-center bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <label for="cover_image"
@@ -120,5 +120,5 @@
                 <x-input-error class="mt-2" :messages="$errors->get('body')" />
             </section>
         </section>
-    </section>
+    </main>
 </form>
