@@ -89,7 +89,7 @@
                                 </td>
                             @endcan
                             <td class="px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400">
-                                {{ $post->category->name }}
+                                {{ $post->category->name ?? 'No Category' }}
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200">{{ $post->title }}</td>
                             <td class="px-4 py-4 text-sm">
@@ -132,7 +132,7 @@
                                         <x-dropdown-link :href="route('blog.view', ['slug' => $post->slug])" title="Read: {{ $post->title }}">
                                             View
                                         </x-dropdown-link>
-                                        <x-dropdown-link :href="route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
+                                        <x-dropdown-link :href="Gate::allows('administrator-access') ? route('admin.blog.edit', $post->slug) : route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
                                             Edit
                                         </x-dropdown-link>
                                         <x-dropdown-link

@@ -13,14 +13,19 @@ class CreateForm extends Component
 
     public $categories, $users;
 
-    public $user_id = null, $title = "", $newCoverImage = "", $category_id = null, $short_description = "", $body = "";
+    public $user_id,
+    $title,
+    $newCoverImage,
+    $category_id,
+    $short_description,
+    $body;
 
     protected $rules = [
-        'title' => 'required|string|max:255',
-        'newCoverImage' => 'image|max:10240',
-        'category_id' => 'required|exists:categories,id',
-        'short_description' => 'required|string|max:500',
-        'body' => 'required|string',
+        'title' => ['required', 'string', 'max:255'],
+        'newCoverImage' => ['nullable', 'image', 'max:10240'],
+        'category_id' => ['required', 'exists:categories,id'],
+        'short_description' => ['required', 'string', 'max:500'],
+        'body' => ['required', 'string'],
     ];
 
     public function mount()
@@ -30,7 +35,7 @@ class CreateForm extends Component
         }
 
         $this->categories = Category::select(['id', 'name'])
-            ->orderBy('id', 'asc')
+            ->orderBy('name', 'asc')
             ->get();
 
         $this->users = User::select(['id', 'firstname', 'lastname', 'middlename'])
@@ -41,7 +46,7 @@ class CreateForm extends Component
     public function saveDraft()
     {
         $this->validate([
-            'user_id' => ['nullable', 'exists:users,id'],
+            'user_id' => ['required', 'exists:users,id'],
             'title' => ['required', 'string', 'max:255'],
             'newCoverImage' => ['nullable', 'image', 'max:10240'],
             'category_id' => ['required', 'exists:categories,id'],
@@ -97,7 +102,7 @@ class CreateForm extends Component
             'type' => 'success',
         ]);
 
-        return $this->redirect(Gate::allows('administrator-access') ? route('admin.blog.create') : route('blog.view', $post->slug), navigate: true);
+        return $this->redirect(Gate::allows('administrator-access') ? route('admin.blog.manage') : route('blog.view', $post->slug), navigate: true);
     }
 
     public function render()

@@ -103,7 +103,7 @@
         <section class="w-3/4 p-4 flex flex-col gap-4 bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <section class="w-full">
                 <label for="short_description" class="block text-sm font-medium text-gray-700 dark:text-white mb-1">
-                    Short Description
+                    Short Description*
                 </label>
                 <input type="text" id="short_description" wire:model="short_description"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -112,8 +112,9 @@
             </section>
 
             <section class="w-full">
-                <label for="body"
-                    class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Body</label>
+                <label for="body" class="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                    Body*
+                </label>
                 <textarea id="body" rows="20" wire:model="body"
                     class="leading-relaxed tracking-wide resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter Body" required></textarea>

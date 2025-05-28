@@ -9,7 +9,7 @@
     <header class="w-full gap-4 flex flex-col justify-center items-start">
         <div class="gap-2 flex flex-col justify-start items-start">
             <h4 class="text-sm font-semibold text-blue-700 dark:text-blue-400">
-                {{ $post->category->name }}
+                {{ $post->category->name ?? 'No Category Found' }}
             </h4>
             <h1 class="text-4xl font-semibold text-gray-900 dark:text-neutral-100">{{ $post->title }}</h1>
             <a href="{{ route('user.profile', ['username' => $post->user->username]) }}"
@@ -33,7 +33,7 @@
         </div>
         <div class="gap-2 flex justify-start items-center">
             <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-sm">
-                Published on {{ $publishedAt }}
+                {{ $publishedAt !== 'N/A' ? 'Published on ' . $publishedAt : 'Unpublished' }}
             </time>
             <p class="text-indigo-600 text-3xl">•</p>
             <time datetime="{{ $isoTime }}" class="text-gray-600 dark:text-gray-400 text-sm">
@@ -44,7 +44,7 @@
         <hr class="w-full mb-2 border-gray-700 dark:border-neutral-200">
     </header>
 
-    <figure class="w-full flex flex-col justify-center items-center">
+    <figure class="w-full overflow-hidden flex flex-col justify-center items-center">
         @if ($post->cover_image)
             <img src="{{ asset($post->cover_image) }}" alt="error"
                 class="rounded-lg h-96 object-cover object-center">

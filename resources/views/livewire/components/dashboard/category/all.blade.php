@@ -69,7 +69,7 @@
                                         </button>
                                     </x-slot>
                                     <x-slot name="content">
-                                        <x-dropdown-link>
+                                        <x-dropdown-link :href="route('admin.category.edit', ['categoryId' => $category->id])">
                                             Edit
                                         </x-dropdown-link>
                                         <x-dropdown-link
@@ -82,13 +82,20 @@
                         </tr>
                         <x-modal name="confirm-category-deletion-{{ $category->id }}" focusable>
                             <div class="p-6">
-                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
                                     Delete Category
                                 </h2>
 
-                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                    Are you sure you want to delete this category? This action cannot be undone.
-                                </p>
+                                <div class="mt-4 space-y-3">
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                                        Are you sure you want to delete this category? This action is permanent and
+                                        cannot be undone.
+                                    </p>
+                                    <p class="text-sm text-red-600 dark:text-red-400 font-medium">
+                                        <span class="font-semibold">Warning:</span> All blog posts associated with this
+                                        category will be affected.
+                                    </p>
+                                </div>
 
                                 <div class="mt-6 flex justify-end gap-4">
                                     <x-secondary-button x-on:click="$dispatch('close')">
@@ -97,7 +104,7 @@
 
                                     <x-danger-button wire:click="deleteCategory('{{ $category->id }}')"
                                         x-on:click="$dispatch('close')">
-                                        Delete Category
+                                        Confirm Deletion
                                     </x-danger-button>
                                 </div>
                             </div>

@@ -31,6 +31,13 @@ class All extends Component
         ]);
     }
 
+    public function mount()
+    {
+        if ($notification = session('notify')) {
+            $this->dispatch('notify', $notification);
+        }
+    }
+
     public function render()
     {
         $query = Post::select([

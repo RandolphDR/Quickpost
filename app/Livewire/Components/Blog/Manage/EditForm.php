@@ -132,7 +132,7 @@ class EditForm extends Component
             'type' => 'success',
         ]);
 
-        return $this->redirect(route('blog.view', $this->post->slug), navigate: true);
+        return $this->redirect(Gate::allows('administrator-access') ? route('admin.blog.manage') : route('blog.view', $this->post->slug), navigate: true);
     }
 
     public function deletePost($postId)

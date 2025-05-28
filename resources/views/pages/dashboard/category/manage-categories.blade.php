@@ -8,7 +8,7 @@
             </h1>
         </aside>
         <nav class="">
-            <x-btn-nav-link :href="route('admin.categories.create')" class="py-2">
+            <x-btn-nav-link :href="route('admin.category.create')" class="py-2">
                 + Add New Category
             </x-btn-nav-link>
         </nav>

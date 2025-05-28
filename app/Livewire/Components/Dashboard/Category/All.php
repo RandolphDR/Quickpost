@@ -12,8 +12,6 @@ class All extends Component
 
     public function deleteCategory($categoryId)
     {
-        $category = Category::select(['id'])->findOrFail($categoryId);
-
         if (Gate::denies('administrator-access')) {
             $this->dispatch('notify', [
                 'message' => 'You are not authorized to delete this category.',
@@ -22,12 +20,21 @@ class All extends Component
             return;
         }
 
+        $category = Category::select(['id'])->findOrFail($categoryId);
+
         $category->delete();
 
         $this->dispatch('notify', [
             'message' => 'Category deleted successfully.',
             'type' => 'success',
         ]);
+    }
+
+    public function mount()
+    {
+        if ($notification = session('notify')) {
+            $this->dispatch('notify', $notification);
+        }
     }
 
     public function render()

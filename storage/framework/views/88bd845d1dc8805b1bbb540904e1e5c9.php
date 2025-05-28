@@ -91,7 +91,7 @@
                                 </td>
                             <?php endif; ?>
                             <td class="px-4 py-2 text-sm font-semibold text-blue-700 dark:text-blue-400">
-                                <?php echo e($post->category->name); ?>
+                                <?php echo e($post->category->name ?? 'No Category'); ?>
 
                             </td>
                             <td class="px-4 py-4 text-sm text-gray-900 dark:text-neutral-200"><?php echo e($post->title); ?></td>
@@ -167,14 +167,14 @@
 <?php endif; ?>
                                         <?php if (isset($component)) { $__componentOriginal68cb1971a2b92c9735f83359058f7108 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal68cb1971a2b92c9735f83359058f7108 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dropdown-link','data' => ['href' => route('blog.edit', $post->slug),'title' => 'Edit: '.e($post->title).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dropdown-link','data' => ['href' => Gate::allows('administrator-access') ? route('admin.blog.edit', $post->slug) : route('blog.edit', $post->slug),'title' => 'Edit: '.e($post->title).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown-link'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('blog.edit', $post->slug)),'title' => 'Edit: '.e($post->title).'']); ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(Gate::allows('administrator-access') ? route('admin.blog.edit', $post->slug) : route('blog.edit', $post->slug)),'title' => 'Edit: '.e($post->title).'']); ?>
                                             Edit
                                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

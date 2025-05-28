@@ -83,14 +83,14 @@
                                      <?php $__env->slot('content', null, []); ?> 
                                         <?php if (isset($component)) { $__componentOriginal68cb1971a2b92c9735f83359058f7108 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal68cb1971a2b92c9735f83359058f7108 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dropdown-link','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.dropdown-link','data' => ['href' => route('admin.category.edit', ['categoryId' => $category->id])]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('dropdown-link'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.category.edit', ['categoryId' => $category->id]))]); ?>
                                             Edit
                                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -147,13 +147,20 @@
 <?php endif; ?>
 <?php $component->withAttributes(['name' => 'confirm-category-deletion-'.e($category->id).'','focusable' => true]); ?>
                             <div class="p-6">
-                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
                                     Delete Category
                                 </h2>
 
-                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                    Are you sure you want to delete this category? This action cannot be undone.
-                                </p>
+                                <div class="mt-4 space-y-3">
+                                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                                        Are you sure you want to delete this category? This action is permanent and
+                                        cannot be undone.
+                                    </p>
+                                    <p class="text-sm text-red-600 dark:text-red-400 font-medium">
+                                        <span class="font-semibold">Warning:</span> All blog posts associated with this
+                                        category will be affected.
+                                    </p>
+                                </div>
 
                                 <div class="mt-6 flex justify-end gap-4">
                                     <?php if (isset($component)) { $__componentOriginal3b0e04e43cf890250cc4d85cff4d94af = $component; } ?>
@@ -188,7 +195,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['wire:click' => 'deleteCategory(\''.e($category->id).'\')','x-on:click' => '$dispatch(\'close\')']); ?>
-                                        Delete Category
+                                        Confirm Deletion
                                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal656e8c5ea4d9a4fa173298297bfe3f11)): ?>
