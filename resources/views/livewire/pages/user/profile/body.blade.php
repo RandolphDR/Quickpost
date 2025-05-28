@@ -11,7 +11,6 @@
             </div>
         </main>
     @else
-       
         <livewire:pages.blog.all :username="$username" />
     @endif
 </div>

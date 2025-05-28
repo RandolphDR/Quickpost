@@ -11,7 +11,6 @@
             </div>
         </main>
     <?php else: ?>
-       
         <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];

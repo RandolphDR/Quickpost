@@ -28,17 +28,25 @@ class All extends Component
     public function render()
     {
         $query = Post::query()->with('user');
-        $currentUser = Auth::user();
 
         if ($this->username) {
             $user = User::where('username', $this->username)->firstOrFail();
             $query->where('user_id', $user->id);
 
-            if (!$currentUser?->is($user)) {
-                $query->where('status', 'published');
-            } else if ($this->status !== 'all') {
-                $query->where('status', $this->status);
+            switch ($this->status) {
+                case 'published':
+                    $query->where('status', $this->status);
+                    break;
+                case 'draft':
+                    $query->where('status', $this->status);
+                    break;
+                case 'trashed':
+                    $query->onlyTrashed();
+                    break;
+                default:
+                    $query->where('status', 'published');
             }
+
         } else {
             $query->where('status', 'published');
         }
