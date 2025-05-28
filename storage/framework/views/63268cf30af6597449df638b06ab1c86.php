@@ -1,1 +1,0 @@
-<?php /**PATH C:\Users\Rando\Programming Workspaces\laravel-workspace\Quickpost\resources\views/livewire/pages/dashboard/dashboard.blade.php ENDPATH**/ ?>

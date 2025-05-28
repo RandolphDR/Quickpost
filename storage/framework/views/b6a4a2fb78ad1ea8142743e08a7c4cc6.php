@@ -1,5 +1,5 @@
 <div
-    class="w-[300px] gap-4 p-4 flex flex-col justify-start bg-white/70 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+    class="w-[300px] gap-4 p-4 flex flex-col justify-start bg-white/70 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-md">
     <div class="w-full flex justify-between items-center">
         <div class="w-10 h-10 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 flex justify-center items-center">
             <svg class="w-6 h-6 text-gray-700 dark:text-neutral-100" aria-hidden="true"
