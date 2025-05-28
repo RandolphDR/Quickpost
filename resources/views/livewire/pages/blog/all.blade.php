@@ -1,4 +1,17 @@
 <main class="w-full h-full flex flex-col">
+    @if (Auth::check() && $username === Auth::user()->username)
+        <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
+            <nav class="flex space-x-4">
+                <x-nav-link class="cursor-pointer" wire:click="setStatus('published')" :active="$status === 'published'">
+                    Published
+                </x-nav-link>
+
+                <x-nav-link class="cursor-pointer" wire:click="setStatus('draft')" :active="$status === 'draft'">
+                    Drafts
+                </x-nav-link>
+            </nav>
+        </div>
+    @endif
     <header class="w-full p-4 flex justify-between items-center">
         <h1 class="font-semibold text-xl lg:text-2xl text-gray-800 dark:text-neutral-200">
             {{ $username ? "{$username}'s Blog Posts" : 'All Blog Posts' }}
