@@ -14,7 +14,7 @@ class BlogpostSearch extends Component
     {
         if (strlen($this->query) > 1) {
             $this->results = Post::where('title', 'like', '%' . $this->query . '%')
-                ->limit(5)
+                ->limit(7)
                 ->get(['title', 'slug'])
                 ->toArray();
         } else {
