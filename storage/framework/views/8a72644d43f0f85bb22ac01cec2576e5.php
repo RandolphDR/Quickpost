@@ -17,6 +17,7 @@
                     placeholder="Search or type command...">
             </div>
         </form>
+        
     </div>
     <div class="gap-4 flex items-center">
         <!-- Theme Toggle -->

@@ -17,6 +17,7 @@
                     placeholder="Search or type command...">
             </div>
         </form>
+        {{-- <livewire:components.blog.blogpost-search /> --}}
     </div>
     <div class="gap-4 flex items-center">
         <!-- Theme Toggle -->

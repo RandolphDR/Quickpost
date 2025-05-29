@@ -129,10 +129,14 @@
                                         </button>
                                     </x-slot>
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('blog.view', ['slug' => $post->slug])" title="Read: {{ $post->title }}">
-                                            View
-                                        </x-dropdown-link>
-                                        <x-dropdown-link :href="Gate::allows('administrator-access') ? route('admin.blog.edit', $post->slug) : route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
+                                        @can('user-access')
+                                            <x-dropdown-link :href="route('blog.view', ['slug' => $post->slug])" title="Read: {{ $post->title }}">
+                                                View
+                                            </x-dropdown-link>
+                                        @endcan
+                                        <x-dropdown-link :href="Gate::allows('administrator-access')
+                                            ? route('admin.blog.edit', $post->slug)
+                                            : route('blog.edit', $post->slug)" title="Edit: {{ $post->title }}">
                                             Edit
                                         </x-dropdown-link>
                                         <x-dropdown-link

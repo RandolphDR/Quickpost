@@ -89,6 +89,10 @@ class UpdateProfileInformationForm extends Component
             return;
         }
 
+        if ($validated['birthdate']) {
+            $validated['age'] = Carbon::parse($validated['birthdate'])->age;
+        }
+
         if ($validated['firstname'] !== $currentData['firstname'] || $validated['middlename'] !== $currentData['middlename'] || $validated['lastname'] !== $currentData['lastname'] || $validated['email'] !== $currentData['email']) {
             $this->dispatch('profile-updated');
         }
@@ -99,6 +103,8 @@ class UpdateProfileInformationForm extends Component
             'message' => 'Your Information has been updated.',
             'type' => 'success',
         ]);
+
+        $this->mount();
     }
 
     public function mount()

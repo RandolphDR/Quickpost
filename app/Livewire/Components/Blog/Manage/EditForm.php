@@ -7,21 +7,22 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
-use App\Models\{Post, Category};
+use App\Models\{User, Post, Category};
 use Illuminate\Support\Facades\Session;
 
 class EditForm extends Component
 {
     use WithFileUploads;
 
-    public Post $post;
-    public $categories;
-    public $existingCoverImage;
-    public $newCoverImage = null;
-    public string $title = '';
-    public string $category_id = '';
-    public string $short_description = '';
-    public string $body = '';
+    public $users, $post, $categories;
+
+    public $user_id,
+    $existingCoverImage,
+    $newCoverImage = null,
+    $title,
+    $category_id,
+    $short_description,
+    $body;
 
     protected $rules = [
         'newCoverImage' => ['nullable', 'image', 'max:10240'],
@@ -67,11 +68,16 @@ class EditForm extends Component
 
         $this->existingCoverImage = $this->post->cover_image ?? '';
         $this->title = $this->post->title;
+        $this->user_id = $this->post->user_id;
         $this->category_id = $this->post->category_id;
         $this->short_description = $this->post->short_description;
         $this->body = $this->post->body;
 
         $this->categories = Category::select(['id', 'name'])
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $this->users = User::select(['id', 'firstname', 'lastname', 'middlename'])
             ->orderBy('id', 'asc')
             ->get();
     }
@@ -120,6 +126,10 @@ class EditForm extends Component
             'status' => $status,
             'cover_image' => $coverImage,
         ];
+
+        if (Gate::allows('administrator-access')) {
+            $updateData['user_id'] = $this->user_id;
+        }
 
         if ($this->post->status === 'draft' && $status === 'published') {
             $updateData['published_at'] = now();
